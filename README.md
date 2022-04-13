@@ -1,6 +1,11 @@
 Eduardo Rodríguez Álvarez - Test
 
-Iniciar contenedores
+Crear contenedores / Composer install / Init BBDD
+```
+make initialize
+```
+
+Levantar contenedores
 ```
 make start
 ```

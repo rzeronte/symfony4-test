@@ -45,7 +45,7 @@ initialize: copy-environment start composer-install db-init ## Initialize this p
 
 .PHONY: start
 start: ## Start this project
-	docker-compose up --rm -d --remove-orphans
+	docker-compose up --force-recreate -d --remove-orphans
 
 .PHONY: restart
 restart: ## Restart this project
