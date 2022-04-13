@@ -40,10 +40,12 @@ help: ## Display help
 	@awk 'BEGIN {FS = ":.*##"; printf "\n\033[1;34m${DOCKER_NAMESPACE}\033[0m\nCopyright (c) ${DATE} Docline Development\n \nUsage:\n  make \033[1;34m<target>\033[0m\n"} /^[a-zA-Z_-]+:.*?##/ { printf "  \033[1;34m%-25s\033[0m %s\n", $$1, $$2 } /^##@/ { printf "\n\033[1m%s\033[0m\n", substr($$0, 5) } ' $(MAKEFILE_LIST)
 
 ##@ Main commands
+.PHONY: initialize
+initialize: copy-environment start composer-install db-init ## Initialize this project from scratch
 
 .PHONY: start
 start: ## Start this project
-	docker-compose up -d --remove-orphans
+	docker-compose up --rm -d --remove-orphans
 
 .PHONY: restart
 restart: ## Restart this project
@@ -59,10 +61,7 @@ bash: ## Takes you inside the API container
 
 .PHONY: copy-environment
 copy-environment: ## Copy environment files
-	@if [ -f .env ]; then cp .env .env.bak; fi;
-	@cp .env.dist .env
-	@if [ -f .env.local ]; then cat .env.local >> .env; fi;
-	@cp .env .deployment/docker/.env
+	@cp .env.example .\application\.env
 
 .PHONY: composer-install
 composer-install: ## Install Composer dependencies
@@ -77,9 +76,8 @@ composer-validate: ## Validate composer.json and composer.lock
 	$(EXEC_APP) "composer validate --no-check-lock --strict composer.json"
 
 ##@ Database
-
 .PHONY: db-init
-db-init: db-fresh messenger-setup ## Initialize database and setup Messenger transports
+db-init: db-fresh  ## Initialize database
 
 .PHONY: db-fresh
 db-fresh: ## Drop the database and create a new one with all migrations
