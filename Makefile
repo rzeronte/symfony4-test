@@ -62,6 +62,7 @@ bash: ## Takes you inside the API container
 .PHONY: copy-environment
 copy-environment: ## Copy environment files
 	cp .application.env ./application/.env
+	cp .application.env .env
 
 .PHONY: composer-install
 composer-install: ## Install Composer dependencies
