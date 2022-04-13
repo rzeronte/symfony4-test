@@ -1,0 +1,218 @@
+<?xml version="1.0"?>
+<phpunit xmlns="https://schema.phpunit.de/coverage/1.0">
+  <file name="DeleteCategoryCommandHandler.php" path="/Application/Command/DeleteCategory">
+    <totals>
+      <lines total="26" comments="1" code="25" executable="2" executed="2" percent="100.00"/>
+      <methods count="2" tested="2" percent="100.00"/>
+      <functions count="0" tested="0" percent="0"/>
+      <classes count="1" tested="1" percent="100.00"/>
+      <traits count="0" tested="0" percent="0"/>
+    </totals>
+    <class name="App\Application\Command\DeleteCategory\DeleteCategoryCommandHandler" start="11" executable="2" executed="2" crap="2">
+      <namespace name="App\Application\Command\DeleteCategory"/>
+      <method name="__construct" signature="__construct(App\Domain\Category\Repository\CategoryRepository $repository)" start="15" end="18" crap="1" executable="1" executed="1" coverage="100"/>
+      <method name="__invoke" signature="__invoke(App\Application\Command\DeleteCategory\DeleteCategoryCommand $command): void" start="21" end="24" crap="1" executable="1" executed="1" coverage="100"/>
+    </class>
+    <coverage>
+      <line nr="17">
+        <covered by="App\Tests\Unit\Application\Command\DeleteCategory\DeleteCategoryCommandHandlerTest::testDeleteCategoryWithInvalidUUIDMustLaunchException"/>
+        <covered by="App\Tests\Unit\Application\Command\DeleteCategory\DeleteCategoryCommandHandlerTest::testDeleteCategoryThatNotExistMustLaunchException"/>
+        <covered by="App\Tests\Unit\Application\Command\DeleteCategory\DeleteCategoryCommandHandlerTest::testDeleteCategoryMustEraseRecord"/>
+      </line>
+      <line nr="23">
+        <covered by="App\Tests\Unit\Application\Command\DeleteCategory\DeleteCategoryCommandHandlerTest::testDeleteCategoryWithInvalidUUIDMustLaunchException"/>
+        <covered by="App\Tests\Unit\Application\Command\DeleteCategory\DeleteCategoryCommandHandlerTest::testDeleteCategoryThatNotExistMustLaunchException"/>
+        <covered by="App\Tests\Unit\Application\Command\DeleteCategory\DeleteCategoryCommandHandlerTest::testDeleteCategoryMustEraseRecord"/>
+      </line>
+    </coverage>
+    <source>
+      <line no="1">
+        <token name="T_OPEN_TAG">&lt;?php</token>
+      </line>
+      <line no="2"/>
+      <line no="3">
+        <token name="T_DECLARE">declare</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_STRING">strict_types</token>
+        <token name="T_EQUAL">=</token>
+        <token name="T_LNUMBER">1</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="4"/>
+      <line no="5">
+        <token name="T_NAMESPACE">namespace</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">App</token>
+        <token name="T_NS_SEPARATOR">\</token>
+        <token name="T_STRING">Application</token>
+        <token name="T_NS_SEPARATOR">\</token>
+        <token name="T_STRING">Command</token>
+        <token name="T_NS_SEPARATOR">\</token>
+        <token name="T_STRING">DeleteCategory</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="6"/>
+      <line no="7">
+        <token name="T_USE">use</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">App</token>
+        <token name="T_NS_SEPARATOR">\</token>
+        <token name="T_STRING">Domain</token>
+        <token name="T_NS_SEPARATOR">\</token>
+        <token name="T_STRING">Category</token>
+        <token name="T_NS_SEPARATOR">\</token>
+        <token name="T_STRING">Repository</token>
+        <token name="T_NS_SEPARATOR">\</token>
+        <token name="T_STRING">CategoryRepository</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="8">
+        <token name="T_USE">use</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">App</token>
+        <token name="T_NS_SEPARATOR">\</token>
+        <token name="T_STRING">Domain</token>
+        <token name="T_NS_SEPARATOR">\</token>
+        <token name="T_STRING">Category</token>
+        <token name="T_NS_SEPARATOR">\</token>
+        <token name="T_STRING">ValueObject</token>
+        <token name="T_NS_SEPARATOR">\</token>
+        <token name="T_STRING">CategoryId</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="9">
+        <token name="T_USE">use</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">Symfony</token>
+        <token name="T_NS_SEPARATOR">\</token>
+        <token name="T_STRING">Component</token>
+        <token name="T_NS_SEPARATOR">\</token>
+        <token name="T_STRING">Messenger</token>
+        <token name="T_NS_SEPARATOR">\</token>
+        <token name="T_STRING">Handler</token>
+        <token name="T_NS_SEPARATOR">\</token>
+        <token name="T_STRING">MessageHandlerInterface</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="10"/>
+      <line no="11">
+        <token name="T_FINAL">final</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_CLASS">class</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">DeleteCategoryCommandHandler</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_IMPLEMENTS">implements</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">MessageHandlerInterface</token>
+      </line>
+      <line no="12">
+        <token name="T_OPEN_CURLY">{</token>
+      </line>
+      <line no="13">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_PRIVATE">private</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">CategoryRepository</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$repository</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="14"/>
+      <line no="15">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_PUBLIC">public</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_FUNCTION">function</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">__construct</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_STRING">CategoryRepository</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$repository</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+      </line>
+      <line no="16">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_OPEN_CURLY">{</token>
+      </line>
+      <line no="17">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_VARIABLE">$this</token>
+        <token name="T_OBJECT_OPERATOR">-&gt;</token>
+        <token name="T_STRING">repository</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_EQUAL">=</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$repository</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="18">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_CLOSE_CURLY">}</token>
+      </line>
+      <line no="19"/>
+      <line no="20">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_DOC_COMMENT">/** @throws \Assert\AssertionFailedException */</token>
+      </line>
+      <line no="21">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_PUBLIC">public</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_FUNCTION">function</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">__invoke</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_STRING">DeleteCategoryCommand</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$command</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_COLON">:</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">void</token>
+      </line>
+      <line no="22">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_OPEN_CURLY">{</token>
+      </line>
+      <line no="23">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_VARIABLE">$this</token>
+        <token name="T_OBJECT_OPERATOR">-&gt;</token>
+        <token name="T_STRING">repository</token>
+        <token name="T_OBJECT_OPERATOR">-&gt;</token>
+        <token name="T_STRING">delete</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_VARIABLE">$this</token>
+        <token name="T_OBJECT_OPERATOR">-&gt;</token>
+        <token name="T_STRING">repository</token>
+        <token name="T_OBJECT_OPERATOR">-&gt;</token>
+        <token name="T_STRING">ofIdOrFail</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_STRING">CategoryId</token>
+        <token name="T_DOUBLE_COLON">::</token>
+        <token name="T_STRING">from</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_VARIABLE">$command</token>
+        <token name="T_OBJECT_OPERATOR">-&gt;</token>
+        <token name="T_STRING">getId</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="24">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_CLOSE_CURLY">}</token>
+      </line>
+      <line no="25">
+        <token name="T_CLOSE_CURLY">}</token>
+      </line>
+      <line no="26"/>
+    </source>
+  </file>
+</phpunit>

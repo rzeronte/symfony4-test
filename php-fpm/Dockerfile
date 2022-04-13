@@ -1,0 +1,50 @@
+FROM php:7.4-fpm
+WORKDIR "/application"
+
+ARG LOCAL_UID
+ARG LOCAL_GID
+# Fix permission problems
+RUN usermod -u ${LOCAL_UID:-33} www-data && groupmod -g ${LOCAL_GID:-33} www-data
+
+# Install git, unzip
+RUN apt-get update \
+    && apt-get -y install git unzip vim
+
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+
+# php-intl (as example of extension)
+RUN apt-get update \
+    && apt-get install -y libicu-dev \
+    && apt-get clean; rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /usr/share/doc/* \
+    && docker-php-ext-install intl
+
+# Install zip (phpUnit requirement)
+RUN apt-get update && \
+    apt-get install -y \
+    libzip-dev libonig-dev \
+    && docker-php-ext-install zip
+
+# Install mysql
+RUN docker-php-ext-install mysqli
+
+# install gd mbstring pdo
+RUN apt-get update && apt-get install -y libpng-dev libjpeg-dev libpq-dev \
+ 	&& rm -rf /var/lib/apt/lists/* \
+ 	&& docker-php-ext-configure gd \
+	&& docker-php-ext-install gd mbstring pdo pdo_mysql pdo_pgsql
+
+# redis (as example of another extension from downloaded source code)
+RUN curl -L -o /tmp/redis.tar.gz https://github.com/phpredis/phpredis/archive/3.1.6.tar.gz \
+    && tar xfz /tmp/redis.tar.gz \
+    && rm -r /tmp/redis.tar.gz \
+    && mkdir -p /usr/src/php/ext/redis \
+    && mv phpredis-3.1.6/* /usr/src/php/ext/redis/ \
+    && docker-php-ext-install redis
+
+RUN pecl install pcov && docker-php-ext-enable pcov
+
+RUN pecl install xdebug && docker-php-ext-enable xdebug
+
+
+RUN echo 'alias ll="ls -l"' >> ~/.bashrc
+RUN echo 'alias sf="php bin/console"' >> ~/.bashrc

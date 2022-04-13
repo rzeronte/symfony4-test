@@ -1,0 +1,30 @@
+App\Domain\Product\Product:
+  type: entity
+  table: product
+
+  id:
+    id:
+      type: productId
+      column: id
+
+  fields:
+    name:
+      type: productName
+      column: name
+    price:
+      type: productPrice
+      column: price
+    currency:
+      type: productCurrency
+      column: currency
+    featured:
+      type: boolean
+      column: featured
+
+  manyToOne:
+    category:
+      targetEntity: App\Domain\Category\Category
+      joinColumn:
+        name: category_id
+        referencedColumnName: id
+        nullable: true

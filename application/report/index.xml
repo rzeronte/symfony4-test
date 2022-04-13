@@ -1,0 +1,484 @@
+<?xml version="1.0"?>
+<phpunit xmlns="https://schema.phpunit.de/coverage/1.0">
+  <build time="Wed Apr 13 20:46:03 UTC 2022" phpunit="9.5.20" coverage="9.2.15">
+    <runtime name="PHP" version="7.4.28" url="https://secure.php.net/"/>
+    <driver name="pcov" version="1.0.11"/>
+  </build>
+  <project source="/application/src">
+    <tests>
+      <test name="App\Tests\Unit\Application\Command\CreateCategory\CreateCategoryCommandHandlerTest::testCreateCategoryWithInvalidRequestBody" size="unknown" result="0" status="PASSED"/>
+      <test name="App\Tests\Unit\Application\Command\CreateCategory\CreateCategoryCommandHandlerTest::testCreateCategoryWithValidRequestMustInsertRecord" size="unknown" result="0" status="PASSED"/>
+      <test name="App\Tests\Unit\Application\Command\CreateCategory\CreateCategoryCommandHandlerTest::testCreateCategoryThatAlreadyExistsMustThrowException" size="unknown" result="0" status="PASSED"/>
+      <test name="App\Tests\Unit\Application\Command\CreateProduct\CreateProductCommandHandlerTest::testCreateProductWithInvalidRequestMustLaunchException" size="unknown" result="0" status="PASSED"/>
+      <test name="App\Tests\Unit\Application\Command\CreateProduct\CreateProductCommandHandlerTest::testCreateProductWithValidRequestButNoCategoryMustInsertRecord" size="unknown" result="0" status="PASSED"/>
+      <test name="App\Tests\Unit\Application\Command\CreateProduct\CreateProductCommandHandlerTest::testCreateProductWithValidRequestIncludeCategoryMustInsertRecord" size="unknown" result="0" status="PASSED"/>
+      <test name="App\Tests\Unit\Application\Command\DeleteCategory\DeleteCategoryCommandHandlerTest::testDeleteCategoryWithInvalidUUIDMustLaunchException" size="unknown" result="0" status="PASSED"/>
+      <test name="App\Tests\Unit\Application\Command\DeleteCategory\DeleteCategoryCommandHandlerTest::testDeleteCategoryThatNotExistMustLaunchException" size="unknown" result="0" status="PASSED"/>
+      <test name="App\Tests\Unit\Application\Command\DeleteCategory\DeleteCategoryCommandHandlerTest::testDeleteCategoryMustEraseRecord" size="unknown" result="0" status="PASSED"/>
+      <test name="App\Tests\Unit\Application\Command\UpdateCategory\UpdateCategoryCommandHandlerTest::testUpdateCategoryWithInvalidRequestMustLaunchException" size="unknown" result="0" status="PASSED"/>
+      <test name="App\Tests\Unit\Application\Command\UpdateCategory\UpdateCategoryCommandHandlerTest::testUpdateCategoryWithNotExistUUIDMustLaunchException" size="unknown" result="0" status="PASSED"/>
+      <test name="App\Tests\Unit\Application\Command\UpdateCategory\UpdateCategoryCommandHandlerTest::testUpdateCategoryMustUpdateRecord" size="unknown" result="0" status="PASSED"/>
+      <test name="App\Tests\Unit\Application\Query\RetrieveProducts\RetrieveProductsQueryHandlerTest::testRetrieveProductsWithEmptyRepository" size="unknown" result="0" status="PASSED"/>
+      <test name="App\Tests\Unit\Application\Query\RetrieveProducts\RetrieveProductsQueryHandlerTest::testRetrieveProductsWithBadArguments" size="unknown" result="0" status="PASSED"/>
+      <test name="App\Tests\Unit\Application\Query\RetrieveProducts\RetrieveProductsQueryHandlerTest::testRetrieveProductsForPaginatorMutants" size="unknown" result="0" status="PASSED"/>
+      <test name="App\Tests\Unit\Application\Query\RetrieveProducts\RetrieveProductsQueryHandlerTest::testRetrieveProductsWithRecordsRepository" size="unknown" result="0" status="PASSED"/>
+      <test name="App\Tests\Unit\Domain\Category\CategoryTest::testCreateCategory" size="unknown" result="0" status="PASSED"/>
+      <test name="App\Tests\Unit\Domain\Category\CategoryTest::testCreateCategoryWithInvalidName" size="unknown" result="0" status="PASSED"/>
+      <test name="App\Tests\Unit\Domain\Category\CategoryTest::testCreateCategoryWithInvalidDescription" size="unknown" result="0" status="PASSED"/>
+      <test name="App\Tests\Unit\Domain\Product\ProductTest::testCreateProduct" size="unknown" result="0" status="PASSED"/>
+      <test name="App\Tests\Unit\Domain\Product\ProductTest::testCreateProductBadPrice" size="unknown" result="0" status="PASSED"/>
+      <test name="App\Tests\Unit\Domain\Product\ProductTest::testCreateProductWithBadCurrency" size="unknown" result="0" status="PASSED"/>
+      <test name="App\Tests\Unit\Domain\Product\ProductTest::testCreateProductWithBadName" size="unknown" result="0" status="PASSED"/>
+    </tests>
+    <directory name="/">
+      <totals>
+        <lines total="1042" comments="52" code="990" executable="153" executed="153" percent="100.00"/>
+        <methods count="91" tested="91" percent="100.00"/>
+        <functions count="0" tested="0" percent="0"/>
+        <classes count="25" tested="25" percent="100.00"/>
+        <traits count="0" tested="0" percent="0"/>
+      </totals>
+      <directory name="Application">
+        <totals>
+          <lines total="423" comments="16" code="407" executable="73" executed="73" percent="100.00"/>
+          <methods count="35" tested="35" percent="100.00"/>
+          <functions count="0" tested="0" percent="0"/>
+          <classes count="11" tested="11" percent="100.00"/>
+          <traits count="0" tested="0" percent="0"/>
+        </totals>
+        <directory name="Command">
+          <totals>
+            <lines total="321" comments="16" code="305" executable="54" executed="54" percent="100.00"/>
+            <methods count="26" tested="26" percent="100.00"/>
+            <functions count="0" tested="0" percent="0"/>
+            <classes count="8" tested="8" percent="100.00"/>
+            <traits count="0" tested="0" percent="0"/>
+          </totals>
+          <directory name="CreateCategory">
+            <totals>
+              <lines total="92" comments="9" code="83" executable="15" executed="15" percent="100.00"/>
+              <methods count="7" tested="7" percent="100.00"/>
+              <functions count="0" tested="0" percent="0"/>
+              <classes count="2" tested="2" percent="100.00"/>
+              <traits count="0" tested="0" percent="0"/>
+            </totals>
+            <file name="CreateCategoryCommand.php" href="Application/Command/CreateCategory/CreateCategoryCommand.php.xml">
+              <totals>
+                <lines total="35" comments="0" code="35" executable="6" executed="6" percent="100.00"/>
+                <methods count="4" tested="4" percent="100.00"/>
+                <functions count="0" tested="0" percent="0"/>
+                <classes count="1" tested="1" percent="100.00"/>
+                <traits count="0" tested="0" percent="0"/>
+              </totals>
+            </file>
+            <file name="CreateCategoryCommandHandler.php" href="Application/Command/CreateCategory/CreateCategoryCommandHandler.php.xml">
+              <totals>
+                <lines total="57" comments="9" code="48" executable="9" executed="9" percent="100.00"/>
+                <methods count="3" tested="3" percent="100.00"/>
+                <functions count="0" tested="0" percent="0"/>
+                <classes count="1" tested="1" percent="100.00"/>
+                <traits count="0" tested="0" percent="0"/>
+              </totals>
+            </file>
+          </directory>
+          <directory name="CreateProduct">
+            <totals>
+              <lines total="109" comments="3" code="106" executable="23" executed="23" percent="100.00"/>
+              <methods count="9" tested="9" percent="100.00"/>
+              <functions count="0" tested="0" percent="0"/>
+              <classes count="2" tested="2" percent="100.00"/>
+              <traits count="0" tested="0" percent="0"/>
+            </totals>
+            <file name="CreateProductCommand.php" href="Application/Command/CreateProduct/CreateProductCommand.php.xml">
+              <totals>
+                <lines total="62" comments="0" code="62" executable="12" executed="12" percent="100.00"/>
+                <methods count="7" tested="7" percent="100.00"/>
+                <functions count="0" tested="0" percent="0"/>
+                <classes count="1" tested="1" percent="100.00"/>
+                <traits count="0" tested="0" percent="0"/>
+              </totals>
+            </file>
+            <file name="CreateProductCommandHandler.php" href="Application/Command/CreateProduct/CreateProductCommandHandler.php.xml">
+              <totals>
+                <lines total="47" comments="3" code="44" executable="11" executed="11" percent="100.00"/>
+                <methods count="2" tested="2" percent="100.00"/>
+                <functions count="0" tested="0" percent="0"/>
+                <classes count="1" tested="1" percent="100.00"/>
+                <traits count="0" tested="0" percent="0"/>
+              </totals>
+            </file>
+          </directory>
+          <directory name="DeleteCategory">
+            <totals>
+              <lines total="47" comments="1" code="46" executable="4" executed="4" percent="100.00"/>
+              <methods count="4" tested="4" percent="100.00"/>
+              <functions count="0" tested="0" percent="0"/>
+              <classes count="2" tested="2" percent="100.00"/>
+              <traits count="0" tested="0" percent="0"/>
+            </totals>
+            <file name="DeleteCategoryCommand.php" href="Application/Command/DeleteCategory/DeleteCategoryCommand.php.xml">
+              <totals>
+                <lines total="21" comments="0" code="21" executable="2" executed="2" percent="100.00"/>
+                <methods count="2" tested="2" percent="100.00"/>
+                <functions count="0" tested="0" percent="0"/>
+                <classes count="1" tested="1" percent="100.00"/>
+                <traits count="0" tested="0" percent="0"/>
+              </totals>
+            </file>
+            <file name="DeleteCategoryCommandHandler.php" href="Application/Command/DeleteCategory/DeleteCategoryCommandHandler.php.xml">
+              <totals>
+                <lines total="26" comments="1" code="25" executable="2" executed="2" percent="100.00"/>
+                <methods count="2" tested="2" percent="100.00"/>
+                <functions count="0" tested="0" percent="0"/>
+                <classes count="1" tested="1" percent="100.00"/>
+                <traits count="0" tested="0" percent="0"/>
+              </totals>
+            </file>
+          </directory>
+          <directory name="UpdateCategory">
+            <totals>
+              <lines total="73" comments="3" code="70" executable="12" executed="12" percent="100.00"/>
+              <methods count="6" tested="6" percent="100.00"/>
+              <functions count="0" tested="0" percent="0"/>
+              <classes count="2" tested="2" percent="100.00"/>
+              <traits count="0" tested="0" percent="0"/>
+            </totals>
+            <file name="UpdateCategoryCommand.php" href="Application/Command/UpdateCategory/UpdateCategoryCommand.php.xml">
+              <totals>
+                <lines total="35" comments="0" code="35" executable="6" executed="6" percent="100.00"/>
+                <methods count="4" tested="4" percent="100.00"/>
+                <functions count="0" tested="0" percent="0"/>
+                <classes count="1" tested="1" percent="100.00"/>
+                <traits count="0" tested="0" percent="0"/>
+              </totals>
+            </file>
+            <file name="UpdateCategoryCommandHandler.php" href="Application/Command/UpdateCategory/UpdateCategoryCommandHandler.php.xml">
+              <totals>
+                <lines total="38" comments="3" code="35" executable="6" executed="6" percent="100.00"/>
+                <methods count="2" tested="2" percent="100.00"/>
+                <functions count="0" tested="0" percent="0"/>
+                <classes count="1" tested="1" percent="100.00"/>
+                <traits count="0" tested="0" percent="0"/>
+              </totals>
+            </file>
+          </directory>
+        </directory>
+        <directory name="Query">
+          <totals>
+            <lines total="102" comments="0" code="102" executable="19" executed="19" percent="100.00"/>
+            <methods count="9" tested="9" percent="100.00"/>
+            <functions count="0" tested="0" percent="0"/>
+            <classes count="3" tested="3" percent="100.00"/>
+            <traits count="0" tested="0" percent="0"/>
+          </totals>
+          <directory name="RetrieveProducts">
+            <totals>
+              <lines total="102" comments="0" code="102" executable="19" executed="19" percent="100.00"/>
+              <methods count="9" tested="9" percent="100.00"/>
+              <functions count="0" tested="0" percent="0"/>
+              <classes count="3" tested="3" percent="100.00"/>
+              <traits count="0" tested="0" percent="0"/>
+            </totals>
+            <file name="ListProductsResponse.php" href="Application/Query/RetrieveProducts/ListProductsResponse.php.xml">
+              <totals>
+                <lines total="35" comments="0" code="35" executable="7" executed="7" percent="100.00"/>
+                <methods count="3" tested="3" percent="100.00"/>
+                <functions count="0" tested="0" percent="0"/>
+                <classes count="1" tested="1" percent="100.00"/>
+                <traits count="0" tested="0" percent="0"/>
+              </totals>
+            </file>
+            <file name="RetrieveProductsQuery.php" href="Application/Query/RetrieveProducts/RetrieveProductsQuery.php.xml">
+              <totals>
+                <lines total="38" comments="0" code="38" executable="6" executed="6" percent="100.00"/>
+                <methods count="4" tested="4" percent="100.00"/>
+                <functions count="0" tested="0" percent="0"/>
+                <classes count="1" tested="1" percent="100.00"/>
+                <traits count="0" tested="0" percent="0"/>
+              </totals>
+            </file>
+            <file name="RetrieveProductsQueryHandler.php" href="Application/Query/RetrieveProducts/RetrieveProductsQueryHandler.php.xml">
+              <totals>
+                <lines total="29" comments="0" code="29" executable="6" executed="6" percent="100.00"/>
+                <methods count="2" tested="2" percent="100.00"/>
+                <functions count="0" tested="0" percent="0"/>
+                <classes count="1" tested="1" percent="100.00"/>
+                <traits count="0" tested="0" percent="0"/>
+              </totals>
+            </file>
+          </directory>
+        </directory>
+      </directory>
+      <directory name="Domain">
+        <totals>
+          <lines total="424" comments="12" code="412" executable="57" executed="57" percent="100.00"/>
+          <methods count="38" tested="38" percent="100.00"/>
+          <functions count="0" tested="0" percent="0"/>
+          <classes count="10" tested="10" percent="100.00"/>
+          <traits count="0" tested="0" percent="0"/>
+        </totals>
+        <directory name="Category">
+          <totals>
+            <lines total="224" comments="7" code="217" executable="28" executed="28" percent="100.00"/>
+            <methods count="21" tested="21" percent="100.00"/>
+            <functions count="0" tested="0" percent="0"/>
+            <classes count="6" tested="6" percent="100.00"/>
+            <traits count="0" tested="0" percent="0"/>
+          </totals>
+          <directory name="Exception">
+            <totals>
+              <lines total="34" comments="0" code="34" executable="2" executed="2" percent="100.00"/>
+              <methods count="2" tested="2" percent="100.00"/>
+              <functions count="0" tested="0" percent="0"/>
+              <classes count="2" tested="2" percent="100.00"/>
+              <traits count="0" tested="0" percent="0"/>
+            </totals>
+            <file name="CategoryAlreadyExistsException.php" href="Domain/Category/Exception/CategoryAlreadyExistsException.php.xml">
+              <totals>
+                <lines total="17" comments="0" code="17" executable="1" executed="1" percent="100.00"/>
+                <methods count="1" tested="1" percent="100.00"/>
+                <functions count="0" tested="0" percent="0"/>
+                <classes count="1" tested="1" percent="100.00"/>
+                <traits count="0" tested="0" percent="0"/>
+              </totals>
+            </file>
+            <file name="CategoryNotFoundException.php" href="Domain/Category/Exception/CategoryNotFoundException.php.xml">
+              <totals>
+                <lines total="17" comments="0" code="17" executable="1" executed="1" percent="100.00"/>
+                <methods count="1" tested="1" percent="100.00"/>
+                <functions count="0" tested="0" percent="0"/>
+                <classes count="1" tested="1" percent="100.00"/>
+                <traits count="0" tested="0" percent="0"/>
+              </totals>
+            </file>
+          </directory>
+          <directory name="Repository">
+            <totals>
+              <lines total="22" comments="0" code="22" executable="0" executed="0" percent="0"/>
+              <methods count="0" tested="0" percent="0"/>
+              <functions count="0" tested="0" percent="0"/>
+              <classes count="0" tested="0" percent="0"/>
+              <traits count="0" tested="0" percent="0"/>
+            </totals>
+            <file name="CategoryRepository.php" href="Domain/Category/Repository/CategoryRepository.php.xml">
+              <totals>
+                <lines total="22" comments="0" code="22" executable="0" executed="0" percent="0"/>
+                <methods count="0" tested="0" percent="0"/>
+                <functions count="0" tested="0" percent="0"/>
+                <classes count="0" tested="0" percent="0"/>
+                <traits count="0" tested="0" percent="0"/>
+              </totals>
+            </file>
+          </directory>
+          <directory name="ValueObject">
+            <totals>
+              <lines total="109" comments="7" code="102" executable="14" executed="14" percent="100.00"/>
+              <methods count="12" tested="12" percent="100.00"/>
+              <functions count="0" tested="0" percent="0"/>
+              <classes count="3" tested="3" percent="100.00"/>
+              <traits count="0" tested="0" percent="0"/>
+            </totals>
+            <file name="CategoryDescription.php" href="Domain/Category/ValueObject/CategoryDescription.php.xml">
+              <totals>
+                <lines total="43" comments="3" code="40" executable="6" executed="6" percent="100.00"/>
+                <methods count="5" tested="5" percent="100.00"/>
+                <functions count="0" tested="0" percent="0"/>
+                <classes count="1" tested="1" percent="100.00"/>
+                <traits count="0" tested="0" percent="0"/>
+              </totals>
+            </file>
+            <file name="CategoryId.php" href="Domain/Category/ValueObject/CategoryId.php.xml">
+              <totals>
+                <lines total="22" comments="1" code="21" executable="2" executed="2" percent="100.00"/>
+                <methods count="2" tested="2" percent="100.00"/>
+                <functions count="0" tested="0" percent="0"/>
+                <classes count="1" tested="1" percent="100.00"/>
+                <traits count="0" tested="0" percent="0"/>
+              </totals>
+            </file>
+            <file name="CategoryName.php" href="Domain/Category/ValueObject/CategoryName.php.xml">
+              <totals>
+                <lines total="44" comments="3" code="41" executable="6" executed="6" percent="100.00"/>
+                <methods count="5" tested="5" percent="100.00"/>
+                <functions count="0" tested="0" percent="0"/>
+                <classes count="1" tested="1" percent="100.00"/>
+                <traits count="0" tested="0" percent="0"/>
+              </totals>
+            </file>
+          </directory>
+          <file name="Category.php" href="Domain/Category/Category.php.xml">
+            <totals>
+              <lines total="59" comments="0" code="59" executable="12" executed="12" percent="100.00"/>
+              <methods count="7" tested="7" percent="100.00"/>
+              <functions count="0" tested="0" percent="0"/>
+              <classes count="1" tested="1" percent="100.00"/>
+              <traits count="0" tested="0" percent="0"/>
+            </totals>
+          </file>
+        </directory>
+        <directory name="Product">
+          <totals>
+            <lines total="200" comments="5" code="195" executable="29" executed="29" percent="100.00"/>
+            <methods count="17" tested="17" percent="100.00"/>
+            <functions count="0" tested="0" percent="0"/>
+            <classes count="4" tested="4" percent="100.00"/>
+            <traits count="0" tested="0" percent="0"/>
+          </totals>
+          <directory name="Repository">
+            <totals>
+              <lines total="20" comments="0" code="20" executable="0" executed="0" percent="0"/>
+              <methods count="0" tested="0" percent="0"/>
+              <functions count="0" tested="0" percent="0"/>
+              <classes count="0" tested="0" percent="0"/>
+              <traits count="0" tested="0" percent="0"/>
+            </totals>
+            <file name="ProductRepository.php" href="Domain/Product/Repository/ProductRepository.php.xml">
+              <totals>
+                <lines total="20" comments="0" code="20" executable="0" executed="0" percent="0"/>
+                <methods count="0" tested="0" percent="0"/>
+                <functions count="0" tested="0" percent="0"/>
+                <classes count="0" tested="0" percent="0"/>
+                <traits count="0" tested="0" percent="0"/>
+              </totals>
+            </file>
+          </directory>
+          <directory name="ValueObject">
+            <totals>
+              <lines total="88" comments="5" code="83" executable="10" executed="10" percent="100.00"/>
+              <methods count="8" tested="8" percent="100.00"/>
+              <functions count="0" tested="0" percent="0"/>
+              <classes count="3" tested="3" percent="100.00"/>
+              <traits count="0" tested="0" percent="0"/>
+            </totals>
+            <file name="ProductId.php" href="Domain/Product/ValueObject/ProductId.php.xml">
+              <totals>
+                <lines total="24" comments="1" code="23" executable="2" executed="2" percent="100.00"/>
+                <methods count="2" tested="2" percent="100.00"/>
+                <functions count="0" tested="0" percent="0"/>
+                <classes count="1" tested="1" percent="100.00"/>
+                <traits count="0" tested="0" percent="0"/>
+              </totals>
+            </file>
+            <file name="ProductName.php" href="Domain/Product/ValueObject/ProductName.php.xml">
+              <totals>
+                <lines total="43" comments="3" code="40" executable="6" executed="6" percent="100.00"/>
+                <methods count="5" tested="5" percent="100.00"/>
+                <functions count="0" tested="0" percent="0"/>
+                <classes count="1" tested="1" percent="100.00"/>
+                <traits count="0" tested="0" percent="0"/>
+              </totals>
+            </file>
+            <file name="ProductPrice.php" href="Domain/Product/ValueObject/ProductPrice.php.xml">
+              <totals>
+                <lines total="21" comments="1" code="20" executable="2" executed="2" percent="100.00"/>
+                <methods count="1" tested="1" percent="100.00"/>
+                <functions count="0" tested="0" percent="0"/>
+                <classes count="1" tested="1" percent="100.00"/>
+                <traits count="0" tested="0" percent="0"/>
+              </totals>
+            </file>
+          </directory>
+          <file name="Product.php" href="Domain/Product/Product.php.xml">
+            <totals>
+              <lines total="92" comments="0" code="92" executable="19" executed="19" percent="100.00"/>
+              <methods count="9" tested="9" percent="100.00"/>
+              <functions count="0" tested="0" percent="0"/>
+              <classes count="1" tested="1" percent="100.00"/>
+              <traits count="0" tested="0" percent="0"/>
+            </totals>
+          </file>
+        </directory>
+      </directory>
+      <directory name="Shared">
+        <totals>
+          <lines total="195" comments="24" code="171" executable="23" executed="23" percent="100.00"/>
+          <methods count="18" tested="18" percent="100.00"/>
+          <functions count="0" tested="0" percent="0"/>
+          <classes count="4" tested="4" percent="100.00"/>
+          <traits count="0" tested="0" percent="0"/>
+        </totals>
+        <directory name="Application">
+          <totals>
+            <lines total="183" comments="24" code="159" executable="23" executed="23" percent="100.00"/>
+            <methods count="18" tested="18" percent="100.00"/>
+            <functions count="0" tested="0" percent="0"/>
+            <classes count="4" tested="4" percent="100.00"/>
+            <traits count="0" tested="0" percent="0"/>
+          </totals>
+          <directory name="Query">
+            <totals>
+              <lines total="59" comments="12" code="47" executable="9" executed="9" percent="100.00"/>
+              <methods count="6" tested="6" percent="100.00"/>
+              <functions count="0" tested="0" percent="0"/>
+              <classes count="1" tested="1" percent="100.00"/>
+              <traits count="0" tested="0" percent="0"/>
+            </totals>
+            <file name="PaginatorResponse.php" href="Shared/Application/Query/PaginatorResponse.php.xml">
+              <totals>
+                <lines total="59" comments="12" code="47" executable="9" executed="9" percent="100.00"/>
+                <methods count="6" tested="6" percent="100.00"/>
+                <functions count="0" tested="0" percent="0"/>
+                <classes count="1" tested="1" percent="100.00"/>
+                <traits count="0" tested="0" percent="0"/>
+              </totals>
+            </file>
+          </directory>
+          <directory name="ValueObject">
+            <totals>
+              <lines total="124" comments="12" code="112" executable="14" executed="14" percent="100.00"/>
+              <methods count="12" tested="12" percent="100.00"/>
+              <functions count="0" tested="0" percent="0"/>
+              <classes count="3" tested="3" percent="100.00"/>
+              <traits count="0" tested="0" percent="0"/>
+            </totals>
+            <file name="Currency.php" href="Shared/Application/ValueObject/Currency.php.xml">
+              <totals>
+                <lines total="49" comments="3" code="46" executable="6" executed="6" percent="100.00"/>
+                <methods count="5" tested="5" percent="100.00"/>
+                <functions count="0" tested="0" percent="0"/>
+                <classes count="1" tested="1" percent="100.00"/>
+                <traits count="0" tested="0" percent="0"/>
+              </totals>
+            </file>
+            <file name="FloatNotNullable.php" href="Shared/Application/ValueObject/FloatNotNullable.php.xml">
+              <totals>
+                <lines total="31" comments="3" code="28" executable="3" executed="3" percent="100.00"/>
+                <methods count="3" tested="3" percent="100.00"/>
+                <functions count="0" tested="0" percent="0"/>
+                <classes count="1" tested="1" percent="100.00"/>
+                <traits count="0" tested="0" percent="0"/>
+              </totals>
+            </file>
+            <file name="Uuid.php" href="Shared/Application/ValueObject/Uuid.php.xml">
+              <totals>
+                <lines total="44" comments="6" code="38" executable="5" executed="5" percent="100.00"/>
+                <methods count="4" tested="4" percent="100.00"/>
+                <functions count="0" tested="0" percent="0"/>
+                <classes count="1" tested="1" percent="100.00"/>
+                <traits count="0" tested="0" percent="0"/>
+              </totals>
+            </file>
+          </directory>
+        </directory>
+        <directory name="Exception">
+          <totals>
+            <lines total="12" comments="0" code="12" executable="0" executed="0" percent="0"/>
+            <methods count="0" tested="0" percent="0"/>
+            <functions count="0" tested="0" percent="0"/>
+            <classes count="0" tested="0" percent="0"/>
+            <traits count="0" tested="0" percent="0"/>
+          </totals>
+          <file name="DomainException.php" href="Shared/Exception/DomainException.php.xml">
+            <totals>
+              <lines total="12" comments="0" code="12" executable="0" executed="0" percent="0"/>
+              <methods count="0" tested="0" percent="0"/>
+              <functions count="0" tested="0" percent="0"/>
+              <classes count="0" tested="0" percent="0"/>
+              <traits count="0" tested="0" percent="0"/>
+            </totals>
+          </file>
+        </directory>
+      </directory>
+    </directory>
+  </project>
+</phpunit>

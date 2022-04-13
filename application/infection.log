@@ -1,0 +1,1309 @@
+Escaped mutants:
+================
+
+Timed Out mutants:
+==================
+
+Skipped mutants:
+================
+
+Not Covered mutants:
+====================
+
+1) src/Infrastructure/Behat/Context/ApplicationContext.php:46    [M] PublicVisibility
+
+--- Original
++++ New
+@@ @@
+      * @BeforeFeature
+      * @AfterScenario @PurgeDatabase
+      */
+-    public static function purgeDatabase()
++    protected static function purgeDatabase()
+     {
+         $purger = new ORMPurger(self::$entityManager, self::EXCLUDED_TABLES);
+         $purger->purge();
+
+
+2) src/Infrastructure/Behat/Context/ApplicationContext.php:49    [M] MethodCallRemoval
+
+--- Original
++++ New
+@@ @@
+     public static function purgeDatabase()
+     {
+         $purger = new ORMPurger(self::$entityManager, self::EXCLUDED_TABLES);
+-        $purger->purge();
++        
+     }
+     /**
+      * @Given  /^A category that exists:$/
+
+
+3) src/Infrastructure/Behat/Context/ApplicationContext.php:56    [M] PublicVisibility
+
+--- Original
++++ New
+@@ @@
+      * @Given  /^A category that exists:$/
+      * @throws AssertionFailedException
+      */
+-    public function aCategoryThatExists(TableNode $table)
++    protected function aCategoryThatExists(TableNode $table)
+     {
+         foreach ($table->getHash() as $row) {
+             $category = Category::create(CategoryId::from($row['id']), CategoryName::from($row['name']), CategoryDescription::from($row['description']));
+
+
+4) src/Infrastructure/Behat/Context/ApplicationContext.php:58    [M] Foreach_
+
+--- Original
++++ New
+@@ @@
+      */
+     public function aCategoryThatExists(TableNode $table)
+     {
+-        foreach ($table->getHash() as $row) {
++        foreach (array() as $row) {
+             $category = Category::create(CategoryId::from($row['id']), CategoryName::from($row['name']), CategoryDescription::from($row['description']));
+             $this->categoryRepository->save($category);
+         }
+
+
+5) src/Infrastructure/Behat/Context/ApplicationContext.php:65    [M] MethodCallRemoval
+
+--- Original
++++ New
+@@ @@
+     {
+         foreach ($table->getHash() as $row) {
+             $category = Category::create(CategoryId::from($row['id']), CategoryName::from($row['name']), CategoryDescription::from($row['description']));
+-            $this->categoryRepository->save($category);
++            
+         }
+     }
+     /**
+
+
+6) src/Infrastructure/Behat/Context/ApplicationContext.php:73    [M] PublicVisibility
+
+--- Original
++++ New
+@@ @@
+      * @Given /^A product that exists:$/
+      * @throws AssertionFailedException
+      */
+-    public function aProductThatExists(TableNode $table)
++    protected function aProductThatExists(TableNode $table)
+     {
+         foreach ($table->getHash() as $row) {
+             $category = Product::create(ProductId::from($row['id']), ProductName::from($row['name']), null, ProductPrice::from((float) $row['price']), Currency::from($row['currency']), (bool) $row['featured']);
+
+
+7) src/Infrastructure/Behat/Context/ApplicationContext.php:75    [M] Foreach_
+
+--- Original
++++ New
+@@ @@
+      */
+     public function aProductThatExists(TableNode $table)
+     {
+-        foreach ($table->getHash() as $row) {
++        foreach (array() as $row) {
+             $category = Product::create(ProductId::from($row['id']), ProductName::from($row['name']), null, ProductPrice::from((float) $row['price']), Currency::from($row['currency']), (bool) $row['featured']);
+             $this->productRepository->save($category);
+         }
+     }
+ }
+
+
+8) src/Infrastructure/Behat/Context/ApplicationContext.php:80    [M] CastFloat
+
+--- Original
++++ New
+@@ @@
+     public function aProductThatExists(TableNode $table)
+     {
+         foreach ($table->getHash() as $row) {
+-            $category = Product::create(ProductId::from($row['id']), ProductName::from($row['name']), null, ProductPrice::from((float) $row['price']), Currency::from($row['currency']), (bool) $row['featured']);
++            $category = Product::create(ProductId::from($row['id']), ProductName::from($row['name']), null, ProductPrice::from($row['price']), Currency::from($row['currency']), (bool) $row['featured']);
+             $this->productRepository->save($category);
+         }
+     }
+ }
+
+
+9) src/Infrastructure/Behat/Context/ApplicationContext.php:82    [M] CastBool
+
+--- Original
++++ New
+@@ @@
+     public function aProductThatExists(TableNode $table)
+     {
+         foreach ($table->getHash() as $row) {
+-            $category = Product::create(ProductId::from($row['id']), ProductName::from($row['name']), null, ProductPrice::from((float) $row['price']), Currency::from($row['currency']), (bool) $row['featured']);
++            $category = Product::create(ProductId::from($row['id']), ProductName::from($row['name']), null, ProductPrice::from((float) $row['price']), Currency::from($row['currency']), $row['featured']);
+             $this->productRepository->save($category);
+         }
+     }
+ }
+
+
+10) src/Infrastructure/Behat/Context/ApplicationContext.php:85    [M] MethodCallRemoval
+
+--- Original
++++ New
+@@ @@
+     {
+         foreach ($table->getHash() as $row) {
+             $category = Product::create(ProductId::from($row['id']), ProductName::from($row['name']), null, ProductPrice::from((float) $row['price']), Currency::from($row['currency']), (bool) $row['featured']);
+-            $this->productRepository->save($category);
++            
+         }
+     }
+ }
+
+
+11) src/Infrastructure/Delivery/Rest/Category/CreateCategoryPage.php:22    [M] FalseValue
+
+--- Original
++++ New
+@@ @@
+      */
+     public function __invoke(Request $request) : JsonResponse
+     {
+-        $payload = json_decode($request->getContent(), false);
++        $payload = json_decode($request->getContent(), true);
+         $id = $payload->id ?? Uuid::uuid4()->toString();
+         $this->dispatch(new CreateCategoryCommand($id, $payload->name ?? '', $payload->description ?? ''));
+         return new JsonResponse(['id' => $id], Response::HTTP_OK);
+     }
+ }
+
+
+12) src/Infrastructure/Delivery/Rest/Category/CreateCategoryPage.php:24    [M] Coalesce
+
+--- Original
++++ New
+@@ @@
+     public function __invoke(Request $request) : JsonResponse
+     {
+         $payload = json_decode($request->getContent(), false);
+-        $id = $payload->id ?? Uuid::uuid4()->toString();
++        $id = Uuid::uuid4()->toString();
+         $this->dispatch(new CreateCategoryCommand($id, $payload->name ?? '', $payload->description ?? ''));
+         return new JsonResponse(['id' => $id], Response::HTTP_OK);
+     }
+ }
+
+
+13) src/Infrastructure/Delivery/Rest/Category/CreateCategoryPage.php:26    [M] MethodCallRemoval
+
+--- Original
++++ New
+@@ @@
+     {
+         $payload = json_decode($request->getContent(), false);
+         $id = $payload->id ?? Uuid::uuid4()->toString();
+-        $this->dispatch(new CreateCategoryCommand($id, $payload->name ?? '', $payload->description ?? ''));
++        
+         return new JsonResponse(['id' => $id], Response::HTTP_OK);
+     }
+ }
+
+
+14) src/Infrastructure/Delivery/Rest/Category/CreateCategoryPage.php:29    [M] Coalesce
+
+--- Original
++++ New
+@@ @@
+     {
+         $payload = json_decode($request->getContent(), false);
+         $id = $payload->id ?? Uuid::uuid4()->toString();
+-        $this->dispatch(new CreateCategoryCommand($id, $payload->name ?? '', $payload->description ?? ''));
++        $this->dispatch(new CreateCategoryCommand($id, '', $payload->description ?? ''));
+         return new JsonResponse(['id' => $id], Response::HTTP_OK);
+     }
+ }
+
+
+15) src/Infrastructure/Delivery/Rest/Category/CreateCategoryPage.php:30    [M] Coalesce
+
+--- Original
++++ New
+@@ @@
+     {
+         $payload = json_decode($request->getContent(), false);
+         $id = $payload->id ?? Uuid::uuid4()->toString();
+-        $this->dispatch(new CreateCategoryCommand($id, $payload->name ?? '', $payload->description ?? ''));
++        $this->dispatch(new CreateCategoryCommand($id, $payload->name ?? '', ''));
+         return new JsonResponse(['id' => $id], Response::HTTP_OK);
+     }
+ }
+
+
+16) src/Infrastructure/Delivery/Rest/Category/CreateCategoryPage.php:34    [M] ArrayItemRemoval
+
+--- Original
++++ New
+@@ @@
+         $payload = json_decode($request->getContent(), false);
+         $id = $payload->id ?? Uuid::uuid4()->toString();
+         $this->dispatch(new CreateCategoryCommand($id, $payload->name ?? '', $payload->description ?? ''));
+-        return new JsonResponse(['id' => $id], Response::HTTP_OK);
++        return new JsonResponse([], Response::HTTP_OK);
+     }
+ }
+
+
+17) src/Infrastructure/Delivery/Rest/Category/UpdateCategoryPage.php:21    [M] FalseValue
+
+--- Original
++++ New
+@@ @@
+      */
+     public function __invoke(string $id, Request $request) : JsonResponse
+     {
+-        $payload = json_decode($request->getContent(), false);
++        $payload = json_decode($request->getContent(), true);
+         $result = $this->dispatch(new UpdateCategoryCommand($id, $payload->name ?? '', $payload->descriptin ?? ''));
+         return new JsonResponse($result, Response::HTTP_OK);
+     }
+ }
+
+
+18) src/Infrastructure/Delivery/Rest/Category/UpdateCategoryPage.php:26    [M] Coalesce
+
+--- Original
++++ New
+@@ @@
+     public function __invoke(string $id, Request $request) : JsonResponse
+     {
+         $payload = json_decode($request->getContent(), false);
+-        $result = $this->dispatch(new UpdateCategoryCommand($id, $payload->name ?? '', $payload->descriptin ?? ''));
++        $result = $this->dispatch(new UpdateCategoryCommand($id, '', $payload->descriptin ?? ''));
+         return new JsonResponse($result, Response::HTTP_OK);
+     }
+ }
+
+
+19) src/Infrastructure/Delivery/Rest/Category/UpdateCategoryPage.php:27    [M] Coalesce
+
+--- Original
++++ New
+@@ @@
+     public function __invoke(string $id, Request $request) : JsonResponse
+     {
+         $payload = json_decode($request->getContent(), false);
+-        $result = $this->dispatch(new UpdateCategoryCommand($id, $payload->name ?? '', $payload->descriptin ?? ''));
++        $result = $this->dispatch(new UpdateCategoryCommand($id, $payload->name ?? '', ''));
+         return new JsonResponse($result, Response::HTTP_OK);
+     }
+ }
+
+
+20) src/Infrastructure/Delivery/Rest/Product/CreateProductPage.php:22    [M] FalseValue
+
+--- Original
++++ New
+@@ @@
+      */
+     public function __invoke(Request $request) : JsonResponse
+     {
+-        $payload = json_decode($request->getContent(), false);
++        $payload = json_decode($request->getContent(), true);
+         $id = $payload->id ?? Uuid::uuid4()->toString();
+         $this->dispatch(new CreateProductCommand($id, $payload->name ?? '', $payload->categoryId ?? null, $payload->price ?? 0, $payload->currency ?? '', $payload->featured ?? false));
+         return new JsonResponse(['id' => $id], Response::HTTP_OK);
+     }
+ }
+
+
+21) src/Infrastructure/Delivery/Rest/Product/CreateProductPage.php:24    [M] Coalesce
+
+--- Original
++++ New
+@@ @@
+     public function __invoke(Request $request) : JsonResponse
+     {
+         $payload = json_decode($request->getContent(), false);
+-        $id = $payload->id ?? Uuid::uuid4()->toString();
++        $id = Uuid::uuid4()->toString();
+         $this->dispatch(new CreateProductCommand($id, $payload->name ?? '', $payload->categoryId ?? null, $payload->price ?? 0, $payload->currency ?? '', $payload->featured ?? false));
+         return new JsonResponse(['id' => $id], Response::HTTP_OK);
+     }
+ }
+
+
+22) src/Infrastructure/Delivery/Rest/Product/CreateProductPage.php:26    [M] MethodCallRemoval
+
+--- Original
++++ New
+@@ @@
+     {
+         $payload = json_decode($request->getContent(), false);
+         $id = $payload->id ?? Uuid::uuid4()->toString();
+-        $this->dispatch(new CreateProductCommand($id, $payload->name ?? '', $payload->categoryId ?? null, $payload->price ?? 0, $payload->currency ?? '', $payload->featured ?? false));
++        
+         return new JsonResponse(['id' => $id], Response::HTTP_OK);
+     }
+ }
+
+
+23) src/Infrastructure/Delivery/Rest/Product/CreateProductPage.php:29    [M] Coalesce
+
+--- Original
++++ New
+@@ @@
+     {
+         $payload = json_decode($request->getContent(), false);
+         $id = $payload->id ?? Uuid::uuid4()->toString();
+-        $this->dispatch(new CreateProductCommand($id, $payload->name ?? '', $payload->categoryId ?? null, $payload->price ?? 0, $payload->currency ?? '', $payload->featured ?? false));
++        $this->dispatch(new CreateProductCommand($id, '', $payload->categoryId ?? null, $payload->price ?? 0, $payload->currency ?? '', $payload->featured ?? false));
+         return new JsonResponse(['id' => $id], Response::HTTP_OK);
+     }
+ }
+
+
+24) src/Infrastructure/Delivery/Rest/Product/CreateProductPage.php:30    [M] Coalesce
+
+--- Original
++++ New
+@@ @@
+     {
+         $payload = json_decode($request->getContent(), false);
+         $id = $payload->id ?? Uuid::uuid4()->toString();
+-        $this->dispatch(new CreateProductCommand($id, $payload->name ?? '', $payload->categoryId ?? null, $payload->price ?? 0, $payload->currency ?? '', $payload->featured ?? false));
++        $this->dispatch(new CreateProductCommand($id, $payload->name ?? '', null, $payload->price ?? 0, $payload->currency ?? '', $payload->featured ?? false));
+         return new JsonResponse(['id' => $id], Response::HTTP_OK);
+     }
+ }
+
+
+25) src/Infrastructure/Delivery/Rest/Product/CreateProductPage.php:31    [M] DecrementInteger
+
+--- Original
++++ New
+@@ @@
+     {
+         $payload = json_decode($request->getContent(), false);
+         $id = $payload->id ?? Uuid::uuid4()->toString();
+-        $this->dispatch(new CreateProductCommand($id, $payload->name ?? '', $payload->categoryId ?? null, $payload->price ?? 0, $payload->currency ?? '', $payload->featured ?? false));
++        $this->dispatch(new CreateProductCommand($id, $payload->name ?? '', $payload->categoryId ?? null, $payload->price ?? -1, $payload->currency ?? '', $payload->featured ?? false));
+         return new JsonResponse(['id' => $id], Response::HTTP_OK);
+     }
+ }
+
+
+26) src/Infrastructure/Delivery/Rest/Product/CreateProductPage.php:31    [M] OneZeroInteger
+
+--- Original
++++ New
+@@ @@
+     {
+         $payload = json_decode($request->getContent(), false);
+         $id = $payload->id ?? Uuid::uuid4()->toString();
+-        $this->dispatch(new CreateProductCommand($id, $payload->name ?? '', $payload->categoryId ?? null, $payload->price ?? 0, $payload->currency ?? '', $payload->featured ?? false));
++        $this->dispatch(new CreateProductCommand($id, $payload->name ?? '', $payload->categoryId ?? null, $payload->price ?? 1, $payload->currency ?? '', $payload->featured ?? false));
+         return new JsonResponse(['id' => $id], Response::HTTP_OK);
+     }
+ }
+
+
+27) src/Infrastructure/Delivery/Rest/Product/CreateProductPage.php:31    [M] Coalesce
+
+--- Original
++++ New
+@@ @@
+     {
+         $payload = json_decode($request->getContent(), false);
+         $id = $payload->id ?? Uuid::uuid4()->toString();
+-        $this->dispatch(new CreateProductCommand($id, $payload->name ?? '', $payload->categoryId ?? null, $payload->price ?? 0, $payload->currency ?? '', $payload->featured ?? false));
++        $this->dispatch(new CreateProductCommand($id, $payload->name ?? '', $payload->categoryId ?? null, 0, $payload->currency ?? '', $payload->featured ?? false));
+         return new JsonResponse(['id' => $id], Response::HTTP_OK);
+     }
+ }
+
+
+28) src/Infrastructure/Delivery/Rest/Product/CreateProductPage.php:32    [M] Coalesce
+
+--- Original
++++ New
+@@ @@
+     {
+         $payload = json_decode($request->getContent(), false);
+         $id = $payload->id ?? Uuid::uuid4()->toString();
+-        $this->dispatch(new CreateProductCommand($id, $payload->name ?? '', $payload->categoryId ?? null, $payload->price ?? 0, $payload->currency ?? '', $payload->featured ?? false));
++        $this->dispatch(new CreateProductCommand($id, $payload->name ?? '', $payload->categoryId ?? null, $payload->price ?? 0, '', $payload->featured ?? false));
+         return new JsonResponse(['id' => $id], Response::HTTP_OK);
+     }
+ }
+
+
+29) src/Infrastructure/Delivery/Rest/Product/CreateProductPage.php:33    [M] FalseValue
+
+--- Original
++++ New
+@@ @@
+     {
+         $payload = json_decode($request->getContent(), false);
+         $id = $payload->id ?? Uuid::uuid4()->toString();
+-        $this->dispatch(new CreateProductCommand($id, $payload->name ?? '', $payload->categoryId ?? null, $payload->price ?? 0, $payload->currency ?? '', $payload->featured ?? false));
++        $this->dispatch(new CreateProductCommand($id, $payload->name ?? '', $payload->categoryId ?? null, $payload->price ?? 0, $payload->currency ?? '', $payload->featured ?? true));
+         return new JsonResponse(['id' => $id], Response::HTTP_OK);
+     }
+ }
+
+
+30) src/Infrastructure/Delivery/Rest/Product/CreateProductPage.php:33    [M] Coalesce
+
+--- Original
++++ New
+@@ @@
+     {
+         $payload = json_decode($request->getContent(), false);
+         $id = $payload->id ?? Uuid::uuid4()->toString();
+-        $this->dispatch(new CreateProductCommand($id, $payload->name ?? '', $payload->categoryId ?? null, $payload->price ?? 0, $payload->currency ?? '', $payload->featured ?? false));
++        $this->dispatch(new CreateProductCommand($id, $payload->name ?? '', $payload->categoryId ?? null, $payload->price ?? 0, $payload->currency ?? '', false));
+         return new JsonResponse(['id' => $id], Response::HTTP_OK);
+     }
+ }
+
+
+31) src/Infrastructure/Delivery/Rest/Product/CreateProductPage.php:37    [M] ArrayItemRemoval
+
+--- Original
++++ New
+@@ @@
+         $payload = json_decode($request->getContent(), false);
+         $id = $payload->id ?? Uuid::uuid4()->toString();
+         $this->dispatch(new CreateProductCommand($id, $payload->name ?? '', $payload->categoryId ?? null, $payload->price ?? 0, $payload->currency ?? '', $payload->featured ?? false));
+-        return new JsonResponse(['id' => $id], Response::HTTP_OK);
++        return new JsonResponse([], Response::HTTP_OK);
+     }
+ }
+
+
+32) src/Infrastructure/Delivery/Rest/Product/RetrieveProductsPage.php:23    [M] FalseValue
+
+--- Original
++++ New
+@@ @@
+      */
+     public function __invoke(Request $request) : JsonResponse
+     {
+-        $result = $this->ask(new RetrieveProductsQuery((bool) $request->get('featured', false)));
++        $result = $this->ask(new RetrieveProductsQuery((bool) $request->get('featured', true)));
+         return new JsonResponse($result, Response::HTTP_OK);
+     }
+ }
+
+
+33) src/Infrastructure/Delivery/Rest/Product/RetrieveProductsPage.php:23    [M] CastBool
+
+--- Original
++++ New
+@@ @@
+      */
+     public function __invoke(Request $request) : JsonResponse
+     {
+-        $result = $this->ask(new RetrieveProductsQuery((bool) $request->get('featured', false)));
++        $result = $this->ask(new RetrieveProductsQuery($request->get('featured', false)));
+         return new JsonResponse($result, Response::HTTP_OK);
+     }
+ }
+
+
+34) src/Infrastructure/Persistence/Doctrine/Repository/DoctrineCategoryRepository.php:29    [M] MethodCallRemoval
+
+--- Original
++++ New
+@@ @@
+     }
+     public function save(Category $category) : void
+     {
+-        $this->entityManager->persist($category);
++        
+         $this->entityManager->flush();
+     }
+     public function delete(Category $category) : void
+
+
+35) src/Infrastructure/Persistence/Doctrine/Repository/DoctrineCategoryRepository.php:30    [M] MethodCallRemoval
+
+--- Original
++++ New
+@@ @@
+     public function save(Category $category) : void
+     {
+         $this->entityManager->persist($category);
+-        $this->entityManager->flush();
++        
+     }
+     public function delete(Category $category) : void
+     {
+
+
+36) src/Infrastructure/Persistence/Doctrine/Repository/DoctrineCategoryRepository.php:35    [M] MethodCallRemoval
+
+--- Original
++++ New
+@@ @@
+     }
+     public function delete(Category $category) : void
+     {
+-        $this->entityManager->remove($category);
++        
+         $this->entityManager->flush();
+     }
+     /** @throws DomainException */
+
+
+37) src/Infrastructure/Persistence/Doctrine/Repository/DoctrineCategoryRepository.php:36    [M] MethodCallRemoval
+
+--- Original
++++ New
+@@ @@
+     public function delete(Category $category) : void
+     {
+         $this->entityManager->remove($category);
+-        $this->entityManager->flush();
++        
+     }
+     /** @throws DomainException */
+     public function ofIdOrFail(CategoryId $categoryId) : Category
+
+
+38) src/Infrastructure/Persistence/Doctrine/Repository/DoctrineCategoryRepository.php:44    [M] LogicalNot
+
+--- Original
++++ New
+@@ @@
+     public function ofIdOrFail(CategoryId $categoryId) : Category
+     {
+         $category = $this->repository->find($categoryId->value());
+-        if (!$category instanceof Category) {
++        if ($category instanceof Category) {
+             throw CategoryNotFoundException::create($categoryId->value());
+         }
+         return $category;
+
+
+39) src/Infrastructure/Persistence/Doctrine/Repository/DoctrineCategoryRepository.php:44    [M] InstanceOf_
+
+--- Original
++++ New
+@@ @@
+     public function ofIdOrFail(CategoryId $categoryId) : Category
+     {
+         $category = $this->repository->find($categoryId->value());
+-        if (!$category instanceof Category) {
++        if (!false) {
+             throw CategoryNotFoundException::create($categoryId->value());
+         }
+         return $category;
+
+
+40) src/Infrastructure/Persistence/Doctrine/Repository/DoctrineCategoryRepository.php:44    [M] InstanceOf_
+
+--- Original
++++ New
+@@ @@
+     public function ofIdOrFail(CategoryId $categoryId) : Category
+     {
+         $category = $this->repository->find($categoryId->value());
+-        if (!$category instanceof Category) {
++        if (!true) {
+             throw CategoryNotFoundException::create($categoryId->value());
+         }
+         return $category;
+
+
+41) src/Infrastructure/Persistence/Doctrine/Repository/DoctrineCategoryRepository.php:45    [M] Throw_
+
+--- Original
++++ New
+@@ @@
+     {
+         $category = $this->repository->find($categoryId->value());
+         if (!$category instanceof Category) {
+-            throw CategoryNotFoundException::create($categoryId->value());
++            CategoryNotFoundException::create($categoryId->value());
+         }
+         return $category;
+     }
+
+
+42) src/Infrastructure/Persistence/Doctrine/Repository/DoctrineProductRepository.php:31    [M] MethodCallRemoval
+
+--- Original
++++ New
+@@ @@
+     }
+     public function save(Product $product) : void
+     {
+-        $this->entityManager->persist($product);
++        
+         $this->entityManager->flush();
+     }
+     /** @throws QueryException
+
+
+43) src/Infrastructure/Persistence/Doctrine/Repository/DoctrineProductRepository.php:32    [M] MethodCallRemoval
+
+--- Original
++++ New
+@@ @@
+     public function save(Product $product) : void
+     {
+         $this->entityManager->persist($product);
+-        $this->entityManager->flush();
++        
+     }
+     /** @throws QueryException
+      * @throws \Assert\AssertionFailedException
+
+
+44) src/Infrastructure/Persistence/Doctrine/Repository/DoctrineProductRepository.php:38    [M] OneZeroInteger
+
+--- Original
++++ New
+@@ @@
+     /** @throws QueryException
+      * @throws \Assert\AssertionFailedException
+      */
+-    public function search(?bool $isFeatured, int $numPage = 0, int $limit = 0) : array
++    public function search(?bool $isFeatured, int $numPage = 1, int $limit = 0) : array
+     {
+         Assertion::greaterOrEqualThan($numPage, 1, 'Page must be greater or equal than 1');
+         Assertion::greaterOrEqualThan($limit, 1, 'Limit must be greater or equal than 1');
+
+
+45) src/Infrastructure/Persistence/Doctrine/Repository/DoctrineProductRepository.php:38    [M] OneZeroInteger
+
+--- Original
++++ New
+@@ @@
+     /** @throws QueryException
+      * @throws \Assert\AssertionFailedException
+      */
+-    public function search(?bool $isFeatured, int $numPage = 0, int $limit = 0) : array
++    public function search(?bool $isFeatured, int $numPage = 0, int $limit = 1) : array
+     {
+         Assertion::greaterOrEqualThan($numPage, 1, 'Page must be greater or equal than 1');
+         Assertion::greaterOrEqualThan($limit, 1, 'Limit must be greater or equal than 1');
+
+
+46) src/Infrastructure/Persistence/Doctrine/Repository/DoctrineProductRepository.php:38    [M] DecrementInteger
+
+--- Original
++++ New
+@@ @@
+     /** @throws QueryException
+      * @throws \Assert\AssertionFailedException
+      */
+-    public function search(?bool $isFeatured, int $numPage = 0, int $limit = 0) : array
++    public function search(?bool $isFeatured, int $numPage = 0, int $limit = -1) : array
+     {
+         Assertion::greaterOrEqualThan($numPage, 1, 'Page must be greater or equal than 1');
+         Assertion::greaterOrEqualThan($limit, 1, 'Limit must be greater or equal than 1');
+
+
+47) src/Infrastructure/Persistence/Doctrine/Repository/DoctrineProductRepository.php:38    [M] DecrementInteger
+
+--- Original
++++ New
+@@ @@
+     /** @throws QueryException
+      * @throws \Assert\AssertionFailedException
+      */
+-    public function search(?bool $isFeatured, int $numPage = 0, int $limit = 0) : array
++    public function search(?bool $isFeatured, int $numPage = -1, int $limit = 0) : array
+     {
+         Assertion::greaterOrEqualThan($numPage, 1, 'Page must be greater or equal than 1');
+         Assertion::greaterOrEqualThan($limit, 1, 'Limit must be greater or equal than 1');
+
+
+48) src/Infrastructure/Persistence/Doctrine/Repository/DoctrineProductRepository.php:40    [M] OneZeroInteger
+
+--- Original
++++ New
+@@ @@
+      */
+     public function search(?bool $isFeatured, int $numPage = 0, int $limit = 0) : array
+     {
+-        Assertion::greaterOrEqualThan($numPage, 1, 'Page must be greater or equal than 1');
++        Assertion::greaterOrEqualThan($numPage, 0, 'Page must be greater or equal than 1');
+         Assertion::greaterOrEqualThan($limit, 1, 'Limit must be greater or equal than 1');
+         $criteria = Criteria::create()->setFirstResult(($numPage - 1) * $limit)->setMaxResults($limit);
+         if ($isFeatured) {
+
+
+49) src/Infrastructure/Persistence/Doctrine/Repository/DoctrineProductRepository.php:40    [M] MethodCallRemoval
+
+--- Original
++++ New
+@@ @@
+      */
+     public function search(?bool $isFeatured, int $numPage = 0, int $limit = 0) : array
+     {
+-        Assertion::greaterOrEqualThan($numPage, 1, 'Page must be greater or equal than 1');
++        
+         Assertion::greaterOrEqualThan($limit, 1, 'Limit must be greater or equal than 1');
+         $criteria = Criteria::create()->setFirstResult(($numPage - 1) * $limit)->setMaxResults($limit);
+         if ($isFeatured) {
+
+
+50) src/Infrastructure/Persistence/Doctrine/Repository/DoctrineProductRepository.php:40    [M] IncrementInteger
+
+--- Original
++++ New
+@@ @@
+      */
+     public function search(?bool $isFeatured, int $numPage = 0, int $limit = 0) : array
+     {
+-        Assertion::greaterOrEqualThan($numPage, 1, 'Page must be greater or equal than 1');
++        Assertion::greaterOrEqualThan($numPage, 2, 'Page must be greater or equal than 1');
+         Assertion::greaterOrEqualThan($limit, 1, 'Limit must be greater or equal than 1');
+         $criteria = Criteria::create()->setFirstResult(($numPage - 1) * $limit)->setMaxResults($limit);
+         if ($isFeatured) {
+
+
+51) src/Infrastructure/Persistence/Doctrine/Repository/DoctrineProductRepository.php:41    [M] MethodCallRemoval
+
+--- Original
++++ New
+@@ @@
+     public function search(?bool $isFeatured, int $numPage = 0, int $limit = 0) : array
+     {
+         Assertion::greaterOrEqualThan($numPage, 1, 'Page must be greater or equal than 1');
+-        Assertion::greaterOrEqualThan($limit, 1, 'Limit must be greater or equal than 1');
++        
+         $criteria = Criteria::create()->setFirstResult(($numPage - 1) * $limit)->setMaxResults($limit);
+         if ($isFeatured) {
+             $criteria->where(Criteria::expr()->eq('featured', $isFeatured));
+
+
+52) src/Infrastructure/Persistence/Doctrine/Repository/DoctrineProductRepository.php:41    [M] OneZeroInteger
+
+--- Original
++++ New
+@@ @@
+     public function search(?bool $isFeatured, int $numPage = 0, int $limit = 0) : array
+     {
+         Assertion::greaterOrEqualThan($numPage, 1, 'Page must be greater or equal than 1');
+-        Assertion::greaterOrEqualThan($limit, 1, 'Limit must be greater or equal than 1');
++        Assertion::greaterOrEqualThan($limit, 0, 'Limit must be greater or equal than 1');
+         $criteria = Criteria::create()->setFirstResult(($numPage - 1) * $limit)->setMaxResults($limit);
+         if ($isFeatured) {
+             $criteria->where(Criteria::expr()->eq('featured', $isFeatured));
+
+
+53) src/Infrastructure/Persistence/Doctrine/Repository/DoctrineProductRepository.php:41    [M] IncrementInteger
+
+--- Original
++++ New
+@@ @@
+     public function search(?bool $isFeatured, int $numPage = 0, int $limit = 0) : array
+     {
+         Assertion::greaterOrEqualThan($numPage, 1, 'Page must be greater or equal than 1');
+-        Assertion::greaterOrEqualThan($limit, 1, 'Limit must be greater or equal than 1');
++        Assertion::greaterOrEqualThan($limit, 2, 'Limit must be greater or equal than 1');
+         $criteria = Criteria::create()->setFirstResult(($numPage - 1) * $limit)->setMaxResults($limit);
+         if ($isFeatured) {
+             $criteria->where(Criteria::expr()->eq('featured', $isFeatured));
+
+
+54) src/Infrastructure/Persistence/Doctrine/Repository/DoctrineProductRepository.php:43    [M] Multiplication
+
+--- Original
++++ New
+@@ @@
+     {
+         Assertion::greaterOrEqualThan($numPage, 1, 'Page must be greater or equal than 1');
+         Assertion::greaterOrEqualThan($limit, 1, 'Limit must be greater or equal than 1');
+-        $criteria = Criteria::create()->setFirstResult(($numPage - 1) * $limit)->setMaxResults($limit);
++        $criteria = Criteria::create()->setFirstResult(($numPage - 1) / $limit)->setMaxResults($limit);
+         if ($isFeatured) {
+             $criteria->where(Criteria::expr()->eq('featured', $isFeatured));
+         }
+
+
+55) src/Infrastructure/Persistence/Doctrine/Repository/DoctrineProductRepository.php:43    [M] Minus
+
+--- Original
++++ New
+@@ @@
+     {
+         Assertion::greaterOrEqualThan($numPage, 1, 'Page must be greater or equal than 1');
+         Assertion::greaterOrEqualThan($limit, 1, 'Limit must be greater or equal than 1');
+-        $criteria = Criteria::create()->setFirstResult(($numPage - 1) * $limit)->setMaxResults($limit);
++        $criteria = Criteria::create()->setFirstResult(($numPage + 1) * $limit)->setMaxResults($limit);
+         if ($isFeatured) {
+             $criteria->where(Criteria::expr()->eq('featured', $isFeatured));
+         }
+
+
+56) src/Infrastructure/Persistence/Doctrine/Repository/DoctrineProductRepository.php:43    [M] OneZeroInteger
+
+--- Original
++++ New
+@@ @@
+     {
+         Assertion::greaterOrEqualThan($numPage, 1, 'Page must be greater or equal than 1');
+         Assertion::greaterOrEqualThan($limit, 1, 'Limit must be greater or equal than 1');
+-        $criteria = Criteria::create()->setFirstResult(($numPage - 1) * $limit)->setMaxResults($limit);
++        $criteria = Criteria::create()->setFirstResult(($numPage - 0) * $limit)->setMaxResults($limit);
+         if ($isFeatured) {
+             $criteria->where(Criteria::expr()->eq('featured', $isFeatured));
+         }
+
+
+57) src/Infrastructure/Persistence/Doctrine/Repository/DoctrineProductRepository.php:43    [M] IncrementInteger
+
+--- Original
++++ New
+@@ @@
+     {
+         Assertion::greaterOrEqualThan($numPage, 1, 'Page must be greater or equal than 1');
+         Assertion::greaterOrEqualThan($limit, 1, 'Limit must be greater or equal than 1');
+-        $criteria = Criteria::create()->setFirstResult(($numPage - 1) * $limit)->setMaxResults($limit);
++        $criteria = Criteria::create()->setFirstResult(($numPage - 2) * $limit)->setMaxResults($limit);
+         if ($isFeatured) {
+             $criteria->where(Criteria::expr()->eq('featured', $isFeatured));
+         }
+
+
+58) src/Infrastructure/Persistence/Doctrine/Repository/DoctrineProductRepository.php:46    [M] MethodCallRemoval
+
+--- Original
++++ New
+@@ @@
+         Assertion::greaterOrEqualThan($limit, 1, 'Limit must be greater or equal than 1');
+         $criteria = Criteria::create()->setFirstResult(($numPage - 1) * $limit)->setMaxResults($limit);
+         if ($isFeatured) {
+-            $criteria->where(Criteria::expr()->eq('featured', $isFeatured));
++            
+         }
+         return $this->entityManager->createQueryBuilder()->select('c')->from(Product::class, 'c')->addCriteria($criteria)->getQuery()->getResult();
+     }
+
+
+59) src/Infrastructure/Persistence/Doctrine/Repository/DoctrineProductRepository.php:67    [M] MethodCallRemoval
+
+--- Original
++++ New
+@@ @@
+     {
+         $criteria = Criteria::create();
+         if ($isFeatured) {
+-            $criteria->where(Criteria::expr()->eq('featured', $isFeatured));
++            
+         }
+         return (int) $this->entityManager->createQueryBuilder()->select('count(c.id)')->from(Product::class, 'c')->addCriteria($criteria)->getQuery()->getSingleScalarResult();
+     }
+
+
+60) src/Infrastructure/Persistence/Doctrine/Repository/DoctrineProductRepository.php:70    [M] CastInt
+
+--- Original
++++ New
+@@ @@
+         if ($isFeatured) {
+             $criteria->where(Criteria::expr()->eq('featured', $isFeatured));
+         }
+-        return (int) $this->entityManager->createQueryBuilder()->select('count(c.id)')->from(Product::class, 'c')->addCriteria($criteria)->getQuery()->getSingleScalarResult();
++        return $this->entityManager->createQueryBuilder()->select('count(c.id)')->from(Product::class, 'c')->addCriteria($criteria)->getQuery()->getSingleScalarResult();
+     }
+     public function ofId(ProductId $productId) : ?Product
+     {
+
+
+61) src/Infrastructure/Persistence/InMemory/InMemoryCategoryRepository.php:26    [M] Foreach_
+
+--- Original
++++ New
+@@ @@
+     public function __construct(array $categories = [])
+     {
+         $this->categories = new ArrayCollection([]);
+-        foreach ($categories as $analyticalTest) {
++        foreach (array() as $analyticalTest) {
+             $this->save($analyticalTest);
+         }
+     }
+
+
+62) src/Infrastructure/Persistence/InMemory/InMemoryCategoryRepository.php:27    [M] MethodCallRemoval
+
+--- Original
++++ New
+@@ @@
+     {
+         $this->categories = new ArrayCollection([]);
+         foreach ($categories as $analyticalTest) {
+-            $this->save($analyticalTest);
++            
+         }
+     }
+     public function save(Category $category) : void
+
+
+63) src/Infrastructure/Persistence/InMemory/InMemoryCategoryRepository.php:34    [M] MethodCallRemoval
+
+--- Original
++++ New
+@@ @@
+     public function save(Category $category) : void
+     {
+         $id = $category->getId()->value();
+-        $this->categories->set($id, $category);
++        
+     }
+     public function delete(Category $category) : void
+     {
+
+
+64) src/Infrastructure/Persistence/InMemory/InMemoryCategoryRepository.php:39    [M] MethodCallRemoval
+
+--- Original
++++ New
+@@ @@
+     }
+     public function delete(Category $category) : void
+     {
+-        $this->categories->remove($category->getId()->value());
++        
+     }
+     /**
+      * @throws DomainException
+
+
+65) src/Infrastructure/Persistence/InMemory/InMemoryCategoryRepository.php:49    [M] LogicalNot
+
+--- Original
++++ New
+@@ @@
+     public function ofIdOrFail(CategoryId $categoryId) : Category
+     {
+         $category = $this->categories->get($categoryId->value());
+-        if (!$category instanceof Category) {
++        if ($category instanceof Category) {
+             throw CategoryNotFoundException::create($categoryId->value());
+         }
+         return clone $category;
+
+
+66) src/Infrastructure/Persistence/InMemory/InMemoryCategoryRepository.php:49    [M] InstanceOf_
+
+--- Original
++++ New
+@@ @@
+     public function ofIdOrFail(CategoryId $categoryId) : Category
+     {
+         $category = $this->categories->get($categoryId->value());
+-        if (!$category instanceof Category) {
++        if (!false) {
+             throw CategoryNotFoundException::create($categoryId->value());
+         }
+         return clone $category;
+
+
+67) src/Infrastructure/Persistence/InMemory/InMemoryCategoryRepository.php:49    [M] InstanceOf_
+
+--- Original
++++ New
+@@ @@
+     public function ofIdOrFail(CategoryId $categoryId) : Category
+     {
+         $category = $this->categories->get($categoryId->value());
+-        if (!$category instanceof Category) {
++        if (!true) {
+             throw CategoryNotFoundException::create($categoryId->value());
+         }
+         return clone $category;
+
+
+68) src/Infrastructure/Persistence/InMemory/InMemoryCategoryRepository.php:50    [M] Throw_
+
+--- Original
++++ New
+@@ @@
+     {
+         $category = $this->categories->get($categoryId->value());
+         if (!$category instanceof Category) {
+-            throw CategoryNotFoundException::create($categoryId->value());
++            CategoryNotFoundException::create($categoryId->value());
+         }
+         return clone $category;
+     }
+
+
+69) src/Infrastructure/Persistence/InMemory/InMemoryCategoryRepository.php:53    [M] CloneRemoval
+
+--- Original
++++ New
+@@ @@
+         if (!$category instanceof Category) {
+             throw CategoryNotFoundException::create($categoryId->value());
+         }
+-        return clone $category;
++        return $category;
+     }
+     public function ofId(CategoryId $categoryId) : ?Category
+     {
+
+
+70) src/Infrastructure/Persistence/InMemory/InMemoryProductRepository.php:27    [M] Foreach_
+
+--- Original
++++ New
+@@ @@
+     public function __construct(array $products = [])
+     {
+         $this->products = new ArrayCollection([]);
+-        foreach ($products as $product) {
++        foreach (array() as $product) {
+             $this->save($product);
+         }
+     }
+
+
+71) src/Infrastructure/Persistence/InMemory/InMemoryProductRepository.php:28    [M] MethodCallRemoval
+
+--- Original
++++ New
+@@ @@
+     {
+         $this->products = new ArrayCollection([]);
+         foreach ($products as $product) {
+-            $this->save($product);
++            
+         }
+     }
+     public function save(Product $product) : void
+
+
+72) src/Infrastructure/Persistence/InMemory/InMemoryProductRepository.php:35    [M] MethodCallRemoval
+
+--- Original
++++ New
+@@ @@
+     public function save(Product $product) : void
+     {
+         $id = $product->getId()->value();
+-        $this->products->set($id, $product);
++        
+     }
+     /**
+      * @throws AssertionFailedException
+
+
+73) src/Infrastructure/Persistence/InMemory/InMemoryProductRepository.php:43    [M] MethodCallRemoval
+
+--- Original
++++ New
+@@ @@
+      */
+     public function search(?bool $isFeatured, int $numPage, int $limit) : array
+     {
+-        Assertion::greaterOrEqualThan($numPage, 1, 'Page must be greater or equal than 1');
++        
+         Assertion::greaterOrEqualThan($limit, 1, 'Limit must be greater or equal than 1');
+         $criteria = Criteria::create()->setFirstResult(($numPage - 1) * $limit)->setMaxResults($limit);
+         $results = $this->products;
+
+
+74) src/Infrastructure/Persistence/InMemory/InMemoryProductRepository.php:43    [M] OneZeroInteger
+
+--- Original
++++ New
+@@ @@
+      */
+     public function search(?bool $isFeatured, int $numPage, int $limit) : array
+     {
+-        Assertion::greaterOrEqualThan($numPage, 1, 'Page must be greater or equal than 1');
++        Assertion::greaterOrEqualThan($numPage, 0, 'Page must be greater or equal than 1');
+         Assertion::greaterOrEqualThan($limit, 1, 'Limit must be greater or equal than 1');
+         $criteria = Criteria::create()->setFirstResult(($numPage - 1) * $limit)->setMaxResults($limit);
+         $results = $this->products;
+
+
+75) src/Infrastructure/Persistence/InMemory/InMemoryProductRepository.php:43    [M] IncrementInteger
+
+--- Original
++++ New
+@@ @@
+      */
+     public function search(?bool $isFeatured, int $numPage, int $limit) : array
+     {
+-        Assertion::greaterOrEqualThan($numPage, 1, 'Page must be greater or equal than 1');
++        Assertion::greaterOrEqualThan($numPage, 2, 'Page must be greater or equal than 1');
+         Assertion::greaterOrEqualThan($limit, 1, 'Limit must be greater or equal than 1');
+         $criteria = Criteria::create()->setFirstResult(($numPage - 1) * $limit)->setMaxResults($limit);
+         $results = $this->products;
+
+
+76) src/Infrastructure/Persistence/InMemory/InMemoryProductRepository.php:44    [M] OneZeroInteger
+
+--- Original
++++ New
+@@ @@
+     public function search(?bool $isFeatured, int $numPage, int $limit) : array
+     {
+         Assertion::greaterOrEqualThan($numPage, 1, 'Page must be greater or equal than 1');
+-        Assertion::greaterOrEqualThan($limit, 1, 'Limit must be greater or equal than 1');
++        Assertion::greaterOrEqualThan($limit, 0, 'Limit must be greater or equal than 1');
+         $criteria = Criteria::create()->setFirstResult(($numPage - 1) * $limit)->setMaxResults($limit);
+         $results = $this->products;
+         if (null !== $isFeatured) {
+
+
+77) src/Infrastructure/Persistence/InMemory/InMemoryProductRepository.php:44    [M] MethodCallRemoval
+
+--- Original
++++ New
+@@ @@
+     public function search(?bool $isFeatured, int $numPage, int $limit) : array
+     {
+         Assertion::greaterOrEqualThan($numPage, 1, 'Page must be greater or equal than 1');
+-        Assertion::greaterOrEqualThan($limit, 1, 'Limit must be greater or equal than 1');
++        
+         $criteria = Criteria::create()->setFirstResult(($numPage - 1) * $limit)->setMaxResults($limit);
+         $results = $this->products;
+         if (null !== $isFeatured) {
+
+
+78) src/Infrastructure/Persistence/InMemory/InMemoryProductRepository.php:44    [M] IncrementInteger
+
+--- Original
++++ New
+@@ @@
+     public function search(?bool $isFeatured, int $numPage, int $limit) : array
+     {
+         Assertion::greaterOrEqualThan($numPage, 1, 'Page must be greater or equal than 1');
+-        Assertion::greaterOrEqualThan($limit, 1, 'Limit must be greater or equal than 1');
++        Assertion::greaterOrEqualThan($limit, 2, 'Limit must be greater or equal than 1');
+         $criteria = Criteria::create()->setFirstResult(($numPage - 1) * $limit)->setMaxResults($limit);
+         $results = $this->products;
+         if (null !== $isFeatured) {
+
+
+79) src/Infrastructure/Persistence/InMemory/InMemoryProductRepository.php:47    [M] Multiplication
+
+--- Original
++++ New
+@@ @@
+     {
+         Assertion::greaterOrEqualThan($numPage, 1, 'Page must be greater or equal than 1');
+         Assertion::greaterOrEqualThan($limit, 1, 'Limit must be greater or equal than 1');
+-        $criteria = Criteria::create()->setFirstResult(($numPage - 1) * $limit)->setMaxResults($limit);
++        $criteria = Criteria::create()->setFirstResult(($numPage - 1) / $limit)->setMaxResults($limit);
+         $results = $this->products;
+         if (null !== $isFeatured) {
+             $results = $results->filter(static fn(Product $product) => $product->getFeatured() === $isFeatured);
+
+
+80) src/Infrastructure/Persistence/InMemory/InMemoryProductRepository.php:47    [M] Minus
+
+--- Original
++++ New
+@@ @@
+     {
+         Assertion::greaterOrEqualThan($numPage, 1, 'Page must be greater or equal than 1');
+         Assertion::greaterOrEqualThan($limit, 1, 'Limit must be greater or equal than 1');
+-        $criteria = Criteria::create()->setFirstResult(($numPage - 1) * $limit)->setMaxResults($limit);
++        $criteria = Criteria::create()->setFirstResult(($numPage + 1) * $limit)->setMaxResults($limit);
+         $results = $this->products;
+         if (null !== $isFeatured) {
+             $results = $results->filter(static fn(Product $product) => $product->getFeatured() === $isFeatured);
+
+
+81) src/Infrastructure/Persistence/InMemory/InMemoryProductRepository.php:47    [M] OneZeroInteger
+
+--- Original
++++ New
+@@ @@
+     {
+         Assertion::greaterOrEqualThan($numPage, 1, 'Page must be greater or equal than 1');
+         Assertion::greaterOrEqualThan($limit, 1, 'Limit must be greater or equal than 1');
+-        $criteria = Criteria::create()->setFirstResult(($numPage - 1) * $limit)->setMaxResults($limit);
++        $criteria = Criteria::create()->setFirstResult(($numPage - 0) * $limit)->setMaxResults($limit);
+         $results = $this->products;
+         if (null !== $isFeatured) {
+             $results = $results->filter(static fn(Product $product) => $product->getFeatured() === $isFeatured);
+
+
+82) src/Infrastructure/Persistence/InMemory/InMemoryProductRepository.php:47    [M] IncrementInteger
+
+--- Original
++++ New
+@@ @@
+     {
+         Assertion::greaterOrEqualThan($numPage, 1, 'Page must be greater or equal than 1');
+         Assertion::greaterOrEqualThan($limit, 1, 'Limit must be greater or equal than 1');
+-        $criteria = Criteria::create()->setFirstResult(($numPage - 1) * $limit)->setMaxResults($limit);
++        $criteria = Criteria::create()->setFirstResult(($numPage - 2) * $limit)->setMaxResults($limit);
+         $results = $this->products;
+         if (null !== $isFeatured) {
+             $results = $results->filter(static fn(Product $product) => $product->getFeatured() === $isFeatured);
+
+
+83) src/Infrastructure/Persistence/InMemory/InMemoryProductRepository.php:52    [M] NotIdentical
+
+--- Original
++++ New
+@@ @@
+         Assertion::greaterOrEqualThan($limit, 1, 'Limit must be greater or equal than 1');
+         $criteria = Criteria::create()->setFirstResult(($numPage - 1) * $limit)->setMaxResults($limit);
+         $results = $this->products;
+-        if (null !== $isFeatured) {
++        if (null === $isFeatured) {
+             $results = $results->filter(static fn(Product $product) => $product->getFeatured() === $isFeatured);
+         }
+         return $results->matching($criteria)->toArray();
+
+
+84) src/Infrastructure/Persistence/InMemory/InMemoryProductRepository.php:54    [M] Identical
+
+--- Original
++++ New
+@@ @@
+         $criteria = Criteria::create()->setFirstResult(($numPage - 1) * $limit)->setMaxResults($limit);
+         $results = $this->products;
+         if (null !== $isFeatured) {
+-            $results = $results->filter(static fn(Product $product) => $product->getFeatured() === $isFeatured);
++            $results = $results->filter(static fn(Product $product) => $product->getFeatured() !== $isFeatured);
+         }
+         return $results->matching($criteria)->toArray();
+     }
+
+
+85) src/Infrastructure/Persistence/InMemory/InMemoryProductRepository.php:64    [M] NotIdentical
+
+--- Original
++++ New
+@@ @@
+     public function searchCount(?bool $isFeatured) : int
+     {
+         $results = $this->products;
+-        if (null !== $isFeatured) {
++        if (null === $isFeatured) {
+             $results = $results->filter(static fn(Product $product) => $product->getFeatured() === $isFeatured);
+         }
+         return $results->count();
+
+
+86) src/Infrastructure/Persistence/InMemory/InMemoryProductRepository.php:66    [M] Identical
+
+--- Original
++++ New
+@@ @@
+     {
+         $results = $this->products;
+         if (null !== $isFeatured) {
+-            $results = $results->filter(static fn(Product $product) => $product->getFeatured() === $isFeatured);
++            $results = $results->filter(static fn(Product $product) => $product->getFeatured() !== $isFeatured);
+         }
+         return $results->count();
+     }

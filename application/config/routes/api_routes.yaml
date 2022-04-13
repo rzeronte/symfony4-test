@@ -1,0 +1,28 @@
+app.rest.create_category.page:
+  path: /categories
+  methods: POST
+  controller: 'App\Infrastructure\Delivery\Rest\Category\CreateCategoryPage'
+
+app.rest.update_category.page:
+  path: /categories/{id}
+  methods: PUT
+  controller: 'App\Infrastructure\Delivery\Rest\Category\UpdateCategoryPage'
+  requirements:
+    id: '[0-9a-fA-F]{8}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{12}'
+
+app.rest.delete_category.page:
+  path: /categories/{id}
+  methods: DELETE
+  controller: 'App\Infrastructure\Delivery\Rest\Category\DeleteCategoryPage'
+  requirements:
+    id: '[0-9a-fA-F]{8}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{12}'
+
+app.rest.create_product.page:
+  path: /products
+  methods: POST
+  controller: 'App\Infrastructure\Delivery\Rest\Product\CreateProductPage'
+
+app.rest.retrieve_products.page:
+  path: /products
+  methods: GET
+  controller: 'App\Infrastructure\Delivery\Rest\Product\RetrieveProductsPage'

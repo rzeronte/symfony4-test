@@ -1,0 +1,16 @@
+App\Domain\Category\Category:
+  type: entity
+  table: category
+
+  id:
+    id:
+      type: categoryId
+      column: id
+
+  fields:
+    name:
+      type: categoryName
+      column: name
+    description:
+      type: categoryDescription
+      column: description
