@@ -164,37 +164,82 @@ Not Covered mutants:
  }
 
 
-11) src/Infrastructure/CurrencyConversor/CurrencyConversorExchangeRatesApi.php:32    [M] FunctionCallRemoval
+11) src/Infrastructure/CurrencyConversor/CurrencyConversorExchangeRatesApi.php:31    [M] CastFloat
 
 --- Original
 +++ New
 @@ @@
-     private function getLatestValues()
+         $this->key = $key;
+         $this->cache = $redis;
+         if ($value = $this->cache->get(self::KEY)) {
+-            $this->oneEurInUSD = (float) $value;
++            $this->oneEurInUSD = $value;
+             return;
+         }
+         $this->oneEurInUSD = $this->getLatestValues();
+
+
+12) src/Infrastructure/CurrencyConversor/CurrencyConversorExchangeRatesApi.php:37    [M] IncrementInteger
+
+--- Original
++++ New
+@@ @@
+             return;
+         }
+         $this->oneEurInUSD = $this->getLatestValues();
+-        $this->cache->setex(self::KEY, 3600, $this->oneEurInUSD);
++        $this->cache->setex(self::KEY, 3601, $this->oneEurInUSD);
+     }
+     private function getLatestValues() : float
      {
-         $response = $this->client->request('GET', sprintf(self::URL, $this->key));
--        print_r($response);
+
+
+13) src/Infrastructure/CurrencyConversor/CurrencyConversorExchangeRatesApi.php:37    [M] DecrementInteger
+
+--- Original
++++ New
+@@ @@
+             return;
+         }
+         $this->oneEurInUSD = $this->getLatestValues();
+-        $this->cache->setex(self::KEY, 3600, $this->oneEurInUSD);
++        $this->cache->setex(self::KEY, 3599, $this->oneEurInUSD);
+     }
+     private function getLatestValues() : float
+     {
+
+
+14) src/Infrastructure/CurrencyConversor/CurrencyConversorExchangeRatesApi.php:37    [M] MethodCallRemoval
+
+--- Original
++++ New
+@@ @@
+             return;
+         }
+         $this->oneEurInUSD = $this->getLatestValues();
+-        $this->cache->setex(self::KEY, 3600, $this->oneEurInUSD);
 +        
+     }
+     private function getLatestValues() : float
+     {
+
+
+15) src/Infrastructure/CurrencyConversor/CurrencyConversorExchangeRatesApi.php:44    [M] CastFloat
+
+--- Original
++++ New
+@@ @@
+     private function getLatestValues() : float
+     {
+         $data = json_decode(file_get_contents(sprintf(self::URL, $this->key)));
+-        return (float) $data->rates->USD;
++        return $data->rates->USD;
      }
      /**
       * @throws AssertionFailedException
 
 
-12) src/Infrastructure/CurrencyConversor/CurrencyConversorExchangeRatesApi.php:40    [M] Equal
-
---- Original
-+++ New
-@@ @@
-      */
-     public function convertPrice(ProductPrice $priceFrom, Currency $from, Currency $to) : ProductPrice
-     {
--        if ('EUR' === $from->value() && 'USD' == $to->value()) {
-+        if ('EUR' === $from->value() && 'USD' != $to->value()) {
-             return ProductPrice::from($priceFrom->value() * $this->oneEurInUSD);
-         }
-         if ('USD' === $from->value() && 'EUR' == $to->value()) {
-
-
-13) src/Infrastructure/CurrencyConversor/CurrencyConversorExchangeRatesApi.php:40    [M] LogicalAnd
+16) src/Infrastructure/CurrencyConversor/CurrencyConversorExchangeRatesApi.php:52    [M] LogicalAnd
 
 --- Original
 +++ New
@@ -209,7 +254,22 @@ Not Covered mutants:
          if ('USD' === $from->value() && 'EUR' == $to->value()) {
 
 
-14) src/Infrastructure/CurrencyConversor/CurrencyConversorExchangeRatesApi.php:40    [M] Identical
+17) src/Infrastructure/CurrencyConversor/CurrencyConversorExchangeRatesApi.php:52    [M] Equal
+
+--- Original
++++ New
+@@ @@
+      */
+     public function convertPrice(ProductPrice $priceFrom, Currency $from, Currency $to) : ProductPrice
+     {
+-        if ('EUR' === $from->value() && 'USD' == $to->value()) {
++        if ('EUR' === $from->value() && 'USD' != $to->value()) {
+             return ProductPrice::from($priceFrom->value() * $this->oneEurInUSD);
+         }
+         if ('USD' === $from->value() && 'EUR' == $to->value()) {
+
+
+18) src/Infrastructure/CurrencyConversor/CurrencyConversorExchangeRatesApi.php:52    [M] Identical
 
 --- Original
 +++ New
@@ -224,7 +284,7 @@ Not Covered mutants:
          if ('USD' === $from->value() && 'EUR' == $to->value()) {
 
 
-15) src/Infrastructure/CurrencyConversor/CurrencyConversorExchangeRatesApi.php:41    [M] Multiplication
+19) src/Infrastructure/CurrencyConversor/CurrencyConversorExchangeRatesApi.php:53    [M] Multiplication
 
 --- Original
 +++ New
@@ -239,7 +299,7 @@ Not Covered mutants:
              return ProductPrice::from($priceFrom->value() / $this->oneEurInUSD);
 
 
-16) src/Infrastructure/CurrencyConversor/CurrencyConversorExchangeRatesApi.php:44    [M] Identical
+20) src/Infrastructure/CurrencyConversor/CurrencyConversorExchangeRatesApi.php:56    [M] Identical
 
 --- Original
 +++ New
@@ -256,7 +316,7 @@ Not Covered mutants:
  }
 
 
-17) src/Infrastructure/CurrencyConversor/CurrencyConversorExchangeRatesApi.php:44    [M] Equal
+21) src/Infrastructure/CurrencyConversor/CurrencyConversorExchangeRatesApi.php:56    [M] Equal
 
 --- Original
 +++ New
@@ -273,7 +333,7 @@ Not Covered mutants:
  }
 
 
-18) src/Infrastructure/CurrencyConversor/CurrencyConversorExchangeRatesApi.php:44    [M] LogicalAnd
+22) src/Infrastructure/CurrencyConversor/CurrencyConversorExchangeRatesApi.php:56    [M] LogicalAnd
 
 --- Original
 +++ New
@@ -290,7 +350,7 @@ Not Covered mutants:
  }
 
 
-19) src/Infrastructure/CurrencyConversor/CurrencyConversorExchangeRatesApi.php:45    [M] Division
+23) src/Infrastructure/CurrencyConversor/CurrencyConversorExchangeRatesApi.php:57    [M] Division
 
 --- Original
 +++ New
@@ -306,7 +366,7 @@ Not Covered mutants:
  }
 
 
-20) src/Infrastructure/Delivery/Rest/Category/CreateCategoryPage.php:22    [M] FalseValue
+24) src/Infrastructure/Delivery/Rest/Category/CreateCategoryPage.php:22    [M] FalseValue
 
 --- Original
 +++ New
@@ -323,7 +383,7 @@ Not Covered mutants:
  }
 
 
-21) src/Infrastructure/Delivery/Rest/Category/CreateCategoryPage.php:24    [M] Coalesce
+25) src/Infrastructure/Delivery/Rest/Category/CreateCategoryPage.php:24    [M] Coalesce
 
 --- Original
 +++ New
@@ -339,7 +399,7 @@ Not Covered mutants:
  }
 
 
-22) src/Infrastructure/Delivery/Rest/Category/CreateCategoryPage.php:26    [M] MethodCallRemoval
+26) src/Infrastructure/Delivery/Rest/Category/CreateCategoryPage.php:26    [M] MethodCallRemoval
 
 --- Original
 +++ New
@@ -354,7 +414,7 @@ Not Covered mutants:
  }
 
 
-23) src/Infrastructure/Delivery/Rest/Category/CreateCategoryPage.php:29    [M] Coalesce
+27) src/Infrastructure/Delivery/Rest/Category/CreateCategoryPage.php:29    [M] Coalesce
 
 --- Original
 +++ New
@@ -369,7 +429,7 @@ Not Covered mutants:
  }
 
 
-24) src/Infrastructure/Delivery/Rest/Category/CreateCategoryPage.php:30    [M] Coalesce
+28) src/Infrastructure/Delivery/Rest/Category/CreateCategoryPage.php:30    [M] Coalesce
 
 --- Original
 +++ New
@@ -384,7 +444,7 @@ Not Covered mutants:
  }
 
 
-25) src/Infrastructure/Delivery/Rest/Category/CreateCategoryPage.php:34    [M] ArrayItemRemoval
+29) src/Infrastructure/Delivery/Rest/Category/CreateCategoryPage.php:34    [M] ArrayItemRemoval
 
 --- Original
 +++ New
@@ -398,7 +458,7 @@ Not Covered mutants:
  }
 
 
-26) src/Infrastructure/Delivery/Rest/Category/UpdateCategoryPage.php:21    [M] FalseValue
+30) src/Infrastructure/Delivery/Rest/Category/UpdateCategoryPage.php:21    [M] FalseValue
 
 --- Original
 +++ New
@@ -414,7 +474,7 @@ Not Covered mutants:
  }
 
 
-27) src/Infrastructure/Delivery/Rest/Category/UpdateCategoryPage.php:26    [M] Coalesce
+31) src/Infrastructure/Delivery/Rest/Category/UpdateCategoryPage.php:26    [M] Coalesce
 
 --- Original
 +++ New
@@ -429,7 +489,7 @@ Not Covered mutants:
  }
 
 
-28) src/Infrastructure/Delivery/Rest/Category/UpdateCategoryPage.php:27    [M] Coalesce
+32) src/Infrastructure/Delivery/Rest/Category/UpdateCategoryPage.php:27    [M] Coalesce
 
 --- Original
 +++ New
@@ -444,7 +504,7 @@ Not Covered mutants:
  }
 
 
-29) src/Infrastructure/Delivery/Rest/Product/CreateProductPage.php:22    [M] FalseValue
+33) src/Infrastructure/Delivery/Rest/Product/CreateProductPage.php:22    [M] FalseValue
 
 --- Original
 +++ New
@@ -461,7 +521,7 @@ Not Covered mutants:
  }
 
 
-30) src/Infrastructure/Delivery/Rest/Product/CreateProductPage.php:24    [M] Coalesce
+34) src/Infrastructure/Delivery/Rest/Product/CreateProductPage.php:24    [M] Coalesce
 
 --- Original
 +++ New
@@ -477,7 +537,7 @@ Not Covered mutants:
  }
 
 
-31) src/Infrastructure/Delivery/Rest/Product/CreateProductPage.php:26    [M] MethodCallRemoval
+35) src/Infrastructure/Delivery/Rest/Product/CreateProductPage.php:26    [M] MethodCallRemoval
 
 --- Original
 +++ New
@@ -492,7 +552,7 @@ Not Covered mutants:
  }
 
 
-32) src/Infrastructure/Delivery/Rest/Product/CreateProductPage.php:29    [M] Coalesce
+36) src/Infrastructure/Delivery/Rest/Product/CreateProductPage.php:29    [M] Coalesce
 
 --- Original
 +++ New
@@ -507,7 +567,7 @@ Not Covered mutants:
  }
 
 
-33) src/Infrastructure/Delivery/Rest/Product/CreateProductPage.php:30    [M] Coalesce
+37) src/Infrastructure/Delivery/Rest/Product/CreateProductPage.php:30    [M] Coalesce
 
 --- Original
 +++ New
@@ -522,7 +582,7 @@ Not Covered mutants:
  }
 
 
-34) src/Infrastructure/Delivery/Rest/Product/CreateProductPage.php:31    [M] DecrementInteger
+38) src/Infrastructure/Delivery/Rest/Product/CreateProductPage.php:31    [M] DecrementInteger
 
 --- Original
 +++ New
@@ -537,7 +597,7 @@ Not Covered mutants:
  }
 
 
-35) src/Infrastructure/Delivery/Rest/Product/CreateProductPage.php:31    [M] OneZeroInteger
+39) src/Infrastructure/Delivery/Rest/Product/CreateProductPage.php:31    [M] OneZeroInteger
 
 --- Original
 +++ New
@@ -552,7 +612,7 @@ Not Covered mutants:
  }
 
 
-36) src/Infrastructure/Delivery/Rest/Product/CreateProductPage.php:31    [M] Coalesce
+40) src/Infrastructure/Delivery/Rest/Product/CreateProductPage.php:31    [M] Coalesce
 
 --- Original
 +++ New
@@ -567,7 +627,7 @@ Not Covered mutants:
  }
 
 
-37) src/Infrastructure/Delivery/Rest/Product/CreateProductPage.php:32    [M] Coalesce
+41) src/Infrastructure/Delivery/Rest/Product/CreateProductPage.php:32    [M] Coalesce
 
 --- Original
 +++ New
@@ -582,7 +642,7 @@ Not Covered mutants:
  }
 
 
-38) src/Infrastructure/Delivery/Rest/Product/CreateProductPage.php:33    [M] FalseValue
+42) src/Infrastructure/Delivery/Rest/Product/CreateProductPage.php:33    [M] FalseValue
 
 --- Original
 +++ New
@@ -597,7 +657,7 @@ Not Covered mutants:
  }
 
 
-39) src/Infrastructure/Delivery/Rest/Product/CreateProductPage.php:33    [M] Coalesce
+43) src/Infrastructure/Delivery/Rest/Product/CreateProductPage.php:33    [M] Coalesce
 
 --- Original
 +++ New
@@ -612,7 +672,7 @@ Not Covered mutants:
  }
 
 
-40) src/Infrastructure/Delivery/Rest/Product/CreateProductPage.php:37    [M] ArrayItemRemoval
+44) src/Infrastructure/Delivery/Rest/Product/CreateProductPage.php:37    [M] ArrayItemRemoval
 
 --- Original
 +++ New
@@ -626,7 +686,7 @@ Not Covered mutants:
  }
 
 
-41) src/Infrastructure/Persistence/Doctrine/Repository/DoctrineCategoryRepository.php:29    [M] MethodCallRemoval
+45) src/Infrastructure/Persistence/Doctrine/Repository/DoctrineCategoryRepository.php:29    [M] MethodCallRemoval
 
 --- Original
 +++ New
@@ -641,7 +701,7 @@ Not Covered mutants:
      public function delete(Category $category) : void
 
 
-42) src/Infrastructure/Persistence/Doctrine/Repository/DoctrineCategoryRepository.php:30    [M] MethodCallRemoval
+46) src/Infrastructure/Persistence/Doctrine/Repository/DoctrineCategoryRepository.php:30    [M] MethodCallRemoval
 
 --- Original
 +++ New
@@ -656,7 +716,7 @@ Not Covered mutants:
      {
 
 
-43) src/Infrastructure/Persistence/Doctrine/Repository/DoctrineCategoryRepository.php:35    [M] MethodCallRemoval
+47) src/Infrastructure/Persistence/Doctrine/Repository/DoctrineCategoryRepository.php:35    [M] MethodCallRemoval
 
 --- Original
 +++ New
@@ -671,7 +731,7 @@ Not Covered mutants:
      /** @throws DomainException */
 
 
-44) src/Infrastructure/Persistence/Doctrine/Repository/DoctrineCategoryRepository.php:36    [M] MethodCallRemoval
+48) src/Infrastructure/Persistence/Doctrine/Repository/DoctrineCategoryRepository.php:36    [M] MethodCallRemoval
 
 --- Original
 +++ New
@@ -686,37 +746,7 @@ Not Covered mutants:
      public function ofIdOrFail(CategoryId $categoryId) : Category
 
 
-45) src/Infrastructure/Persistence/Doctrine/Repository/DoctrineCategoryRepository.php:44    [M] LogicalNot
-
---- Original
-+++ New
-@@ @@
-     public function ofIdOrFail(CategoryId $categoryId) : Category
-     {
-         $category = $this->repository->find($categoryId->value());
--        if (!$category instanceof Category) {
-+        if ($category instanceof Category) {
-             throw CategoryNotFoundException::create($categoryId->value());
-         }
-         return $category;
-
-
-46) src/Infrastructure/Persistence/Doctrine/Repository/DoctrineCategoryRepository.php:44    [M] InstanceOf_
-
---- Original
-+++ New
-@@ @@
-     public function ofIdOrFail(CategoryId $categoryId) : Category
-     {
-         $category = $this->repository->find($categoryId->value());
--        if (!$category instanceof Category) {
-+        if (!false) {
-             throw CategoryNotFoundException::create($categoryId->value());
-         }
-         return $category;
-
-
-47) src/Infrastructure/Persistence/Doctrine/Repository/DoctrineCategoryRepository.php:44    [M] InstanceOf_
+49) src/Infrastructure/Persistence/Doctrine/Repository/DoctrineCategoryRepository.php:44    [M] InstanceOf_
 
 --- Original
 +++ New
@@ -731,7 +761,37 @@ Not Covered mutants:
          return $category;
 
 
-48) src/Infrastructure/Persistence/Doctrine/Repository/DoctrineCategoryRepository.php:45    [M] Throw_
+50) src/Infrastructure/Persistence/Doctrine/Repository/DoctrineCategoryRepository.php:44    [M] InstanceOf_
+
+--- Original
++++ New
+@@ @@
+     public function ofIdOrFail(CategoryId $categoryId) : Category
+     {
+         $category = $this->repository->find($categoryId->value());
+-        if (!$category instanceof Category) {
++        if (!false) {
+             throw CategoryNotFoundException::create($categoryId->value());
+         }
+         return $category;
+
+
+51) src/Infrastructure/Persistence/Doctrine/Repository/DoctrineCategoryRepository.php:44    [M] LogicalNot
+
+--- Original
++++ New
+@@ @@
+     public function ofIdOrFail(CategoryId $categoryId) : Category
+     {
+         $category = $this->repository->find($categoryId->value());
+-        if (!$category instanceof Category) {
++        if ($category instanceof Category) {
+             throw CategoryNotFoundException::create($categoryId->value());
+         }
+         return $category;
+
+
+52) src/Infrastructure/Persistence/Doctrine/Repository/DoctrineCategoryRepository.php:45    [M] Throw_
 
 --- Original
 +++ New
@@ -746,7 +806,7 @@ Not Covered mutants:
      }
 
 
-49) src/Infrastructure/Persistence/Doctrine/Repository/DoctrineProductRepository.php:33    [M] MethodCallRemoval
+53) src/Infrastructure/Persistence/Doctrine/Repository/DoctrineProductRepository.php:33    [M] MethodCallRemoval
 
 --- Original
 +++ New
@@ -761,7 +821,7 @@ Not Covered mutants:
      /** @throws QueryException
 
 
-50) src/Infrastructure/Persistence/Doctrine/Repository/DoctrineProductRepository.php:34    [M] MethodCallRemoval
+54) src/Infrastructure/Persistence/Doctrine/Repository/DoctrineProductRepository.php:34    [M] MethodCallRemoval
 
 --- Original
 +++ New
@@ -776,37 +836,7 @@ Not Covered mutants:
       * @throws AssertionFailedException
 
 
-51) src/Infrastructure/Persistence/Doctrine/Repository/DoctrineProductRepository.php:40    [M] OneZeroInteger
-
---- Original
-+++ New
-@@ @@
-     /** @throws QueryException
-      * @throws AssertionFailedException
-      */
--    public function search(?bool $isFeatured, int $numPage = 0, int $limit = 0) : array
-+    public function search(?bool $isFeatured, int $numPage = 0, int $limit = 1) : array
-     {
-         Assertion::greaterOrEqualThan($numPage, 1, 'Page must be greater or equal than 1');
-         Assertion::greaterOrEqualThan($limit, 1, 'Limit must be greater or equal than 1');
-
-
-52) src/Infrastructure/Persistence/Doctrine/Repository/DoctrineProductRepository.php:40    [M] DecrementInteger
-
---- Original
-+++ New
-@@ @@
-     /** @throws QueryException
-      * @throws AssertionFailedException
-      */
--    public function search(?bool $isFeatured, int $numPage = 0, int $limit = 0) : array
-+    public function search(?bool $isFeatured, int $numPage = 0, int $limit = -1) : array
-     {
-         Assertion::greaterOrEqualThan($numPage, 1, 'Page must be greater or equal than 1');
-         Assertion::greaterOrEqualThan($limit, 1, 'Limit must be greater or equal than 1');
-
-
-53) src/Infrastructure/Persistence/Doctrine/Repository/DoctrineProductRepository.php:40    [M] OneZeroInteger
+55) src/Infrastructure/Persistence/Doctrine/Repository/DoctrineProductRepository.php:40    [M] OneZeroInteger
 
 --- Original
 +++ New
@@ -821,7 +851,37 @@ Not Covered mutants:
          Assertion::greaterOrEqualThan($limit, 1, 'Limit must be greater or equal than 1');
 
 
-54) src/Infrastructure/Persistence/Doctrine/Repository/DoctrineProductRepository.php:40    [M] DecrementInteger
+56) src/Infrastructure/Persistence/Doctrine/Repository/DoctrineProductRepository.php:40    [M] DecrementInteger
+
+--- Original
++++ New
+@@ @@
+     /** @throws QueryException
+      * @throws AssertionFailedException
+      */
+-    public function search(?bool $isFeatured, int $numPage = 0, int $limit = 0) : array
++    public function search(?bool $isFeatured, int $numPage = 0, int $limit = -1) : array
+     {
+         Assertion::greaterOrEqualThan($numPage, 1, 'Page must be greater or equal than 1');
+         Assertion::greaterOrEqualThan($limit, 1, 'Limit must be greater or equal than 1');
+
+
+57) src/Infrastructure/Persistence/Doctrine/Repository/DoctrineProductRepository.php:40    [M] OneZeroInteger
+
+--- Original
++++ New
+@@ @@
+     /** @throws QueryException
+      * @throws AssertionFailedException
+      */
+-    public function search(?bool $isFeatured, int $numPage = 0, int $limit = 0) : array
++    public function search(?bool $isFeatured, int $numPage = 0, int $limit = 1) : array
+     {
+         Assertion::greaterOrEqualThan($numPage, 1, 'Page must be greater or equal than 1');
+         Assertion::greaterOrEqualThan($limit, 1, 'Limit must be greater or equal than 1');
+
+
+58) src/Infrastructure/Persistence/Doctrine/Repository/DoctrineProductRepository.php:40    [M] DecrementInteger
 
 --- Original
 +++ New
@@ -836,22 +896,7 @@ Not Covered mutants:
          Assertion::greaterOrEqualThan($limit, 1, 'Limit must be greater or equal than 1');
 
 
-55) src/Infrastructure/Persistence/Doctrine/Repository/DoctrineProductRepository.php:42    [M] IncrementInteger
-
---- Original
-+++ New
-@@ @@
-      */
-     public function search(?bool $isFeatured, int $numPage = 0, int $limit = 0) : array
-     {
--        Assertion::greaterOrEqualThan($numPage, 1, 'Page must be greater or equal than 1');
-+        Assertion::greaterOrEqualThan($numPage, 2, 'Page must be greater or equal than 1');
-         Assertion::greaterOrEqualThan($limit, 1, 'Limit must be greater or equal than 1');
-         $criteria = Criteria::create()->setFirstResult(($numPage - 1) * $limit)->setMaxResults($limit);
-         if (null !== $isFeatured) {
-
-
-56) src/Infrastructure/Persistence/Doctrine/Repository/DoctrineProductRepository.php:42    [M] OneZeroInteger
+59) src/Infrastructure/Persistence/Doctrine/Repository/DoctrineProductRepository.php:42    [M] OneZeroInteger
 
 --- Original
 +++ New
@@ -866,7 +911,7 @@ Not Covered mutants:
          if (null !== $isFeatured) {
 
 
-57) src/Infrastructure/Persistence/Doctrine/Repository/DoctrineProductRepository.php:42    [M] MethodCallRemoval
+60) src/Infrastructure/Persistence/Doctrine/Repository/DoctrineProductRepository.php:42    [M] MethodCallRemoval
 
 --- Original
 +++ New
@@ -881,22 +926,22 @@ Not Covered mutants:
          if (null !== $isFeatured) {
 
 
-58) src/Infrastructure/Persistence/Doctrine/Repository/DoctrineProductRepository.php:43    [M] IncrementInteger
+61) src/Infrastructure/Persistence/Doctrine/Repository/DoctrineProductRepository.php:42    [M] IncrementInteger
 
 --- Original
 +++ New
 @@ @@
+      */
      public function search(?bool $isFeatured, int $numPage = 0, int $limit = 0) : array
      {
-         Assertion::greaterOrEqualThan($numPage, 1, 'Page must be greater or equal than 1');
--        Assertion::greaterOrEqualThan($limit, 1, 'Limit must be greater or equal than 1');
-+        Assertion::greaterOrEqualThan($limit, 2, 'Limit must be greater or equal than 1');
+-        Assertion::greaterOrEqualThan($numPage, 1, 'Page must be greater or equal than 1');
++        Assertion::greaterOrEqualThan($numPage, 2, 'Page must be greater or equal than 1');
+         Assertion::greaterOrEqualThan($limit, 1, 'Limit must be greater or equal than 1');
          $criteria = Criteria::create()->setFirstResult(($numPage - 1) * $limit)->setMaxResults($limit);
          if (null !== $isFeatured) {
-             $criteria->where(Criteria::expr()->eq('featured', $isFeatured));
 
 
-59) src/Infrastructure/Persistence/Doctrine/Repository/DoctrineProductRepository.php:43    [M] MethodCallRemoval
+62) src/Infrastructure/Persistence/Doctrine/Repository/DoctrineProductRepository.php:43    [M] MethodCallRemoval
 
 --- Original
 +++ New
@@ -911,7 +956,7 @@ Not Covered mutants:
              $criteria->where(Criteria::expr()->eq('featured', $isFeatured));
 
 
-60) src/Infrastructure/Persistence/Doctrine/Repository/DoctrineProductRepository.php:43    [M] OneZeroInteger
+63) src/Infrastructure/Persistence/Doctrine/Repository/DoctrineProductRepository.php:43    [M] OneZeroInteger
 
 --- Original
 +++ New
@@ -926,7 +971,22 @@ Not Covered mutants:
              $criteria->where(Criteria::expr()->eq('featured', $isFeatured));
 
 
-61) src/Infrastructure/Persistence/Doctrine/Repository/DoctrineProductRepository.php:45    [M] Multiplication
+64) src/Infrastructure/Persistence/Doctrine/Repository/DoctrineProductRepository.php:43    [M] IncrementInteger
+
+--- Original
++++ New
+@@ @@
+     public function search(?bool $isFeatured, int $numPage = 0, int $limit = 0) : array
+     {
+         Assertion::greaterOrEqualThan($numPage, 1, 'Page must be greater or equal than 1');
+-        Assertion::greaterOrEqualThan($limit, 1, 'Limit must be greater or equal than 1');
++        Assertion::greaterOrEqualThan($limit, 2, 'Limit must be greater or equal than 1');
+         $criteria = Criteria::create()->setFirstResult(($numPage - 1) * $limit)->setMaxResults($limit);
+         if (null !== $isFeatured) {
+             $criteria->where(Criteria::expr()->eq('featured', $isFeatured));
+
+
+65) src/Infrastructure/Persistence/Doctrine/Repository/DoctrineProductRepository.php:45    [M] Multiplication
 
 --- Original
 +++ New
@@ -941,37 +1001,7 @@ Not Covered mutants:
          }
 
 
-62) src/Infrastructure/Persistence/Doctrine/Repository/DoctrineProductRepository.php:45    [M] IncrementInteger
-
---- Original
-+++ New
-@@ @@
-     {
-         Assertion::greaterOrEqualThan($numPage, 1, 'Page must be greater or equal than 1');
-         Assertion::greaterOrEqualThan($limit, 1, 'Limit must be greater or equal than 1');
--        $criteria = Criteria::create()->setFirstResult(($numPage - 1) * $limit)->setMaxResults($limit);
-+        $criteria = Criteria::create()->setFirstResult(($numPage - 2) * $limit)->setMaxResults($limit);
-         if (null !== $isFeatured) {
-             $criteria->where(Criteria::expr()->eq('featured', $isFeatured));
-         }
-
-
-63) src/Infrastructure/Persistence/Doctrine/Repository/DoctrineProductRepository.php:45    [M] Minus
-
---- Original
-+++ New
-@@ @@
-     {
-         Assertion::greaterOrEqualThan($numPage, 1, 'Page must be greater or equal than 1');
-         Assertion::greaterOrEqualThan($limit, 1, 'Limit must be greater or equal than 1');
--        $criteria = Criteria::create()->setFirstResult(($numPage - 1) * $limit)->setMaxResults($limit);
-+        $criteria = Criteria::create()->setFirstResult(($numPage + 1) * $limit)->setMaxResults($limit);
-         if (null !== $isFeatured) {
-             $criteria->where(Criteria::expr()->eq('featured', $isFeatured));
-         }
-
-
-64) src/Infrastructure/Persistence/Doctrine/Repository/DoctrineProductRepository.php:45    [M] OneZeroInteger
+66) src/Infrastructure/Persistence/Doctrine/Repository/DoctrineProductRepository.php:45    [M] OneZeroInteger
 
 --- Original
 +++ New
@@ -986,7 +1016,37 @@ Not Covered mutants:
          }
 
 
-65) src/Infrastructure/Persistence/Doctrine/Repository/DoctrineProductRepository.php:47    [M] NotIdentical
+67) src/Infrastructure/Persistence/Doctrine/Repository/DoctrineProductRepository.php:45    [M] IncrementInteger
+
+--- Original
++++ New
+@@ @@
+     {
+         Assertion::greaterOrEqualThan($numPage, 1, 'Page must be greater or equal than 1');
+         Assertion::greaterOrEqualThan($limit, 1, 'Limit must be greater or equal than 1');
+-        $criteria = Criteria::create()->setFirstResult(($numPage - 1) * $limit)->setMaxResults($limit);
++        $criteria = Criteria::create()->setFirstResult(($numPage - 2) * $limit)->setMaxResults($limit);
+         if (null !== $isFeatured) {
+             $criteria->where(Criteria::expr()->eq('featured', $isFeatured));
+         }
+
+
+68) src/Infrastructure/Persistence/Doctrine/Repository/DoctrineProductRepository.php:45    [M] Minus
+
+--- Original
++++ New
+@@ @@
+     {
+         Assertion::greaterOrEqualThan($numPage, 1, 'Page must be greater or equal than 1');
+         Assertion::greaterOrEqualThan($limit, 1, 'Limit must be greater or equal than 1');
+-        $criteria = Criteria::create()->setFirstResult(($numPage - 1) * $limit)->setMaxResults($limit);
++        $criteria = Criteria::create()->setFirstResult(($numPage + 1) * $limit)->setMaxResults($limit);
+         if (null !== $isFeatured) {
+             $criteria->where(Criteria::expr()->eq('featured', $isFeatured));
+         }
+
+
+69) src/Infrastructure/Persistence/Doctrine/Repository/DoctrineProductRepository.php:47    [M] NotIdentical
 
 --- Original
 +++ New
@@ -1001,7 +1061,7 @@ Not Covered mutants:
          return $this->entityManager->createQueryBuilder()->select('c')->from(Product::class, 'c')->addCriteria($criteria)->getQuery()->getResult();
 
 
-66) src/Infrastructure/Persistence/Doctrine/Repository/DoctrineProductRepository.php:48    [M] MethodCallRemoval
+70) src/Infrastructure/Persistence/Doctrine/Repository/DoctrineProductRepository.php:48    [M] MethodCallRemoval
 
 --- Original
 +++ New
@@ -1016,7 +1076,7 @@ Not Covered mutants:
      }
 
 
-67) src/Infrastructure/Persistence/Doctrine/Repository/DoctrineProductRepository.php:68    [M] NotIdentical
+71) src/Infrastructure/Persistence/Doctrine/Repository/DoctrineProductRepository.php:68    [M] NotIdentical
 
 --- Original
 +++ New
@@ -1031,7 +1091,7 @@ Not Covered mutants:
          return (int) $this->entityManager->createQueryBuilder()->select('count(c.id)')->from(Product::class, 'c')->addCriteria($criteria)->getQuery()->getSingleScalarResult();
 
 
-68) src/Infrastructure/Persistence/Doctrine/Repository/DoctrineProductRepository.php:69    [M] MethodCallRemoval
+72) src/Infrastructure/Persistence/Doctrine/Repository/DoctrineProductRepository.php:69    [M] MethodCallRemoval
 
 --- Original
 +++ New
@@ -1046,7 +1106,7 @@ Not Covered mutants:
      }
 
 
-69) src/Infrastructure/Persistence/Doctrine/Repository/DoctrineProductRepository.php:72    [M] CastInt
+73) src/Infrastructure/Persistence/Doctrine/Repository/DoctrineProductRepository.php:72    [M] CastInt
 
 --- Original
 +++ New
@@ -1061,7 +1121,7 @@ Not Covered mutants:
      {
 
 
-70) src/Infrastructure/Persistence/InMemory/InMemoryCategoryRepository.php:26    [M] Foreach_
+74) src/Infrastructure/Persistence/InMemory/InMemoryCategoryRepository.php:26    [M] Foreach_
 
 --- Original
 +++ New
@@ -1076,7 +1136,7 @@ Not Covered mutants:
      }
 
 
-71) src/Infrastructure/Persistence/InMemory/InMemoryCategoryRepository.php:27    [M] MethodCallRemoval
+75) src/Infrastructure/Persistence/InMemory/InMemoryCategoryRepository.php:27    [M] MethodCallRemoval
 
 --- Original
 +++ New
@@ -1091,7 +1151,7 @@ Not Covered mutants:
      public function save(Category $category) : void
 
 
-72) src/Infrastructure/Persistence/InMemory/InMemoryCategoryRepository.php:34    [M] MethodCallRemoval
+76) src/Infrastructure/Persistence/InMemory/InMemoryCategoryRepository.php:34    [M] MethodCallRemoval
 
 --- Original
 +++ New
@@ -1106,7 +1166,7 @@ Not Covered mutants:
      {
 
 
-73) src/Infrastructure/Persistence/InMemory/InMemoryCategoryRepository.php:39    [M] MethodCallRemoval
+77) src/Infrastructure/Persistence/InMemory/InMemoryCategoryRepository.php:39    [M] MethodCallRemoval
 
 --- Original
 +++ New
@@ -1121,7 +1181,7 @@ Not Covered mutants:
       * @throws DomainException
 
 
-74) src/Infrastructure/Persistence/InMemory/InMemoryCategoryRepository.php:49    [M] LogicalNot
+78) src/Infrastructure/Persistence/InMemory/InMemoryCategoryRepository.php:49    [M] LogicalNot
 
 --- Original
 +++ New
@@ -1136,7 +1196,7 @@ Not Covered mutants:
          return clone $category;
 
 
-75) src/Infrastructure/Persistence/InMemory/InMemoryCategoryRepository.php:49    [M] InstanceOf_
+79) src/Infrastructure/Persistence/InMemory/InMemoryCategoryRepository.php:49    [M] InstanceOf_
 
 --- Original
 +++ New
@@ -1151,7 +1211,7 @@ Not Covered mutants:
          return clone $category;
 
 
-76) src/Infrastructure/Persistence/InMemory/InMemoryCategoryRepository.php:49    [M] InstanceOf_
+80) src/Infrastructure/Persistence/InMemory/InMemoryCategoryRepository.php:49    [M] InstanceOf_
 
 --- Original
 +++ New
@@ -1166,7 +1226,7 @@ Not Covered mutants:
          return clone $category;
 
 
-77) src/Infrastructure/Persistence/InMemory/InMemoryCategoryRepository.php:50    [M] Throw_
+81) src/Infrastructure/Persistence/InMemory/InMemoryCategoryRepository.php:50    [M] Throw_
 
 --- Original
 +++ New
@@ -1181,7 +1241,7 @@ Not Covered mutants:
      }
 
 
-78) src/Infrastructure/Persistence/InMemory/InMemoryCategoryRepository.php:53    [M] CloneRemoval
+82) src/Infrastructure/Persistence/InMemory/InMemoryCategoryRepository.php:53    [M] CloneRemoval
 
 --- Original
 +++ New
@@ -1196,7 +1256,7 @@ Not Covered mutants:
      {
 
 
-79) src/Infrastructure/Persistence/InMemory/InMemoryProductRepository.php:27    [M] Foreach_
+83) src/Infrastructure/Persistence/InMemory/InMemoryProductRepository.php:27    [M] Foreach_
 
 --- Original
 +++ New
@@ -1211,7 +1271,7 @@ Not Covered mutants:
      }
 
 
-80) src/Infrastructure/Persistence/InMemory/InMemoryProductRepository.php:28    [M] MethodCallRemoval
+84) src/Infrastructure/Persistence/InMemory/InMemoryProductRepository.php:28    [M] MethodCallRemoval
 
 --- Original
 +++ New
@@ -1226,7 +1286,7 @@ Not Covered mutants:
      public function save(Product $product) : void
 
 
-81) src/Infrastructure/Persistence/InMemory/InMemoryProductRepository.php:34    [M] MethodCallRemoval
+85) src/Infrastructure/Persistence/InMemory/InMemoryProductRepository.php:34    [M] MethodCallRemoval
 
 --- Original
 +++ New
@@ -1241,7 +1301,7 @@ Not Covered mutants:
       * @throws AssertionFailedException
 
 
-82) src/Infrastructure/Persistence/InMemory/InMemoryProductRepository.php:42    [M] MethodCallRemoval
+86) src/Infrastructure/Persistence/InMemory/InMemoryProductRepository.php:42    [M] MethodCallRemoval
 
 --- Original
 +++ New
@@ -1256,7 +1316,7 @@ Not Covered mutants:
          $criteria = Criteria::create()->setFirstResult(($numPage - 1) * $limit)->setMaxResults($limit);
 
 
-83) src/Infrastructure/Persistence/InMemory/InMemoryProductRepository.php:42    [M] OneZeroInteger
+87) src/Infrastructure/Persistence/InMemory/InMemoryProductRepository.php:42    [M] OneZeroInteger
 
 --- Original
 +++ New
@@ -1271,7 +1331,7 @@ Not Covered mutants:
          $criteria = Criteria::create()->setFirstResult(($numPage - 1) * $limit)->setMaxResults($limit);
 
 
-84) src/Infrastructure/Persistence/InMemory/InMemoryProductRepository.php:42    [M] IncrementInteger
+88) src/Infrastructure/Persistence/InMemory/InMemoryProductRepository.php:42    [M] IncrementInteger
 
 --- Original
 +++ New
@@ -1286,7 +1346,7 @@ Not Covered mutants:
          $criteria = Criteria::create()->setFirstResult(($numPage - 1) * $limit)->setMaxResults($limit);
 
 
-85) src/Infrastructure/Persistence/InMemory/InMemoryProductRepository.php:43    [M] OneZeroInteger
+89) src/Infrastructure/Persistence/InMemory/InMemoryProductRepository.php:43    [M] OneZeroInteger
 
 --- Original
 +++ New
@@ -1301,7 +1361,7 @@ Not Covered mutants:
          if (null !== $isFeatured) {
 
 
-86) src/Infrastructure/Persistence/InMemory/InMemoryProductRepository.php:43    [M] MethodCallRemoval
+90) src/Infrastructure/Persistence/InMemory/InMemoryProductRepository.php:43    [M] MethodCallRemoval
 
 --- Original
 +++ New
@@ -1316,7 +1376,7 @@ Not Covered mutants:
          if (null !== $isFeatured) {
 
 
-87) src/Infrastructure/Persistence/InMemory/InMemoryProductRepository.php:43    [M] IncrementInteger
+91) src/Infrastructure/Persistence/InMemory/InMemoryProductRepository.php:43    [M] IncrementInteger
 
 --- Original
 +++ New
@@ -1331,52 +1391,7 @@ Not Covered mutants:
          if (null !== $isFeatured) {
 
 
-88) src/Infrastructure/Persistence/InMemory/InMemoryProductRepository.php:48    [M] Minus
-
---- Original
-+++ New
-@@ @@
-         Assertion::greaterOrEqualThan($numPage, 1, 'Page must be greater or equal than 1');
-         Assertion::greaterOrEqualThan($limit, 1, 'Limit must be greater or equal than 1');
-         $results = $this->products;
--        $criteria = Criteria::create()->setFirstResult(($numPage - 1) * $limit)->setMaxResults($limit);
-+        $criteria = Criteria::create()->setFirstResult(($numPage + 1) * $limit)->setMaxResults($limit);
-         if (null !== $isFeatured) {
-             $results = $this->products->filter(static fn(Product $product) => $product->getFeatured() === $isFeatured);
-         }
-
-
-89) src/Infrastructure/Persistence/InMemory/InMemoryProductRepository.php:48    [M] OneZeroInteger
-
---- Original
-+++ New
-@@ @@
-         Assertion::greaterOrEqualThan($numPage, 1, 'Page must be greater or equal than 1');
-         Assertion::greaterOrEqualThan($limit, 1, 'Limit must be greater or equal than 1');
-         $results = $this->products;
--        $criteria = Criteria::create()->setFirstResult(($numPage - 1) * $limit)->setMaxResults($limit);
-+        $criteria = Criteria::create()->setFirstResult(($numPage - 0) * $limit)->setMaxResults($limit);
-         if (null !== $isFeatured) {
-             $results = $this->products->filter(static fn(Product $product) => $product->getFeatured() === $isFeatured);
-         }
-
-
-90) src/Infrastructure/Persistence/InMemory/InMemoryProductRepository.php:48    [M] IncrementInteger
-
---- Original
-+++ New
-@@ @@
-         Assertion::greaterOrEqualThan($numPage, 1, 'Page must be greater or equal than 1');
-         Assertion::greaterOrEqualThan($limit, 1, 'Limit must be greater or equal than 1');
-         $results = $this->products;
--        $criteria = Criteria::create()->setFirstResult(($numPage - 1) * $limit)->setMaxResults($limit);
-+        $criteria = Criteria::create()->setFirstResult(($numPage - 2) * $limit)->setMaxResults($limit);
-         if (null !== $isFeatured) {
-             $results = $this->products->filter(static fn(Product $product) => $product->getFeatured() === $isFeatured);
-         }
-
-
-91) src/Infrastructure/Persistence/InMemory/InMemoryProductRepository.php:48    [M] Multiplication
+92) src/Infrastructure/Persistence/InMemory/InMemoryProductRepository.php:48    [M] Multiplication
 
 --- Original
 +++ New
@@ -1391,7 +1406,52 @@ Not Covered mutants:
          }
 
 
-92) src/Infrastructure/Persistence/InMemory/InMemoryProductRepository.php:52    [M] NotIdentical
+93) src/Infrastructure/Persistence/InMemory/InMemoryProductRepository.php:48    [M] Minus
+
+--- Original
++++ New
+@@ @@
+         Assertion::greaterOrEqualThan($numPage, 1, 'Page must be greater or equal than 1');
+         Assertion::greaterOrEqualThan($limit, 1, 'Limit must be greater or equal than 1');
+         $results = $this->products;
+-        $criteria = Criteria::create()->setFirstResult(($numPage - 1) * $limit)->setMaxResults($limit);
++        $criteria = Criteria::create()->setFirstResult(($numPage + 1) * $limit)->setMaxResults($limit);
+         if (null !== $isFeatured) {
+             $results = $this->products->filter(static fn(Product $product) => $product->getFeatured() === $isFeatured);
+         }
+
+
+94) src/Infrastructure/Persistence/InMemory/InMemoryProductRepository.php:48    [M] OneZeroInteger
+
+--- Original
++++ New
+@@ @@
+         Assertion::greaterOrEqualThan($numPage, 1, 'Page must be greater or equal than 1');
+         Assertion::greaterOrEqualThan($limit, 1, 'Limit must be greater or equal than 1');
+         $results = $this->products;
+-        $criteria = Criteria::create()->setFirstResult(($numPage - 1) * $limit)->setMaxResults($limit);
++        $criteria = Criteria::create()->setFirstResult(($numPage - 0) * $limit)->setMaxResults($limit);
+         if (null !== $isFeatured) {
+             $results = $this->products->filter(static fn(Product $product) => $product->getFeatured() === $isFeatured);
+         }
+
+
+95) src/Infrastructure/Persistence/InMemory/InMemoryProductRepository.php:48    [M] IncrementInteger
+
+--- Original
++++ New
+@@ @@
+         Assertion::greaterOrEqualThan($numPage, 1, 'Page must be greater or equal than 1');
+         Assertion::greaterOrEqualThan($limit, 1, 'Limit must be greater or equal than 1');
+         $results = $this->products;
+-        $criteria = Criteria::create()->setFirstResult(($numPage - 1) * $limit)->setMaxResults($limit);
++        $criteria = Criteria::create()->setFirstResult(($numPage - 2) * $limit)->setMaxResults($limit);
+         if (null !== $isFeatured) {
+             $results = $this->products->filter(static fn(Product $product) => $product->getFeatured() === $isFeatured);
+         }
+
+
+96) src/Infrastructure/Persistence/InMemory/InMemoryProductRepository.php:52    [M] NotIdentical
 
 --- Original
 +++ New
@@ -1406,7 +1466,7 @@ Not Covered mutants:
          return $results->matching($criteria)->toArray();
 
 
-93) src/Infrastructure/Persistence/InMemory/InMemoryProductRepository.php:54    [M] Identical
+97) src/Infrastructure/Persistence/InMemory/InMemoryProductRepository.php:54    [M] Identical
 
 --- Original
 +++ New
@@ -1421,7 +1481,7 @@ Not Covered mutants:
      }
 
 
-94) src/Infrastructure/Persistence/InMemory/InMemoryProductRepository.php:66    [M] NotIdentical
+98) src/Infrastructure/Persistence/InMemory/InMemoryProductRepository.php:66    [M] NotIdentical
 
 --- Original
 +++ New
@@ -1436,7 +1496,7 @@ Not Covered mutants:
          return $results->matching($criteria)->count();
 
 
-95) src/Infrastructure/Persistence/InMemory/InMemoryProductRepository.php:68    [M] Identical
+99) src/Infrastructure/Persistence/InMemory/InMemoryProductRepository.php:68    [M] Identical
 
 --- Original
 +++ New

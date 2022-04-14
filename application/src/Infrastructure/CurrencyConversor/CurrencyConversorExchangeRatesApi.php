@@ -8,28 +8,40 @@ use App\Domain\Product\Service\CurrencyConversor;
 use App\Domain\Product\ValueObject\ProductPrice;
 use App\Shared\Application\ValueObject\Currency;
 use Assert\AssertionFailedException;
-use Goutte\Client;
+use Redis;
+use Symfony\Component\Validator\Exception\InvalidArgumentException;
 
 class CurrencyConversorExchangeRatesApi implements CurrencyConversor
 {
     private const URL = 'http://api.exchangeratesapi.io/v1/latest?access_key=%s&base=EUR&symbols=USD';
-
-    private Client $client;
-
-    private float $oneEurInUSD = 1.082403;
+    private const KEY = 'eur_in_usd';
+    private float $oneEurInUSD;
     private string $key;
+    private Redis $cache;
 
-    public function __construct(string $key)
+    /**
+     * @throws InvalidArgumentException|\Psr\Cache\InvalidArgumentException
+     */
+    public function __construct(string $key, Redis $redis)
     {
         $this->key = $key;
-        $this->client = new Client();
+        $this->cache = $redis;
+
+        if ($value = $this->cache->get(self::KEY)) {
+            $this->oneEurInUSD = (float) $value;
+
+            return;
+        }
+
+        $this->oneEurInUSD = $this->getLatestValues();
+        $this->cache->setex(self::KEY, 3600, $this->oneEurInUSD);
     }
 
-    private function getLatestValues()
+    private function getLatestValues(): float
     {
-        $response = $this->client->request('GET', sprintf(self::URL, $this->key));
+        $data = json_decode(file_get_contents(sprintf(self::URL, $this->key)));
 
-        print_r($response);
+        return (float) $data->rates->USD;
     }
 
     /**

@@ -39,9 +39,15 @@ services:
 
     App\Domain\Product\Service\CurrencyConversor:
         class: App\Infrastructure\CurrencyConversor\CurrencyConversorExchangeRatesApi
-        arguments: ['%env(EXCHANGE_RATES_API_TOKEN)%']
+        arguments: ['%env(EXCHANGE_RATES_API_TOKEN)%', '@Redis']
         public: true
 
     App\Shared\Infrastructure\Listener\ExceptionListener:
         tags:
             - { name: kernel.event_listener, event: kernel.exception }
+    Redis:
+        class: Redis
+        calls:
+            - connect:
+                  - '%env(REDIS_HOST)%'
+                  - '%env(int:REDIS_PORT)%'
