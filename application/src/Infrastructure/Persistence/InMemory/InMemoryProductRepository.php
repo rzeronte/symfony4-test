@@ -31,8 +31,7 @@ final class InMemoryProductRepository implements ProductRepository
 
     public function save(Product $product): void
     {
-        $id = $product->getId()->value();
-        $this->products->set($id, $product);
+        $this->products->set($product->getId()->value(), $product);
     }
 
     /**
@@ -43,14 +42,15 @@ final class InMemoryProductRepository implements ProductRepository
         Assertion::greaterOrEqualThan($numPage, 1, 'Page must be greater or equal than 1');
         Assertion::greaterOrEqualThan($limit, 1, 'Limit must be greater or equal than 1');
 
+        $results = $this->products;
+
         $criteria = Criteria::create()
             ->setFirstResult(($numPage - 1) * $limit)
             ->setMaxResults($limit)
         ;
 
-        $results = $this->products;
         if (null !== $isFeatured) {
-            $results = $results->filter(
+            $results = $this->products->filter(
                 static fn (Product $product) => $product->getFeatured() === $isFeatured,
             );
         }
@@ -61,13 +61,15 @@ final class InMemoryProductRepository implements ProductRepository
     public function searchCount(?bool $isFeatured): int
     {
         $results = $this->products;
+        $criteria = Criteria::create();
+
         if (null !== $isFeatured) {
-            $results = $results->filter(
+            $results = $this->products->filter(
                 static fn (Product $product) => $product->getFeatured() === $isFeatured,
             );
         }
 
-        return $results->count();
+        return $results->matching($criteria)->count();
     }
 
     public function ofId(ProductId $productId): ?Product

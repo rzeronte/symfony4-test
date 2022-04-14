@@ -16,36 +16,50 @@
     </class>
     <coverage>
       <line nr="14">
+        <covered by="App\Tests\Unit\Application\Query\RetrieveFeaturedProducts\RetrieveFeaturedProductsQueryHandlerTest::testRetrieveFeaturedProductsWithEmptyRepository"/>
+        <covered by="App\Tests\Unit\Application\Query\RetrieveFeaturedProducts\RetrieveFeaturedProductsQueryHandlerTest::testRetrieveFeaturedProductsForPaginatorMutants"/>
         <covered by="App\Tests\Unit\Application\Query\RetrieveProducts\RetrieveProductsQueryHandlerTest::testRetrieveProductsWithEmptyRepository"/>
         <covered by="App\Tests\Unit\Application\Query\RetrieveProducts\RetrieveProductsQueryHandlerTest::testRetrieveProductsForPaginatorMutants"/>
         <covered by="App\Tests\Unit\Application\Query\RetrieveProducts\RetrieveProductsQueryHandlerTest::testRetrieveProductsWithRecordsRepository"/>
       </line>
       <line nr="19">
+        <covered by="App\Tests\Unit\Application\Query\RetrieveFeaturedProducts\RetrieveFeaturedProductsQueryHandlerTest::testRetrieveFeaturedProductsWithEmptyRepository"/>
+        <covered by="App\Tests\Unit\Application\Query\RetrieveFeaturedProducts\RetrieveFeaturedProductsQueryHandlerTest::testRetrieveFeaturedProductsForPaginatorMutants"/>
         <covered by="App\Tests\Unit\Application\Query\RetrieveProducts\RetrieveProductsQueryHandlerTest::testRetrieveProductsWithEmptyRepository"/>
         <covered by="App\Tests\Unit\Application\Query\RetrieveProducts\RetrieveProductsQueryHandlerTest::testRetrieveProductsForPaginatorMutants"/>
         <covered by="App\Tests\Unit\Application\Query\RetrieveProducts\RetrieveProductsQueryHandlerTest::testRetrieveProductsWithRecordsRepository"/>
       </line>
       <line nr="25">
+        <covered by="App\Tests\Unit\Application\Query\RetrieveFeaturedProducts\RetrieveFeaturedProductsQueryHandlerTest::testRetrieveFeaturedProductsWithEmptyRepository"/>
+        <covered by="App\Tests\Unit\Application\Query\RetrieveFeaturedProducts\RetrieveFeaturedProductsQueryHandlerTest::testRetrieveFeaturedProductsForPaginatorMutants"/>
         <covered by="App\Tests\Unit\Application\Query\RetrieveProducts\RetrieveProductsQueryHandlerTest::testRetrieveProductsWithEmptyRepository"/>
         <covered by="App\Tests\Unit\Application\Query\RetrieveProducts\RetrieveProductsQueryHandlerTest::testRetrieveProductsForPaginatorMutants"/>
         <covered by="App\Tests\Unit\Application\Query\RetrieveProducts\RetrieveProductsQueryHandlerTest::testRetrieveProductsWithRecordsRepository"/>
       </line>
       <line nr="27">
+        <covered by="App\Tests\Unit\Application\Query\RetrieveFeaturedProducts\RetrieveFeaturedProductsQueryHandlerTest::testRetrieveFeaturedProductsWithEmptyRepository"/>
+        <covered by="App\Tests\Unit\Application\Query\RetrieveFeaturedProducts\RetrieveFeaturedProductsQueryHandlerTest::testRetrieveFeaturedProductsForPaginatorMutants"/>
         <covered by="App\Tests\Unit\Application\Query\RetrieveProducts\RetrieveProductsQueryHandlerTest::testRetrieveProductsWithEmptyRepository"/>
         <covered by="App\Tests\Unit\Application\Query\RetrieveProducts\RetrieveProductsQueryHandlerTest::testRetrieveProductsForPaginatorMutants"/>
         <covered by="App\Tests\Unit\Application\Query\RetrieveProducts\RetrieveProductsQueryHandlerTest::testRetrieveProductsWithRecordsRepository"/>
       </line>
       <line nr="28">
+        <covered by="App\Tests\Unit\Application\Query\RetrieveFeaturedProducts\RetrieveFeaturedProductsQueryHandlerTest::testRetrieveFeaturedProductsWithEmptyRepository"/>
+        <covered by="App\Tests\Unit\Application\Query\RetrieveFeaturedProducts\RetrieveFeaturedProductsQueryHandlerTest::testRetrieveFeaturedProductsForPaginatorMutants"/>
         <covered by="App\Tests\Unit\Application\Query\RetrieveProducts\RetrieveProductsQueryHandlerTest::testRetrieveProductsWithEmptyRepository"/>
         <covered by="App\Tests\Unit\Application\Query\RetrieveProducts\RetrieveProductsQueryHandlerTest::testRetrieveProductsForPaginatorMutants"/>
         <covered by="App\Tests\Unit\Application\Query\RetrieveProducts\RetrieveProductsQueryHandlerTest::testRetrieveProductsWithRecordsRepository"/>
       </line>
       <line nr="29">
+        <covered by="App\Tests\Unit\Application\Query\RetrieveFeaturedProducts\RetrieveFeaturedProductsQueryHandlerTest::testRetrieveFeaturedProductsWithEmptyRepository"/>
+        <covered by="App\Tests\Unit\Application\Query\RetrieveFeaturedProducts\RetrieveFeaturedProductsQueryHandlerTest::testRetrieveFeaturedProductsForPaginatorMutants"/>
         <covered by="App\Tests\Unit\Application\Query\RetrieveProducts\RetrieveProductsQueryHandlerTest::testRetrieveProductsWithEmptyRepository"/>
         <covered by="App\Tests\Unit\Application\Query\RetrieveProducts\RetrieveProductsQueryHandlerTest::testRetrieveProductsForPaginatorMutants"/>
         <covered by="App\Tests\Unit\Application\Query\RetrieveProducts\RetrieveProductsQueryHandlerTest::testRetrieveProductsWithRecordsRepository"/>
       </line>
       <line nr="30">
+        <covered by="App\Tests\Unit\Application\Query\RetrieveFeaturedProducts\RetrieveFeaturedProductsQueryHandlerTest::testRetrieveFeaturedProductsWithEmptyRepository"/>
+        <covered by="App\Tests\Unit\Application\Query\RetrieveFeaturedProducts\RetrieveFeaturedProductsQueryHandlerTest::testRetrieveFeaturedProductsForPaginatorMutants"/>
         <covered by="App\Tests\Unit\Application\Query\RetrieveProducts\RetrieveProductsQueryHandlerTest::testRetrieveProductsWithEmptyRepository"/>
         <covered by="App\Tests\Unit\Application\Query\RetrieveProducts\RetrieveProductsQueryHandlerTest::testRetrieveProductsForPaginatorMutants"/>
         <covered by="App\Tests\Unit\Application\Query\RetrieveProducts\RetrieveProductsQueryHandlerTest::testRetrieveProductsWithRecordsRepository"/>

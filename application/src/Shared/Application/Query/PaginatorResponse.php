@@ -33,17 +33,17 @@ abstract class PaginatorResponse
         return $this->results;
     }
 
-    protected function page(): int
+    public function page(): int
     {
         return $this->page;
     }
 
-    protected function limit(): int
+    public function limit(): int
     {
         return $this->limit;
     }
 
-    protected function numResults(): int
+    public function numResults(): int
     {
         return $this->numResults;
     }
@@ -51,7 +51,7 @@ abstract class PaginatorResponse
     /**
      * @psalm-suppress DivisionByZeroError
      */
-    protected function numPages(): int
+    public function numPages(): int
     {
         return (int) ceil($this->numResults / $this->limit);
     }

@@ -44,7 +44,7 @@ final class DoctrineProductRepository implements ProductRepository
 
         $criteria = Criteria::create()->setFirstResult(($numPage - 1) * $limit)->setMaxResults($limit);
 
-        if ($isFeatured) {
+        if (null !== $isFeatured) {
             $criteria->where(Criteria::expr()->eq('featured', $isFeatured));
         }
 
@@ -65,7 +65,7 @@ final class DoctrineProductRepository implements ProductRepository
     {
         $criteria = Criteria::create();
 
-        if ($isFeatured) {
+        if (null !== $isFeatured) {
             $criteria->where(Criteria::expr()->eq('featured', $isFeatured));
         }
 

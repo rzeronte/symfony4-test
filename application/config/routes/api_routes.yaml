@@ -26,3 +26,8 @@ app.rest.retrieve_products.page:
   path: /products
   methods: GET
   controller: 'App\Infrastructure\Delivery\Rest\Product\RetrieveProductsPage'
+
+app.rest.retrieve_featured/products.page:
+  path: /products/featured
+  methods: GET
+  controller: 'App\Infrastructure\Delivery\Rest\Product\RetrieveFeaturedProductsPage'

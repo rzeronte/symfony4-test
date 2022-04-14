@@ -20,7 +20,9 @@ class RetrieveProductsPage extends ApiQueryPage
     {
         $result = $this->ask(
             new RetrieveProductsQuery(
-                (bool) $request->get('featured', false)
+                null,
+                $request->get('page'),
+                $request->get('size'),
             )
         );
 

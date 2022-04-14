@@ -179,7 +179,7 @@
       <line no="14"/>
       <line no="15">
         <token name="T_WHITESPACE">    </token>
-        <token name="T_DOC_COMMENT">/** @throws \Assert\AssertionFailedException */</token>
+        <token name="T_DOC_COMMENT">/** @throws AssertionFailedException */</token>
       </line>
       <line no="16">
         <token name="T_WHITESPACE">    </token>
@@ -215,7 +215,7 @@
       <line no="20"/>
       <line no="21">
         <token name="T_WHITESPACE">    </token>
-        <token name="T_DOC_COMMENT">/** @throws \Assert\AssertionFailedException */</token>
+        <token name="T_DOC_COMMENT">/** @throws AssertionFailedException */</token>
       </line>
       <line no="22">
         <token name="T_WHITESPACE">    </token>

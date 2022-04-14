@@ -24,6 +24,7 @@
       <line nr="31">
         <covered by="App\Tests\Unit\Application\Command\CreateProduct\CreateProductCommandHandlerTest::testCreateProductWithValidRequestButNoCategoryMustInsertRecord"/>
         <covered by="App\Tests\Unit\Application\Command\CreateProduct\CreateProductCommandHandlerTest::testCreateProductWithValidRequestIncludeCategoryMustInsertRecord"/>
+        <covered by="App\Tests\Unit\Application\Query\RetrieveFeaturedProducts\RetrieveFeaturedProductsQueryHandlerTest::testRetrieveFeaturedProductsForPaginatorMutants"/>
         <covered by="App\Tests\Unit\Application\Query\RetrieveProducts\RetrieveProductsQueryHandlerTest::testRetrieveProductsForPaginatorMutants"/>
         <covered by="App\Tests\Unit\Application\Query\RetrieveProducts\RetrieveProductsQueryHandlerTest::testRetrieveProductsWithRecordsRepository"/>
         <covered by="App\Tests\Unit\Domain\Product\ProductTest::testCreateProduct"/>
@@ -31,6 +32,7 @@
       <line nr="32">
         <covered by="App\Tests\Unit\Application\Command\CreateProduct\CreateProductCommandHandlerTest::testCreateProductWithValidRequestButNoCategoryMustInsertRecord"/>
         <covered by="App\Tests\Unit\Application\Command\CreateProduct\CreateProductCommandHandlerTest::testCreateProductWithValidRequestIncludeCategoryMustInsertRecord"/>
+        <covered by="App\Tests\Unit\Application\Query\RetrieveFeaturedProducts\RetrieveFeaturedProductsQueryHandlerTest::testRetrieveFeaturedProductsForPaginatorMutants"/>
         <covered by="App\Tests\Unit\Application\Query\RetrieveProducts\RetrieveProductsQueryHandlerTest::testRetrieveProductsForPaginatorMutants"/>
         <covered by="App\Tests\Unit\Application\Query\RetrieveProducts\RetrieveProductsQueryHandlerTest::testRetrieveProductsWithRecordsRepository"/>
         <covered by="App\Tests\Unit\Domain\Product\ProductTest::testCreateProduct"/>
@@ -38,6 +40,7 @@
       <line nr="33">
         <covered by="App\Tests\Unit\Application\Command\CreateProduct\CreateProductCommandHandlerTest::testCreateProductWithValidRequestButNoCategoryMustInsertRecord"/>
         <covered by="App\Tests\Unit\Application\Command\CreateProduct\CreateProductCommandHandlerTest::testCreateProductWithValidRequestIncludeCategoryMustInsertRecord"/>
+        <covered by="App\Tests\Unit\Application\Query\RetrieveFeaturedProducts\RetrieveFeaturedProductsQueryHandlerTest::testRetrieveFeaturedProductsForPaginatorMutants"/>
         <covered by="App\Tests\Unit\Application\Query\RetrieveProducts\RetrieveProductsQueryHandlerTest::testRetrieveProductsForPaginatorMutants"/>
         <covered by="App\Tests\Unit\Application\Query\RetrieveProducts\RetrieveProductsQueryHandlerTest::testRetrieveProductsWithRecordsRepository"/>
         <covered by="App\Tests\Unit\Domain\Product\ProductTest::testCreateProduct"/>
@@ -45,6 +48,7 @@
       <line nr="34">
         <covered by="App\Tests\Unit\Application\Command\CreateProduct\CreateProductCommandHandlerTest::testCreateProductWithValidRequestButNoCategoryMustInsertRecord"/>
         <covered by="App\Tests\Unit\Application\Command\CreateProduct\CreateProductCommandHandlerTest::testCreateProductWithValidRequestIncludeCategoryMustInsertRecord"/>
+        <covered by="App\Tests\Unit\Application\Query\RetrieveFeaturedProducts\RetrieveFeaturedProductsQueryHandlerTest::testRetrieveFeaturedProductsForPaginatorMutants"/>
         <covered by="App\Tests\Unit\Application\Query\RetrieveProducts\RetrieveProductsQueryHandlerTest::testRetrieveProductsForPaginatorMutants"/>
         <covered by="App\Tests\Unit\Application\Query\RetrieveProducts\RetrieveProductsQueryHandlerTest::testRetrieveProductsWithRecordsRepository"/>
         <covered by="App\Tests\Unit\Domain\Product\ProductTest::testCreateProduct"/>
@@ -52,6 +56,7 @@
       <line nr="35">
         <covered by="App\Tests\Unit\Application\Command\CreateProduct\CreateProductCommandHandlerTest::testCreateProductWithValidRequestButNoCategoryMustInsertRecord"/>
         <covered by="App\Tests\Unit\Application\Command\CreateProduct\CreateProductCommandHandlerTest::testCreateProductWithValidRequestIncludeCategoryMustInsertRecord"/>
+        <covered by="App\Tests\Unit\Application\Query\RetrieveFeaturedProducts\RetrieveFeaturedProductsQueryHandlerTest::testRetrieveFeaturedProductsForPaginatorMutants"/>
         <covered by="App\Tests\Unit\Application\Query\RetrieveProducts\RetrieveProductsQueryHandlerTest::testRetrieveProductsForPaginatorMutants"/>
         <covered by="App\Tests\Unit\Application\Query\RetrieveProducts\RetrieveProductsQueryHandlerTest::testRetrieveProductsWithRecordsRepository"/>
         <covered by="App\Tests\Unit\Domain\Product\ProductTest::testCreateProduct"/>
@@ -59,6 +64,7 @@
       <line nr="36">
         <covered by="App\Tests\Unit\Application\Command\CreateProduct\CreateProductCommandHandlerTest::testCreateProductWithValidRequestButNoCategoryMustInsertRecord"/>
         <covered by="App\Tests\Unit\Application\Command\CreateProduct\CreateProductCommandHandlerTest::testCreateProductWithValidRequestIncludeCategoryMustInsertRecord"/>
+        <covered by="App\Tests\Unit\Application\Query\RetrieveFeaturedProducts\RetrieveFeaturedProductsQueryHandlerTest::testRetrieveFeaturedProductsForPaginatorMutants"/>
         <covered by="App\Tests\Unit\Application\Query\RetrieveProducts\RetrieveProductsQueryHandlerTest::testRetrieveProductsForPaginatorMutants"/>
         <covered by="App\Tests\Unit\Application\Query\RetrieveProducts\RetrieveProductsQueryHandlerTest::testRetrieveProductsWithRecordsRepository"/>
         <covered by="App\Tests\Unit\Domain\Product\ProductTest::testCreateProduct"/>
@@ -66,6 +72,7 @@
       <line nr="47">
         <covered by="App\Tests\Unit\Application\Command\CreateProduct\CreateProductCommandHandlerTest::testCreateProductWithValidRequestButNoCategoryMustInsertRecord"/>
         <covered by="App\Tests\Unit\Application\Command\CreateProduct\CreateProductCommandHandlerTest::testCreateProductWithValidRequestIncludeCategoryMustInsertRecord"/>
+        <covered by="App\Tests\Unit\Application\Query\RetrieveFeaturedProducts\RetrieveFeaturedProductsQueryHandlerTest::testRetrieveFeaturedProductsForPaginatorMutants"/>
         <covered by="App\Tests\Unit\Application\Query\RetrieveProducts\RetrieveProductsQueryHandlerTest::testRetrieveProductsForPaginatorMutants"/>
         <covered by="App\Tests\Unit\Application\Query\RetrieveProducts\RetrieveProductsQueryHandlerTest::testRetrieveProductsWithRecordsRepository"/>
         <covered by="App\Tests\Unit\Domain\Product\ProductTest::testCreateProduct"/>
@@ -73,51 +80,63 @@
       <line nr="52">
         <covered by="App\Tests\Unit\Application\Command\CreateProduct\CreateProductCommandHandlerTest::testCreateProductWithValidRequestButNoCategoryMustInsertRecord"/>
         <covered by="App\Tests\Unit\Application\Command\CreateProduct\CreateProductCommandHandlerTest::testCreateProductWithValidRequestIncludeCategoryMustInsertRecord"/>
+        <covered by="App\Tests\Unit\Application\Query\RetrieveFeaturedProducts\RetrieveFeaturedProductsQueryHandlerTest::testRetrieveFeaturedProductsForPaginatorMutants"/>
         <covered by="App\Tests\Unit\Application\Query\RetrieveProducts\RetrieveProductsQueryHandlerTest::testRetrieveProductsForPaginatorMutants"/>
         <covered by="App\Tests\Unit\Application\Query\RetrieveProducts\RetrieveProductsQueryHandlerTest::testRetrieveProductsWithRecordsRepository"/>
         <covered by="App\Tests\Unit\Domain\Product\ProductTest::testCreateProduct"/>
       </line>
       <line nr="57">
+        <covered by="App\Tests\Unit\Application\Query\RetrieveFeaturedProducts\RetrieveFeaturedProductsQueryHandlerTest::testRetrieveFeaturedProductsForPaginatorMutants"/>
         <covered by="App\Tests\Unit\Application\Query\RetrieveProducts\RetrieveProductsQueryHandlerTest::testRetrieveProductsWithRecordsRepository"/>
         <covered by="App\Tests\Unit\Domain\Product\ProductTest::testCreateProduct"/>
       </line>
       <line nr="62">
+        <covered by="App\Tests\Unit\Application\Query\RetrieveFeaturedProducts\RetrieveFeaturedProductsQueryHandlerTest::testRetrieveFeaturedProductsForPaginatorMutants"/>
         <covered by="App\Tests\Unit\Application\Query\RetrieveProducts\RetrieveProductsQueryHandlerTest::testRetrieveProductsWithRecordsRepository"/>
         <covered by="App\Tests\Unit\Domain\Product\ProductTest::testCreateProduct"/>
       </line>
       <line nr="67">
+        <covered by="App\Tests\Unit\Application\Query\RetrieveFeaturedProducts\RetrieveFeaturedProductsQueryHandlerTest::testRetrieveFeaturedProductsForPaginatorMutants"/>
         <covered by="App\Tests\Unit\Application\Query\RetrieveProducts\RetrieveProductsQueryHandlerTest::testRetrieveProductsWithRecordsRepository"/>
         <covered by="App\Tests\Unit\Domain\Product\ProductTest::testCreateProduct"/>
       </line>
       <line nr="72">
+        <covered by="App\Tests\Unit\Application\Query\RetrieveFeaturedProducts\RetrieveFeaturedProductsQueryHandlerTest::testRetrieveFeaturedProductsForPaginatorMutants"/>
         <covered by="App\Tests\Unit\Application\Query\RetrieveProducts\RetrieveProductsQueryHandlerTest::testRetrieveProductsWithRecordsRepository"/>
         <covered by="App\Tests\Unit\Domain\Product\ProductTest::testCreateProduct"/>
       </line>
       <line nr="77">
+        <covered by="App\Tests\Unit\Application\Query\RetrieveFeaturedProducts\RetrieveFeaturedProductsQueryHandlerTest::testRetrieveFeaturedProductsForPaginatorMutants"/>
         <covered by="App\Tests\Unit\Application\Query\RetrieveProducts\RetrieveProductsQueryHandlerTest::testRetrieveProductsWithRecordsRepository"/>
         <covered by="App\Tests\Unit\Domain\Product\ProductTest::testCreateProduct"/>
       </line>
       <line nr="83">
+        <covered by="App\Tests\Unit\Application\Query\RetrieveFeaturedProducts\RetrieveFeaturedProductsQueryHandlerTest::testRetrieveFeaturedProductsForPaginatorMutants"/>
         <covered by="App\Tests\Unit\Application\Query\RetrieveProducts\RetrieveProductsQueryHandlerTest::testRetrieveProductsWithRecordsRepository"/>
         <covered by="App\Tests\Unit\Domain\Product\ProductTest::testCreateProduct"/>
       </line>
       <line nr="84">
+        <covered by="App\Tests\Unit\Application\Query\RetrieveFeaturedProducts\RetrieveFeaturedProductsQueryHandlerTest::testRetrieveFeaturedProductsForPaginatorMutants"/>
         <covered by="App\Tests\Unit\Application\Query\RetrieveProducts\RetrieveProductsQueryHandlerTest::testRetrieveProductsWithRecordsRepository"/>
         <covered by="App\Tests\Unit\Domain\Product\ProductTest::testCreateProduct"/>
       </line>
       <line nr="85">
+        <covered by="App\Tests\Unit\Application\Query\RetrieveFeaturedProducts\RetrieveFeaturedProductsQueryHandlerTest::testRetrieveFeaturedProductsForPaginatorMutants"/>
         <covered by="App\Tests\Unit\Application\Query\RetrieveProducts\RetrieveProductsQueryHandlerTest::testRetrieveProductsWithRecordsRepository"/>
         <covered by="App\Tests\Unit\Domain\Product\ProductTest::testCreateProduct"/>
       </line>
       <line nr="86">
+        <covered by="App\Tests\Unit\Application\Query\RetrieveFeaturedProducts\RetrieveFeaturedProductsQueryHandlerTest::testRetrieveFeaturedProductsForPaginatorMutants"/>
         <covered by="App\Tests\Unit\Application\Query\RetrieveProducts\RetrieveProductsQueryHandlerTest::testRetrieveProductsWithRecordsRepository"/>
         <covered by="App\Tests\Unit\Domain\Product\ProductTest::testCreateProduct"/>
       </line>
       <line nr="87">
+        <covered by="App\Tests\Unit\Application\Query\RetrieveFeaturedProducts\RetrieveFeaturedProductsQueryHandlerTest::testRetrieveFeaturedProductsForPaginatorMutants"/>
         <covered by="App\Tests\Unit\Application\Query\RetrieveProducts\RetrieveProductsQueryHandlerTest::testRetrieveProductsWithRecordsRepository"/>
         <covered by="App\Tests\Unit\Domain\Product\ProductTest::testCreateProduct"/>
       </line>
       <line nr="88">
+        <covered by="App\Tests\Unit\Application\Query\RetrieveFeaturedProducts\RetrieveFeaturedProductsQueryHandlerTest::testRetrieveFeaturedProductsForPaginatorMutants"/>
         <covered by="App\Tests\Unit\Application\Query\RetrieveProducts\RetrieveProductsQueryHandlerTest::testRetrieveProductsWithRecordsRepository"/>
         <covered by="App\Tests\Unit\Domain\Product\ProductTest::testCreateProduct"/>
       </line>
