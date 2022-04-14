@@ -62,11 +62,7 @@ final class RetrieveFeaturedProductsResponse extends PaginatorResponse implement
             if ($product->getCurrency()->value() !== $currency->value()) {
                 $product->convertTo(
                     $currency,
-                    $this->currencyConversor->convertPrice(
-                        $product->getPrice(),
-                        $product->getCurrency(),
-                        $currency
-                    )
+                    $this->currencyConversor->convertPrice($product, $currency)
                 );
             }
         }
