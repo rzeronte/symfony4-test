@@ -7,7 +7,7 @@ namespace App\Application\Query\RetrieveProducts;
 use App\Shared\Application\Query\PaginatorResponse;
 use JsonSerializable;
 
-final class ListProductsResponse extends PaginatorResponse implements JsonSerializable
+final class RetrieveProductsResponse extends PaginatorResponse implements JsonSerializable
 {
     private function __construct(array $results, int $page, int $limit, int $numResults)
     {

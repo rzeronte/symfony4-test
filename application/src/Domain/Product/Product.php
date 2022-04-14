@@ -77,6 +77,12 @@ final class Product implements JsonSerializable
         return $this->price;
     }
 
+    public function convertTo(Currency $currency, ProductPrice $price)
+    {
+        $this->currency = $currency;
+        $this->price = $price;
+    }
+
     public function jsonSerialize(): array
     {
         return [

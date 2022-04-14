@@ -30,6 +30,7 @@
         <covered by="App\Tests\Unit\Application\Command\UpdateCategory\UpdateCategoryCommandHandlerTest::testUpdateCategoryWithNotExistUUIDMustLaunchException"/>
         <covered by="App\Tests\Unit\Application\Command\UpdateCategory\UpdateCategoryCommandHandlerTest::testUpdateCategoryMustUpdateRecord"/>
         <covered by="App\Tests\Unit\Application\Query\RetrieveFeaturedProducts\RetrieveFeaturedProductsQueryHandlerTest::testRetrieveFeaturedProductsForPaginatorMutants"/>
+        <covered by="App\Tests\Unit\Application\Query\RetrieveFeaturedProducts\RetrieveFeaturedProductsQueryHandlerTest::testRetrieveFeaturedProductsWithCurrencyConversions"/>
         <covered by="App\Tests\Unit\Application\Query\RetrieveProducts\RetrieveProductsQueryHandlerTest::testRetrieveProductsWithEmptyRepository"/>
         <covered by="App\Tests\Unit\Application\Query\RetrieveProducts\RetrieveProductsQueryHandlerTest::testRetrieveProductsWithBadArguments"/>
         <covered by="App\Tests\Unit\Application\Query\RetrieveProducts\RetrieveProductsQueryHandlerTest::testRetrieveProductsForPaginatorMutants"/>
@@ -54,6 +55,7 @@
         <covered by="App\Tests\Unit\Application\Command\UpdateCategory\UpdateCategoryCommandHandlerTest::testUpdateCategoryWithNotExistUUIDMustLaunchException"/>
         <covered by="App\Tests\Unit\Application\Command\UpdateCategory\UpdateCategoryCommandHandlerTest::testUpdateCategoryMustUpdateRecord"/>
         <covered by="App\Tests\Unit\Application\Query\RetrieveFeaturedProducts\RetrieveFeaturedProductsQueryHandlerTest::testRetrieveFeaturedProductsForPaginatorMutants"/>
+        <covered by="App\Tests\Unit\Application\Query\RetrieveFeaturedProducts\RetrieveFeaturedProductsQueryHandlerTest::testRetrieveFeaturedProductsWithCurrencyConversions"/>
         <covered by="App\Tests\Unit\Application\Query\RetrieveProducts\RetrieveProductsQueryHandlerTest::testRetrieveProductsForPaginatorMutants"/>
         <covered by="App\Tests\Unit\Application\Query\RetrieveProducts\RetrieveProductsQueryHandlerTest::testRetrieveProductsWithRecordsRepository"/>
         <covered by="App\Tests\Unit\Domain\Category\CategoryTest::testCreateCategory"/>
@@ -61,6 +63,7 @@
       </line>
       <line nr="31">
         <covered by="App\Tests\Unit\Application\Query\RetrieveFeaturedProducts\RetrieveFeaturedProductsQueryHandlerTest::testRetrieveFeaturedProductsForPaginatorMutants"/>
+        <covered by="App\Tests\Unit\Application\Query\RetrieveFeaturedProducts\RetrieveFeaturedProductsQueryHandlerTest::testRetrieveFeaturedProductsWithCurrencyConversions"/>
         <covered by="App\Tests\Unit\Application\Query\RetrieveProducts\RetrieveProductsQueryHandlerTest::testRetrieveProductsWithRecordsRepository"/>
         <covered by="App\Tests\Unit\Domain\Category\CategoryTest::testCreateCategory"/>
         <covered by="App\Tests\Unit\Domain\Product\ProductTest::testCreateProduct"/>
@@ -79,6 +82,7 @@
         <covered by="App\Tests\Unit\Application\Command\UpdateCategory\UpdateCategoryCommandHandlerTest::testUpdateCategoryWithNotExistUUIDMustLaunchException"/>
         <covered by="App\Tests\Unit\Application\Command\UpdateCategory\UpdateCategoryCommandHandlerTest::testUpdateCategoryMustUpdateRecord"/>
         <covered by="App\Tests\Unit\Application\Query\RetrieveFeaturedProducts\RetrieveFeaturedProductsQueryHandlerTest::testRetrieveFeaturedProductsForPaginatorMutants"/>
+        <covered by="App\Tests\Unit\Application\Query\RetrieveFeaturedProducts\RetrieveFeaturedProductsQueryHandlerTest::testRetrieveFeaturedProductsWithCurrencyConversions"/>
         <covered by="App\Tests\Unit\Application\Query\RetrieveProducts\RetrieveProductsQueryHandlerTest::testRetrieveProductsWithEmptyRepository"/>
         <covered by="App\Tests\Unit\Application\Query\RetrieveProducts\RetrieveProductsQueryHandlerTest::testRetrieveProductsWithBadArguments"/>
         <covered by="App\Tests\Unit\Application\Query\RetrieveProducts\RetrieveProductsQueryHandlerTest::testRetrieveProductsForPaginatorMutants"/>
@@ -103,6 +107,7 @@
         <covered by="App\Tests\Unit\Application\Command\UpdateCategory\UpdateCategoryCommandHandlerTest::testUpdateCategoryWithNotExistUUIDMustLaunchException"/>
         <covered by="App\Tests\Unit\Application\Command\UpdateCategory\UpdateCategoryCommandHandlerTest::testUpdateCategoryMustUpdateRecord"/>
         <covered by="App\Tests\Unit\Application\Query\RetrieveFeaturedProducts\RetrieveFeaturedProductsQueryHandlerTest::testRetrieveFeaturedProductsForPaginatorMutants"/>
+        <covered by="App\Tests\Unit\Application\Query\RetrieveFeaturedProducts\RetrieveFeaturedProductsQueryHandlerTest::testRetrieveFeaturedProductsWithCurrencyConversions"/>
         <covered by="App\Tests\Unit\Application\Query\RetrieveProducts\RetrieveProductsQueryHandlerTest::testRetrieveProductsWithEmptyRepository"/>
         <covered by="App\Tests\Unit\Application\Query\RetrieveProducts\RetrieveProductsQueryHandlerTest::testRetrieveProductsWithBadArguments"/>
         <covered by="App\Tests\Unit\Application\Query\RetrieveProducts\RetrieveProductsQueryHandlerTest::testRetrieveProductsForPaginatorMutants"/>

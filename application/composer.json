@@ -12,6 +12,7 @@
         "doctrine/doctrine-bundle": "^2.6",
         "doctrine/doctrine-migrations-bundle": "^3.2",
         "doctrine/orm": "^2.11",
+        "fabpot/goutte": "^4.0",
         "friends-of-behat/mink": "^1.10",
         "friends-of-behat/mink-browserkit-driver": "*",
         "friends-of-behat/symfony-extension": "^2.3",

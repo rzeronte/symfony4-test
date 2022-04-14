@@ -11,7 +11,7 @@
     <class name="App\Application\Query\RetrieveProducts\RetrieveProductsQueryHandler" start="10" executable="6" executed="6" crap="2">
       <namespace name="App\Application\Query\RetrieveProducts"/>
       <method name="__construct" signature="__construct(App\Domain\Product\Repository\ProductRepository $repository)" start="14" end="17" crap="1" executable="1" executed="1" coverage="100"/>
-      <method name="__invoke" signature="__invoke(App\Application\Query\RetrieveProducts\RetrieveProductsQuery $query): App\Application\Query\RetrieveProducts\ListProductsResponse" start="19" end="27" crap="1" executable="5" executed="5" coverage="100"/>
+      <method name="__invoke" signature="__invoke(App\Application\Query\RetrieveProducts\RetrieveProductsQuery $query): App\Application\Query\RetrieveProducts\RetrieveProductsResponse" start="19" end="27" crap="1" executable="5" executed="5" coverage="100"/>
     </class>
     <coverage>
       <line nr="16">
@@ -174,7 +174,7 @@
         <token name="T_CLOSE_BRACKET">)</token>
         <token name="T_COLON">:</token>
         <token name="T_WHITESPACE"> </token>
-        <token name="T_STRING">ListProductsResponse</token>
+        <token name="T_STRING">RetrieveProductsResponse</token>
       </line>
       <line no="20">
         <token name="T_WHITESPACE">    </token>
@@ -184,7 +184,7 @@
         <token name="T_WHITESPACE">        </token>
         <token name="T_RETURN">return</token>
         <token name="T_WHITESPACE"> </token>
-        <token name="T_STRING">ListProductsResponse</token>
+        <token name="T_STRING">RetrieveProductsResponse</token>
         <token name="T_DOUBLE_COLON">::</token>
         <token name="T_STRING">write</token>
         <token name="T_OPEN_BRACKET">(</token>

@@ -7,22 +7,28 @@ namespace App\Tests\Unit\Application\Query\RetrieveFeaturedProducts;
 use App\Application\Query\RetrieveFeaturedProducts\RetrieveFeaturedProductsQuery;
 use App\Application\Query\RetrieveFeaturedProducts\RetrieveFeaturedProductsQueryHandler;
 use App\Domain\Product\Product;
+use App\Domain\Product\Service\CurrencyConversor;
 use App\Domain\Product\ValueObject\ProductId;
 use App\Domain\Product\ValueObject\ProductName;
 use App\Domain\Product\ValueObject\ProductPrice;
 use App\Infrastructure\Persistence\InMemory\InMemoryProductRepository;
 use App\Shared\Application\ValueObject\Currency;
+use App\Tests\Unit\Infrastructure\CurrencyConversor\FakeCurrencyConversor;
 use Assert\AssertionFailedException;
 use PHPUnit\Framework\TestCase;
 
 class RetrieveFeaturedProductsQueryHandlerTest extends TestCase
 {
     private InMemoryProductRepository $productsRepository;
+    private CurrencyConversor $currencyConversor;
 
+    /**
+     * @throws AssertionFailedException
+     */
     public function testRetrieveFeaturedProductsWithEmptyRepository()
     {
-        $query = new RetrieveFeaturedProductsQuery(1, 50);
-        $handler = new RetrieveFeaturedProductsQueryHandler($this->productsRepository);
+        $query = new RetrieveFeaturedProductsQuery(null, 1, 50);
+        $handler = new RetrieveFeaturedProductsQueryHandler($this->productsRepository, $this->currencyConversor);
         $paginator = $handler->__invoke($query);
 
         $expectedSerialize = [
@@ -71,13 +77,13 @@ class RetrieveFeaturedProductsQueryHandlerTest extends TestCase
                 ProductName::from('Name3'),
                 null,
                 ProductPrice::from(1),
-                Currency::from('USD'),
+                Currency::from('EUR'),
                 true
             )
         );
 
-        $query = new RetrieveFeaturedProductsQuery();
-        $handler = new RetrieveFeaturedProductsQueryHandler($this->productsRepository);
+        $query = new RetrieveFeaturedProductsQuery(null);
+        $handler = new RetrieveFeaturedProductsQueryHandler($this->productsRepository, $this->currencyConversor);
         $paginator = $handler->__invoke($query);
 
         $expectedSerialize = [
@@ -107,14 +113,14 @@ class RetrieveFeaturedProductsQueryHandlerTest extends TestCase
                 'name' => 'Name3',
                 'categoryId' => null,
                 'price' => 1,
-                'currency' => 'USD',
+                'currency' => 'EUR',
                 'featured' => true,
             ],
         ];
         $this->assertEquals(json_encode($expectedSerialize), json_encode($paginator->jsonSerialize()['products']));
 
-        $query = new RetrieveFeaturedProductsQuery(2, 2);
-        $handler = new RetrieveFeaturedProductsQueryHandler($this->productsRepository);
+        $query = new RetrieveFeaturedProductsQuery(null, 2, 2);
+        $handler = new RetrieveFeaturedProductsQueryHandler($this->productsRepository, $this->currencyConversor);
         $paginator = $handler->__invoke($query);
 
         $expectedSerialize = [
@@ -126,8 +132,42 @@ class RetrieveFeaturedProductsQueryHandlerTest extends TestCase
         $this->assertEquals(json_encode($expectedSerialize), json_encode($paginator->jsonSerialize()['meta']));
     }
 
+    /**
+     * @throws AssertionFailedException
+     */
+    public function testRetrieveFeaturedProductsWithCurrencyConversions()
+    {
+        $this->productsRepository->save(
+            Product::create(
+                ProductId::from('d5c509a1-3e74-4daf-9626-55e0c2665958'),
+                ProductName::from('Name1'),
+                null,
+                ProductPrice::from(1),
+                Currency::from('USD'),
+                true
+            )
+        );
+
+        $query = new RetrieveFeaturedProductsQuery('EUR');
+        $handler = new RetrieveFeaturedProductsQueryHandler($this->productsRepository, $this->currencyConversor);
+        $paginator = $handler->__invoke($query);
+
+        $expectedSerialize = [
+            [
+                'id' => 'd5c509a1-3e74-4daf-9626-55e0c2665958',
+                'name' => 'Name1',
+                'categoryId' => null,
+                'price' => 0.9238703144762164,
+                'currency' => 'EUR',
+                'featured' => true,
+            ],
+        ];
+        $this->assertEquals(json_encode($expectedSerialize), json_encode($paginator->jsonSerialize()['products']));
+    }
+
     protected function setUp(): void
     {
         $this->productsRepository = new InMemoryProductRepository();
+        $this->currencyConversor = new FakeCurrencyConversor();
     }
 }

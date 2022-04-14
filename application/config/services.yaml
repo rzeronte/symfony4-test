@@ -37,6 +37,11 @@ services:
         arguments: [ '@doctrine.orm.entity_manager' ]
         public: true
 
+    App\Domain\Product\Service\CurrencyConversor:
+        class: App\Infrastructure\CurrencyConversor\CurrencyConversorExchangeRatesApi
+        arguments: ['%env(EXCHANGE_RATES_API_TOKEN)%']
+        public: true
+
     App\Shared\Infrastructure\Listener\ExceptionListener:
         tags:
             - { name: kernel.event_listener, event: kernel.exception }

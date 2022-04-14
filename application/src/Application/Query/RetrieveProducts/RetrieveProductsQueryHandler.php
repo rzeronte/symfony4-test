@@ -16,9 +16,9 @@ class RetrieveProductsQueryHandler implements MessageHandlerInterface
         $this->repository = $repository;
     }
 
-    public function __invoke(RetrieveProductsQuery $query): ListProductsResponse
+    public function __invoke(RetrieveProductsQuery $query): RetrieveProductsResponse
     {
-        return ListProductsResponse::write(
+        return RetrieveProductsResponse::write(
             $this->repository->search($query->isFeatured(), $query->getPage(), $query->getLimit()),
             $query->getPage(),
             $query->getLimit(),

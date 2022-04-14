@@ -20,6 +20,7 @@ class RetrieveFeaturedProductsPage extends ApiQueryPage
     {
         $result = $this->ask(
             new RetrieveFeaturedProductsQuery(
+                $request->query->has('currency') ? $request->get('currency') : null,
                 $request->query->has('page') ? $request->get('page') : null,
                 $request->query->has('limit') ? $request->get('limit') : null,
             )

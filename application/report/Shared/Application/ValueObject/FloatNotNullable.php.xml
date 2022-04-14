@@ -19,6 +19,7 @@
         <covered by="App\Tests\Unit\Application\Command\CreateProduct\CreateProductCommandHandlerTest::testCreateProductWithValidRequestButNoCategoryMustInsertRecord"/>
         <covered by="App\Tests\Unit\Application\Command\CreateProduct\CreateProductCommandHandlerTest::testCreateProductWithValidRequestIncludeCategoryMustInsertRecord"/>
         <covered by="App\Tests\Unit\Application\Query\RetrieveFeaturedProducts\RetrieveFeaturedProductsQueryHandlerTest::testRetrieveFeaturedProductsForPaginatorMutants"/>
+        <covered by="App\Tests\Unit\Application\Query\RetrieveFeaturedProducts\RetrieveFeaturedProductsQueryHandlerTest::testRetrieveFeaturedProductsWithCurrencyConversions"/>
         <covered by="App\Tests\Unit\Application\Query\RetrieveProducts\RetrieveProductsQueryHandlerTest::testRetrieveProductsForPaginatorMutants"/>
         <covered by="App\Tests\Unit\Application\Query\RetrieveProducts\RetrieveProductsQueryHandlerTest::testRetrieveProductsWithRecordsRepository"/>
         <covered by="App\Tests\Unit\Domain\Product\ProductTest::testCreateProduct"/>
@@ -26,6 +27,7 @@
       </line>
       <line nr="18">
         <covered by="App\Tests\Unit\Application\Query\RetrieveFeaturedProducts\RetrieveFeaturedProductsQueryHandlerTest::testRetrieveFeaturedProductsForPaginatorMutants"/>
+        <covered by="App\Tests\Unit\Application\Query\RetrieveFeaturedProducts\RetrieveFeaturedProductsQueryHandlerTest::testRetrieveFeaturedProductsWithCurrencyConversions"/>
         <covered by="App\Tests\Unit\Application\Query\RetrieveProducts\RetrieveProductsQueryHandlerTest::testRetrieveProductsWithRecordsRepository"/>
         <covered by="App\Tests\Unit\Domain\Product\ProductTest::testCreateProduct"/>
       </line>
@@ -33,6 +35,7 @@
         <covered by="App\Tests\Unit\Application\Command\CreateProduct\CreateProductCommandHandlerTest::testCreateProductWithValidRequestButNoCategoryMustInsertRecord"/>
         <covered by="App\Tests\Unit\Application\Command\CreateProduct\CreateProductCommandHandlerTest::testCreateProductWithValidRequestIncludeCategoryMustInsertRecord"/>
         <covered by="App\Tests\Unit\Application\Query\RetrieveFeaturedProducts\RetrieveFeaturedProductsQueryHandlerTest::testRetrieveFeaturedProductsForPaginatorMutants"/>
+        <covered by="App\Tests\Unit\Application\Query\RetrieveFeaturedProducts\RetrieveFeaturedProductsQueryHandlerTest::testRetrieveFeaturedProductsWithCurrencyConversions"/>
         <covered by="App\Tests\Unit\Application\Query\RetrieveProducts\RetrieveProductsQueryHandlerTest::testRetrieveProductsForPaginatorMutants"/>
         <covered by="App\Tests\Unit\Application\Query\RetrieveProducts\RetrieveProductsQueryHandlerTest::testRetrieveProductsWithRecordsRepository"/>
         <covered by="App\Tests\Unit\Domain\Product\ProductTest::testCreateProduct"/>

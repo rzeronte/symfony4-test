@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <phpunit xmlns="https://schema.phpunit.de/coverage/1.0">
-  <build time="Thu Apr 14 17:37:15 UTC 2022" phpunit="9.5.20" coverage="9.2.15">
+  <build time="Thu Apr 14 19:59:03 UTC 2022" phpunit="9.5.20" coverage="9.2.15">
     <runtime name="PHP" version="7.4.28" url="https://secure.php.net/"/>
     <driver name="pcov" version="1.0.11"/>
   </build>
@@ -20,6 +20,7 @@
       <test name="App\Tests\Unit\Application\Command\UpdateCategory\UpdateCategoryCommandHandlerTest::testUpdateCategoryMustUpdateRecord" size="unknown" result="0" status="PASSED"/>
       <test name="App\Tests\Unit\Application\Query\RetrieveFeaturedProducts\RetrieveFeaturedProductsQueryHandlerTest::testRetrieveFeaturedProductsWithEmptyRepository" size="unknown" result="0" status="PASSED"/>
       <test name="App\Tests\Unit\Application\Query\RetrieveFeaturedProducts\RetrieveFeaturedProductsQueryHandlerTest::testRetrieveFeaturedProductsForPaginatorMutants" size="unknown" result="0" status="PASSED"/>
+      <test name="App\Tests\Unit\Application\Query\RetrieveFeaturedProducts\RetrieveFeaturedProductsQueryHandlerTest::testRetrieveFeaturedProductsWithCurrencyConversions" size="unknown" result="0" status="PASSED"/>
       <test name="App\Tests\Unit\Application\Query\RetrieveProducts\RetrieveProductsQueryHandlerTest::testRetrieveProductsWithEmptyRepository" size="unknown" result="0" status="PASSED"/>
       <test name="App\Tests\Unit\Application\Query\RetrieveProducts\RetrieveProductsQueryHandlerTest::testRetrieveProductsWithBadArguments" size="unknown" result="0" status="PASSED"/>
       <test name="App\Tests\Unit\Application\Query\RetrieveProducts\RetrieveProductsQueryHandlerTest::testRetrieveProductsForPaginatorMutants" size="unknown" result="0" status="PASSED"/>
@@ -34,18 +35,18 @@
     </tests>
     <directory name="/">
       <totals>
-        <lines total="1101" comments="49" code="1052" executable="163" executed="163" percent="100.00"/>
-        <methods count="96" tested="96" percent="100.00"/>
+        <lines total="1213" comments="53" code="1160" executable="186" executed="186" percent="100.00"/>
+        <methods count="102" tested="102" percent="100.00"/>
         <functions count="0" tested="0" percent="0"/>
-        <classes count="27" tested="27" percent="100.00"/>
+        <classes count="28" tested="28" percent="100.00"/>
         <traits count="0" tested="0" percent="0"/>
       </totals>
       <directory name="Application">
         <totals>
-          <lines total="484" comments="16" code="468" executable="83" executed="83" percent="100.00"/>
-          <methods count="40" tested="40" percent="100.00"/>
+          <lines total="576" comments="20" code="556" executable="104" executed="104" percent="100.00"/>
+          <methods count="45" tested="45" percent="100.00"/>
           <functions count="0" tested="0" percent="0"/>
-          <classes count="13" tested="13" percent="100.00"/>
+          <classes count="14" tested="14" percent="100.00"/>
           <traits count="0" tested="0" percent="0"/>
         </totals>
         <directory name="Command">
@@ -167,24 +168,24 @@
         </directory>
         <directory name="Query">
           <totals>
-            <lines total="163" comments="0" code="163" executable="29" executed="29" percent="100.00"/>
-            <methods count="14" tested="14" percent="100.00"/>
+            <lines total="255" comments="4" code="251" executable="50" executed="50" percent="100.00"/>
+            <methods count="19" tested="19" percent="100.00"/>
             <functions count="0" tested="0" percent="0"/>
-            <classes count="5" tested="5" percent="100.00"/>
+            <classes count="6" tested="6" percent="100.00"/>
             <traits count="0" tested="0" percent="0"/>
           </totals>
           <directory name="RetrieveFeaturedProducts">
             <totals>
-              <lines total="61" comments="0" code="61" executable="10" executed="10" percent="100.00"/>
-              <methods count="5" tested="5" percent="100.00"/>
+              <lines total="153" comments="4" code="149" executable="31" executed="31" percent="100.00"/>
+              <methods count="10" tested="10" percent="100.00"/>
               <functions count="0" tested="0" percent="0"/>
-              <classes count="2" tested="2" percent="100.00"/>
+              <classes count="3" tested="3" percent="100.00"/>
               <traits count="0" tested="0" percent="0"/>
             </totals>
             <file name="RetrieveFeaturedProductsQuery.php" href="Application/Query/RetrieveFeaturedProducts/RetrieveFeaturedProductsQuery.php.xml">
               <totals>
-                <lines total="31" comments="0" code="31" executable="4" executed="4" percent="100.00"/>
-                <methods count="3" tested="3" percent="100.00"/>
+                <lines total="38" comments="0" code="38" executable="6" executed="6" percent="100.00"/>
+                <methods count="4" tested="4" percent="100.00"/>
                 <functions count="0" tested="0" percent="0"/>
                 <classes count="1" tested="1" percent="100.00"/>
                 <traits count="0" tested="0" percent="0"/>
@@ -192,8 +193,17 @@
             </file>
             <file name="RetrieveFeaturedProductsQueryHandler.php" href="Application/Query/RetrieveFeaturedProducts/RetrieveFeaturedProductsQueryHandler.php.xml">
               <totals>
-                <lines total="30" comments="0" code="30" executable="6" executed="6" percent="100.00"/>
+                <lines total="40" comments="3" code="37" executable="9" executed="9" percent="100.00"/>
                 <methods count="2" tested="2" percent="100.00"/>
+                <functions count="0" tested="0" percent="0"/>
+                <classes count="1" tested="1" percent="100.00"/>
+                <traits count="0" tested="0" percent="0"/>
+              </totals>
+            </file>
+            <file name="RetrieveFeaturedProductsResponse.php" href="Application/Query/RetrieveFeaturedProducts/RetrieveFeaturedProductsResponse.php.xml">
+              <totals>
+                <lines total="75" comments="1" code="74" executable="16" executed="16" percent="100.00"/>
+                <methods count="4" tested="4" percent="100.00"/>
                 <functions count="0" tested="0" percent="0"/>
                 <classes count="1" tested="1" percent="100.00"/>
                 <traits count="0" tested="0" percent="0"/>
@@ -208,15 +218,6 @@
               <classes count="3" tested="3" percent="100.00"/>
               <traits count="0" tested="0" percent="0"/>
             </totals>
-            <file name="ListProductsResponse.php" href="Application/Query/RetrieveProducts/ListProductsResponse.php.xml">
-              <totals>
-                <lines total="35" comments="0" code="35" executable="7" executed="7" percent="100.00"/>
-                <methods count="3" tested="3" percent="100.00"/>
-                <functions count="0" tested="0" percent="0"/>
-                <classes count="1" tested="1" percent="100.00"/>
-                <traits count="0" tested="0" percent="0"/>
-              </totals>
-            </file>
             <file name="RetrieveProductsQuery.php" href="Application/Query/RetrieveProducts/RetrieveProductsQuery.php.xml">
               <totals>
                 <lines total="38" comments="0" code="38" executable="6" executed="6" percent="100.00"/>
@@ -235,13 +236,22 @@
                 <traits count="0" tested="0" percent="0"/>
               </totals>
             </file>
+            <file name="RetrieveProductsResponse.php" href="Application/Query/RetrieveProducts/RetrieveProductsResponse.php.xml">
+              <totals>
+                <lines total="35" comments="0" code="35" executable="7" executed="7" percent="100.00"/>
+                <methods count="3" tested="3" percent="100.00"/>
+                <functions count="0" tested="0" percent="0"/>
+                <classes count="1" tested="1" percent="100.00"/>
+                <traits count="0" tested="0" percent="0"/>
+              </totals>
+            </file>
           </directory>
         </directory>
       </directory>
       <directory name="Domain">
         <totals>
-          <lines total="427" comments="12" code="415" executable="57" executed="57" percent="100.00"/>
-          <methods count="38" tested="38" percent="100.00"/>
+          <lines total="447" comments="12" code="435" executable="59" executed="59" percent="100.00"/>
+          <methods count="39" tested="39" percent="100.00"/>
           <functions count="0" tested="0" percent="0"/>
           <classes count="10" tested="10" percent="100.00"/>
           <traits count="0" tested="0" percent="0"/>
@@ -347,8 +357,8 @@
         </directory>
         <directory name="Product">
           <totals>
-            <lines total="201" comments="5" code="196" executable="29" executed="29" percent="100.00"/>
-            <methods count="17" tested="17" percent="100.00"/>
+            <lines total="221" comments="5" code="216" executable="31" executed="31" percent="100.00"/>
+            <methods count="18" tested="18" percent="100.00"/>
             <functions count="0" tested="0" percent="0"/>
             <classes count="4" tested="4" percent="100.00"/>
             <traits count="0" tested="0" percent="0"/>
@@ -364,6 +374,24 @@
             <file name="ProductRepository.php" href="Domain/Product/Repository/ProductRepository.php.xml">
               <totals>
                 <lines total="20" comments="0" code="20" executable="0" executed="0" percent="0"/>
+                <methods count="0" tested="0" percent="0"/>
+                <functions count="0" tested="0" percent="0"/>
+                <classes count="0" tested="0" percent="0"/>
+                <traits count="0" tested="0" percent="0"/>
+              </totals>
+            </file>
+          </directory>
+          <directory name="Service">
+            <totals>
+              <lines total="14" comments="0" code="14" executable="0" executed="0" percent="0"/>
+              <methods count="0" tested="0" percent="0"/>
+              <functions count="0" tested="0" percent="0"/>
+              <classes count="0" tested="0" percent="0"/>
+              <traits count="0" tested="0" percent="0"/>
+            </totals>
+            <file name="CurrencyConversor.php" href="Domain/Product/Service/CurrencyConversor.php.xml">
+              <totals>
+                <lines total="14" comments="0" code="14" executable="0" executed="0" percent="0"/>
                 <methods count="0" tested="0" percent="0"/>
                 <functions count="0" tested="0" percent="0"/>
                 <classes count="0" tested="0" percent="0"/>
@@ -409,8 +437,8 @@
           </directory>
           <file name="Product.php" href="Domain/Product/Product.php.xml">
             <totals>
-              <lines total="92" comments="0" code="92" executable="19" executed="19" percent="100.00"/>
-              <methods count="9" tested="9" percent="100.00"/>
+              <lines total="98" comments="0" code="98" executable="21" executed="21" percent="100.00"/>
+              <methods count="10" tested="10" percent="100.00"/>
               <functions count="0" tested="0" percent="0"/>
               <classes count="1" tested="1" percent="100.00"/>
               <traits count="0" tested="0" percent="0"/>

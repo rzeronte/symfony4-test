@@ -2,13 +2,13 @@
 <phpunit xmlns="https://schema.phpunit.de/coverage/1.0">
   <file name="Product.php" path="/Domain/Product">
     <totals>
-      <lines total="92" comments="0" code="92" executable="19" executed="19" percent="100.00"/>
-      <methods count="9" tested="9" percent="100.00"/>
+      <lines total="98" comments="0" code="98" executable="21" executed="21" percent="100.00"/>
+      <methods count="10" tested="10" percent="100.00"/>
       <functions count="0" tested="0" percent="0"/>
       <classes count="1" tested="1" percent="100.00"/>
       <traits count="0" tested="0" percent="0"/>
     </totals>
-    <class name="App\Domain\Product\Product" start="14" executable="19" executed="19" crap="9">
+    <class name="App\Domain\Product\Product" start="14" executable="21" executed="21" crap="10">
       <namespace name="App\Domain\Product"/>
       <method name="__construct" signature="__construct(App\Domain\Product\ValueObject\ProductId $id, App\Domain\Product\ValueObject\ProductName $name, ?App\Domain\Category\Category $category, App\Domain\Product\ValueObject\ProductPrice $price, App\Shared\Application\ValueObject\Currency $currency, bool $featured)" start="23" end="37" crap="1" executable="6" executed="6" coverage="100"/>
       <method name="create" signature="create(App\Domain\Product\ValueObject\ProductId $id, App\Domain\Product\ValueObject\ProductName $name, ?App\Domain\Category\Category $category, App\Domain\Product\ValueObject\ProductPrice $price, App\Shared\Application\ValueObject\Currency $currency, bool $featured): self" start="39" end="48" crap="1" executable="1" executed="1" coverage="100"/>
@@ -18,13 +18,15 @@
       <method name="getCurrency" signature="getCurrency(): App\Shared\Application\ValueObject\Currency" start="65" end="68" crap="1" executable="1" executed="1" coverage="100"/>
       <method name="getFeatured" signature="getFeatured(): bool" start="70" end="73" crap="1" executable="1" executed="1" coverage="100"/>
       <method name="getPrice" signature="getPrice(): App\Domain\Product\ValueObject\ProductPrice" start="75" end="78" crap="1" executable="1" executed="1" coverage="100"/>
-      <method name="jsonSerialize" signature="jsonSerialize(): array" start="80" end="90" crap="1" executable="6" executed="6" coverage="100"/>
+      <method name="convertTo" signature="convertTo(App\Shared\Application\ValueObject\Currency $currency, App\Domain\Product\ValueObject\ProductPrice $price)" start="80" end="84" crap="1" executable="2" executed="2" coverage="100"/>
+      <method name="jsonSerialize" signature="jsonSerialize(): array" start="86" end="96" crap="1" executable="6" executed="6" coverage="100"/>
     </class>
     <coverage>
       <line nr="31">
         <covered by="App\Tests\Unit\Application\Command\CreateProduct\CreateProductCommandHandlerTest::testCreateProductWithValidRequestButNoCategoryMustInsertRecord"/>
         <covered by="App\Tests\Unit\Application\Command\CreateProduct\CreateProductCommandHandlerTest::testCreateProductWithValidRequestIncludeCategoryMustInsertRecord"/>
         <covered by="App\Tests\Unit\Application\Query\RetrieveFeaturedProducts\RetrieveFeaturedProductsQueryHandlerTest::testRetrieveFeaturedProductsForPaginatorMutants"/>
+        <covered by="App\Tests\Unit\Application\Query\RetrieveFeaturedProducts\RetrieveFeaturedProductsQueryHandlerTest::testRetrieveFeaturedProductsWithCurrencyConversions"/>
         <covered by="App\Tests\Unit\Application\Query\RetrieveProducts\RetrieveProductsQueryHandlerTest::testRetrieveProductsForPaginatorMutants"/>
         <covered by="App\Tests\Unit\Application\Query\RetrieveProducts\RetrieveProductsQueryHandlerTest::testRetrieveProductsWithRecordsRepository"/>
         <covered by="App\Tests\Unit\Domain\Product\ProductTest::testCreateProduct"/>
@@ -33,6 +35,7 @@
         <covered by="App\Tests\Unit\Application\Command\CreateProduct\CreateProductCommandHandlerTest::testCreateProductWithValidRequestButNoCategoryMustInsertRecord"/>
         <covered by="App\Tests\Unit\Application\Command\CreateProduct\CreateProductCommandHandlerTest::testCreateProductWithValidRequestIncludeCategoryMustInsertRecord"/>
         <covered by="App\Tests\Unit\Application\Query\RetrieveFeaturedProducts\RetrieveFeaturedProductsQueryHandlerTest::testRetrieveFeaturedProductsForPaginatorMutants"/>
+        <covered by="App\Tests\Unit\Application\Query\RetrieveFeaturedProducts\RetrieveFeaturedProductsQueryHandlerTest::testRetrieveFeaturedProductsWithCurrencyConversions"/>
         <covered by="App\Tests\Unit\Application\Query\RetrieveProducts\RetrieveProductsQueryHandlerTest::testRetrieveProductsForPaginatorMutants"/>
         <covered by="App\Tests\Unit\Application\Query\RetrieveProducts\RetrieveProductsQueryHandlerTest::testRetrieveProductsWithRecordsRepository"/>
         <covered by="App\Tests\Unit\Domain\Product\ProductTest::testCreateProduct"/>
@@ -41,6 +44,7 @@
         <covered by="App\Tests\Unit\Application\Command\CreateProduct\CreateProductCommandHandlerTest::testCreateProductWithValidRequestButNoCategoryMustInsertRecord"/>
         <covered by="App\Tests\Unit\Application\Command\CreateProduct\CreateProductCommandHandlerTest::testCreateProductWithValidRequestIncludeCategoryMustInsertRecord"/>
         <covered by="App\Tests\Unit\Application\Query\RetrieveFeaturedProducts\RetrieveFeaturedProductsQueryHandlerTest::testRetrieveFeaturedProductsForPaginatorMutants"/>
+        <covered by="App\Tests\Unit\Application\Query\RetrieveFeaturedProducts\RetrieveFeaturedProductsQueryHandlerTest::testRetrieveFeaturedProductsWithCurrencyConversions"/>
         <covered by="App\Tests\Unit\Application\Query\RetrieveProducts\RetrieveProductsQueryHandlerTest::testRetrieveProductsForPaginatorMutants"/>
         <covered by="App\Tests\Unit\Application\Query\RetrieveProducts\RetrieveProductsQueryHandlerTest::testRetrieveProductsWithRecordsRepository"/>
         <covered by="App\Tests\Unit\Domain\Product\ProductTest::testCreateProduct"/>
@@ -49,6 +53,7 @@
         <covered by="App\Tests\Unit\Application\Command\CreateProduct\CreateProductCommandHandlerTest::testCreateProductWithValidRequestButNoCategoryMustInsertRecord"/>
         <covered by="App\Tests\Unit\Application\Command\CreateProduct\CreateProductCommandHandlerTest::testCreateProductWithValidRequestIncludeCategoryMustInsertRecord"/>
         <covered by="App\Tests\Unit\Application\Query\RetrieveFeaturedProducts\RetrieveFeaturedProductsQueryHandlerTest::testRetrieveFeaturedProductsForPaginatorMutants"/>
+        <covered by="App\Tests\Unit\Application\Query\RetrieveFeaturedProducts\RetrieveFeaturedProductsQueryHandlerTest::testRetrieveFeaturedProductsWithCurrencyConversions"/>
         <covered by="App\Tests\Unit\Application\Query\RetrieveProducts\RetrieveProductsQueryHandlerTest::testRetrieveProductsForPaginatorMutants"/>
         <covered by="App\Tests\Unit\Application\Query\RetrieveProducts\RetrieveProductsQueryHandlerTest::testRetrieveProductsWithRecordsRepository"/>
         <covered by="App\Tests\Unit\Domain\Product\ProductTest::testCreateProduct"/>
@@ -57,6 +62,7 @@
         <covered by="App\Tests\Unit\Application\Command\CreateProduct\CreateProductCommandHandlerTest::testCreateProductWithValidRequestButNoCategoryMustInsertRecord"/>
         <covered by="App\Tests\Unit\Application\Command\CreateProduct\CreateProductCommandHandlerTest::testCreateProductWithValidRequestIncludeCategoryMustInsertRecord"/>
         <covered by="App\Tests\Unit\Application\Query\RetrieveFeaturedProducts\RetrieveFeaturedProductsQueryHandlerTest::testRetrieveFeaturedProductsForPaginatorMutants"/>
+        <covered by="App\Tests\Unit\Application\Query\RetrieveFeaturedProducts\RetrieveFeaturedProductsQueryHandlerTest::testRetrieveFeaturedProductsWithCurrencyConversions"/>
         <covered by="App\Tests\Unit\Application\Query\RetrieveProducts\RetrieveProductsQueryHandlerTest::testRetrieveProductsForPaginatorMutants"/>
         <covered by="App\Tests\Unit\Application\Query\RetrieveProducts\RetrieveProductsQueryHandlerTest::testRetrieveProductsWithRecordsRepository"/>
         <covered by="App\Tests\Unit\Domain\Product\ProductTest::testCreateProduct"/>
@@ -65,6 +71,7 @@
         <covered by="App\Tests\Unit\Application\Command\CreateProduct\CreateProductCommandHandlerTest::testCreateProductWithValidRequestButNoCategoryMustInsertRecord"/>
         <covered by="App\Tests\Unit\Application\Command\CreateProduct\CreateProductCommandHandlerTest::testCreateProductWithValidRequestIncludeCategoryMustInsertRecord"/>
         <covered by="App\Tests\Unit\Application\Query\RetrieveFeaturedProducts\RetrieveFeaturedProductsQueryHandlerTest::testRetrieveFeaturedProductsForPaginatorMutants"/>
+        <covered by="App\Tests\Unit\Application\Query\RetrieveFeaturedProducts\RetrieveFeaturedProductsQueryHandlerTest::testRetrieveFeaturedProductsWithCurrencyConversions"/>
         <covered by="App\Tests\Unit\Application\Query\RetrieveProducts\RetrieveProductsQueryHandlerTest::testRetrieveProductsForPaginatorMutants"/>
         <covered by="App\Tests\Unit\Application\Query\RetrieveProducts\RetrieveProductsQueryHandlerTest::testRetrieveProductsWithRecordsRepository"/>
         <covered by="App\Tests\Unit\Domain\Product\ProductTest::testCreateProduct"/>
@@ -73,6 +80,7 @@
         <covered by="App\Tests\Unit\Application\Command\CreateProduct\CreateProductCommandHandlerTest::testCreateProductWithValidRequestButNoCategoryMustInsertRecord"/>
         <covered by="App\Tests\Unit\Application\Command\CreateProduct\CreateProductCommandHandlerTest::testCreateProductWithValidRequestIncludeCategoryMustInsertRecord"/>
         <covered by="App\Tests\Unit\Application\Query\RetrieveFeaturedProducts\RetrieveFeaturedProductsQueryHandlerTest::testRetrieveFeaturedProductsForPaginatorMutants"/>
+        <covered by="App\Tests\Unit\Application\Query\RetrieveFeaturedProducts\RetrieveFeaturedProductsQueryHandlerTest::testRetrieveFeaturedProductsWithCurrencyConversions"/>
         <covered by="App\Tests\Unit\Application\Query\RetrieveProducts\RetrieveProductsQueryHandlerTest::testRetrieveProductsForPaginatorMutants"/>
         <covered by="App\Tests\Unit\Application\Query\RetrieveProducts\RetrieveProductsQueryHandlerTest::testRetrieveProductsWithRecordsRepository"/>
         <covered by="App\Tests\Unit\Domain\Product\ProductTest::testCreateProduct"/>
@@ -81,62 +89,80 @@
         <covered by="App\Tests\Unit\Application\Command\CreateProduct\CreateProductCommandHandlerTest::testCreateProductWithValidRequestButNoCategoryMustInsertRecord"/>
         <covered by="App\Tests\Unit\Application\Command\CreateProduct\CreateProductCommandHandlerTest::testCreateProductWithValidRequestIncludeCategoryMustInsertRecord"/>
         <covered by="App\Tests\Unit\Application\Query\RetrieveFeaturedProducts\RetrieveFeaturedProductsQueryHandlerTest::testRetrieveFeaturedProductsForPaginatorMutants"/>
+        <covered by="App\Tests\Unit\Application\Query\RetrieveFeaturedProducts\RetrieveFeaturedProductsQueryHandlerTest::testRetrieveFeaturedProductsWithCurrencyConversions"/>
         <covered by="App\Tests\Unit\Application\Query\RetrieveProducts\RetrieveProductsQueryHandlerTest::testRetrieveProductsForPaginatorMutants"/>
         <covered by="App\Tests\Unit\Application\Query\RetrieveProducts\RetrieveProductsQueryHandlerTest::testRetrieveProductsWithRecordsRepository"/>
         <covered by="App\Tests\Unit\Domain\Product\ProductTest::testCreateProduct"/>
       </line>
       <line nr="57">
         <covered by="App\Tests\Unit\Application\Query\RetrieveFeaturedProducts\RetrieveFeaturedProductsQueryHandlerTest::testRetrieveFeaturedProductsForPaginatorMutants"/>
+        <covered by="App\Tests\Unit\Application\Query\RetrieveFeaturedProducts\RetrieveFeaturedProductsQueryHandlerTest::testRetrieveFeaturedProductsWithCurrencyConversions"/>
         <covered by="App\Tests\Unit\Application\Query\RetrieveProducts\RetrieveProductsQueryHandlerTest::testRetrieveProductsWithRecordsRepository"/>
         <covered by="App\Tests\Unit\Domain\Product\ProductTest::testCreateProduct"/>
       </line>
       <line nr="62">
         <covered by="App\Tests\Unit\Application\Query\RetrieveFeaturedProducts\RetrieveFeaturedProductsQueryHandlerTest::testRetrieveFeaturedProductsForPaginatorMutants"/>
+        <covered by="App\Tests\Unit\Application\Query\RetrieveFeaturedProducts\RetrieveFeaturedProductsQueryHandlerTest::testRetrieveFeaturedProductsWithCurrencyConversions"/>
         <covered by="App\Tests\Unit\Application\Query\RetrieveProducts\RetrieveProductsQueryHandlerTest::testRetrieveProductsWithRecordsRepository"/>
         <covered by="App\Tests\Unit\Domain\Product\ProductTest::testCreateProduct"/>
       </line>
       <line nr="67">
         <covered by="App\Tests\Unit\Application\Query\RetrieveFeaturedProducts\RetrieveFeaturedProductsQueryHandlerTest::testRetrieveFeaturedProductsForPaginatorMutants"/>
+        <covered by="App\Tests\Unit\Application\Query\RetrieveFeaturedProducts\RetrieveFeaturedProductsQueryHandlerTest::testRetrieveFeaturedProductsWithCurrencyConversions"/>
         <covered by="App\Tests\Unit\Application\Query\RetrieveProducts\RetrieveProductsQueryHandlerTest::testRetrieveProductsWithRecordsRepository"/>
         <covered by="App\Tests\Unit\Domain\Product\ProductTest::testCreateProduct"/>
       </line>
       <line nr="72">
         <covered by="App\Tests\Unit\Application\Query\RetrieveFeaturedProducts\RetrieveFeaturedProductsQueryHandlerTest::testRetrieveFeaturedProductsForPaginatorMutants"/>
+        <covered by="App\Tests\Unit\Application\Query\RetrieveFeaturedProducts\RetrieveFeaturedProductsQueryHandlerTest::testRetrieveFeaturedProductsWithCurrencyConversions"/>
         <covered by="App\Tests\Unit\Application\Query\RetrieveProducts\RetrieveProductsQueryHandlerTest::testRetrieveProductsWithRecordsRepository"/>
         <covered by="App\Tests\Unit\Domain\Product\ProductTest::testCreateProduct"/>
       </line>
       <line nr="77">
         <covered by="App\Tests\Unit\Application\Query\RetrieveFeaturedProducts\RetrieveFeaturedProductsQueryHandlerTest::testRetrieveFeaturedProductsForPaginatorMutants"/>
+        <covered by="App\Tests\Unit\Application\Query\RetrieveFeaturedProducts\RetrieveFeaturedProductsQueryHandlerTest::testRetrieveFeaturedProductsWithCurrencyConversions"/>
         <covered by="App\Tests\Unit\Application\Query\RetrieveProducts\RetrieveProductsQueryHandlerTest::testRetrieveProductsWithRecordsRepository"/>
         <covered by="App\Tests\Unit\Domain\Product\ProductTest::testCreateProduct"/>
+      </line>
+      <line nr="82">
+        <covered by="App\Tests\Unit\Application\Query\RetrieveFeaturedProducts\RetrieveFeaturedProductsQueryHandlerTest::testRetrieveFeaturedProductsWithCurrencyConversions"/>
       </line>
       <line nr="83">
+        <covered by="App\Tests\Unit\Application\Query\RetrieveFeaturedProducts\RetrieveFeaturedProductsQueryHandlerTest::testRetrieveFeaturedProductsWithCurrencyConversions"/>
+      </line>
+      <line nr="89">
         <covered by="App\Tests\Unit\Application\Query\RetrieveFeaturedProducts\RetrieveFeaturedProductsQueryHandlerTest::testRetrieveFeaturedProductsForPaginatorMutants"/>
+        <covered by="App\Tests\Unit\Application\Query\RetrieveFeaturedProducts\RetrieveFeaturedProductsQueryHandlerTest::testRetrieveFeaturedProductsWithCurrencyConversions"/>
         <covered by="App\Tests\Unit\Application\Query\RetrieveProducts\RetrieveProductsQueryHandlerTest::testRetrieveProductsWithRecordsRepository"/>
         <covered by="App\Tests\Unit\Domain\Product\ProductTest::testCreateProduct"/>
       </line>
-      <line nr="84">
+      <line nr="90">
         <covered by="App\Tests\Unit\Application\Query\RetrieveFeaturedProducts\RetrieveFeaturedProductsQueryHandlerTest::testRetrieveFeaturedProductsForPaginatorMutants"/>
+        <covered by="App\Tests\Unit\Application\Query\RetrieveFeaturedProducts\RetrieveFeaturedProductsQueryHandlerTest::testRetrieveFeaturedProductsWithCurrencyConversions"/>
         <covered by="App\Tests\Unit\Application\Query\RetrieveProducts\RetrieveProductsQueryHandlerTest::testRetrieveProductsWithRecordsRepository"/>
         <covered by="App\Tests\Unit\Domain\Product\ProductTest::testCreateProduct"/>
       </line>
-      <line nr="85">
+      <line nr="91">
         <covered by="App\Tests\Unit\Application\Query\RetrieveFeaturedProducts\RetrieveFeaturedProductsQueryHandlerTest::testRetrieveFeaturedProductsForPaginatorMutants"/>
+        <covered by="App\Tests\Unit\Application\Query\RetrieveFeaturedProducts\RetrieveFeaturedProductsQueryHandlerTest::testRetrieveFeaturedProductsWithCurrencyConversions"/>
         <covered by="App\Tests\Unit\Application\Query\RetrieveProducts\RetrieveProductsQueryHandlerTest::testRetrieveProductsWithRecordsRepository"/>
         <covered by="App\Tests\Unit\Domain\Product\ProductTest::testCreateProduct"/>
       </line>
-      <line nr="86">
+      <line nr="92">
         <covered by="App\Tests\Unit\Application\Query\RetrieveFeaturedProducts\RetrieveFeaturedProductsQueryHandlerTest::testRetrieveFeaturedProductsForPaginatorMutants"/>
+        <covered by="App\Tests\Unit\Application\Query\RetrieveFeaturedProducts\RetrieveFeaturedProductsQueryHandlerTest::testRetrieveFeaturedProductsWithCurrencyConversions"/>
         <covered by="App\Tests\Unit\Application\Query\RetrieveProducts\RetrieveProductsQueryHandlerTest::testRetrieveProductsWithRecordsRepository"/>
         <covered by="App\Tests\Unit\Domain\Product\ProductTest::testCreateProduct"/>
       </line>
-      <line nr="87">
+      <line nr="93">
         <covered by="App\Tests\Unit\Application\Query\RetrieveFeaturedProducts\RetrieveFeaturedProductsQueryHandlerTest::testRetrieveFeaturedProductsForPaginatorMutants"/>
+        <covered by="App\Tests\Unit\Application\Query\RetrieveFeaturedProducts\RetrieveFeaturedProductsQueryHandlerTest::testRetrieveFeaturedProductsWithCurrencyConversions"/>
         <covered by="App\Tests\Unit\Application\Query\RetrieveProducts\RetrieveProductsQueryHandlerTest::testRetrieveProductsWithRecordsRepository"/>
         <covered by="App\Tests\Unit\Domain\Product\ProductTest::testCreateProduct"/>
       </line>
-      <line nr="88">
+      <line nr="94">
         <covered by="App\Tests\Unit\Application\Query\RetrieveFeaturedProducts\RetrieveFeaturedProductsQueryHandlerTest::testRetrieveFeaturedProductsForPaginatorMutants"/>
+        <covered by="App\Tests\Unit\Application\Query\RetrieveFeaturedProducts\RetrieveFeaturedProductsQueryHandlerTest::testRetrieveFeaturedProductsWithCurrencyConversions"/>
         <covered by="App\Tests\Unit\Application\Query\RetrieveProducts\RetrieveProductsQueryHandlerTest::testRetrieveProductsWithRecordsRepository"/>
         <covered by="App\Tests\Unit\Domain\Product\ProductTest::testCreateProduct"/>
       </line>
@@ -727,12 +753,17 @@
         <token name="T_WHITESPACE"> </token>
         <token name="T_FUNCTION">function</token>
         <token name="T_WHITESPACE"> </token>
-        <token name="T_STRING">jsonSerialize</token>
+        <token name="T_STRING">convertTo</token>
         <token name="T_OPEN_BRACKET">(</token>
-        <token name="T_CLOSE_BRACKET">)</token>
-        <token name="T_COLON">:</token>
+        <token name="T_STRING">Currency</token>
         <token name="T_WHITESPACE"> </token>
-        <token name="T_ARRAY">array</token>
+        <token name="T_VARIABLE">$currency</token>
+        <token name="T_COMMA">,</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">ProductPrice</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$price</token>
+        <token name="T_CLOSE_BRACKET">)</token>
       </line>
       <line no="81">
         <token name="T_WHITESPACE">    </token>
@@ -740,11 +771,55 @@
       </line>
       <line no="82">
         <token name="T_WHITESPACE">        </token>
+        <token name="T_VARIABLE">$this</token>
+        <token name="T_OBJECT_OPERATOR">-&gt;</token>
+        <token name="T_STRING">currency</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_EQUAL">=</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$currency</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="83">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_VARIABLE">$this</token>
+        <token name="T_OBJECT_OPERATOR">-&gt;</token>
+        <token name="T_STRING">price</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_EQUAL">=</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$price</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="84">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_CLOSE_CURLY">}</token>
+      </line>
+      <line no="85"/>
+      <line no="86">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_PUBLIC">public</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_FUNCTION">function</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">jsonSerialize</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_COLON">:</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_ARRAY">array</token>
+      </line>
+      <line no="87">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_OPEN_CURLY">{</token>
+      </line>
+      <line no="88">
+        <token name="T_WHITESPACE">        </token>
         <token name="T_RETURN">return</token>
         <token name="T_WHITESPACE"> </token>
         <token name="T_OPEN_SQUARE">[</token>
       </line>
-      <line no="83">
+      <line no="89">
         <token name="T_WHITESPACE">            </token>
         <token name="T_CONSTANT_ENCAPSED_STRING">'id'</token>
         <token name="T_WHITESPACE"> </token>
@@ -757,7 +832,7 @@
         <token name="T_CLOSE_BRACKET">)</token>
         <token name="T_COMMA">,</token>
       </line>
-      <line no="84">
+      <line no="90">
         <token name="T_WHITESPACE">            </token>
         <token name="T_CONSTANT_ENCAPSED_STRING">'name'</token>
         <token name="T_WHITESPACE"> </token>
@@ -774,7 +849,7 @@
         <token name="T_CLOSE_BRACKET">)</token>
         <token name="T_COMMA">,</token>
       </line>
-      <line no="85">
+      <line no="91">
         <token name="T_WHITESPACE">            </token>
         <token name="T_CONSTANT_ENCAPSED_STRING">'categoryId'</token>
         <token name="T_WHITESPACE"> </token>
@@ -787,7 +862,7 @@
         <token name="T_CLOSE_BRACKET">)</token>
         <token name="T_COMMA">,</token>
       </line>
-      <line no="86">
+      <line no="92">
         <token name="T_WHITESPACE">            </token>
         <token name="T_CONSTANT_ENCAPSED_STRING">'price'</token>
         <token name="T_WHITESPACE"> </token>
@@ -804,7 +879,7 @@
         <token name="T_CLOSE_BRACKET">)</token>
         <token name="T_COMMA">,</token>
       </line>
-      <line no="87">
+      <line no="93">
         <token name="T_WHITESPACE">            </token>
         <token name="T_CONSTANT_ENCAPSED_STRING">'currency'</token>
         <token name="T_WHITESPACE"> </token>
@@ -821,7 +896,7 @@
         <token name="T_CLOSE_BRACKET">)</token>
         <token name="T_COMMA">,</token>
       </line>
-      <line no="88">
+      <line no="94">
         <token name="T_WHITESPACE">            </token>
         <token name="T_CONSTANT_ENCAPSED_STRING">'featured'</token>
         <token name="T_WHITESPACE"> </token>
@@ -834,19 +909,19 @@
         <token name="T_CLOSE_BRACKET">)</token>
         <token name="T_COMMA">,</token>
       </line>
-      <line no="89">
+      <line no="95">
         <token name="T_WHITESPACE">        </token>
         <token name="T_CLOSE_SQUARE">]</token>
         <token name="T_SEMICOLON">;</token>
       </line>
-      <line no="90">
+      <line no="96">
         <token name="T_WHITESPACE">    </token>
         <token name="T_CLOSE_CURLY">}</token>
       </line>
-      <line no="91">
+      <line no="97">
         <token name="T_CLOSE_CURLY">}</token>
       </line>
-      <line no="92"/>
+      <line no="98"/>
     </source>
   </file>
 </phpunit>

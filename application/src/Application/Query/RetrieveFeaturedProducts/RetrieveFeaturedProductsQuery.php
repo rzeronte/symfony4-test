@@ -11,9 +11,11 @@ final class RetrieveFeaturedProductsQuery
 
     private int $page;
     private int $limit;
+    private ?string $currency;
 
-    public function __construct(?int $page = null, ?int $limit = null)
+    public function __construct(?string $currency, ?int $page = null, ?int $limit = null)
     {
+        $this->currency = $currency;
         $this->page = $page ?? self::DEFAULT_PAGE;
         $this->limit = $limit ?? self::DEFAULT_LIMIT;
     }
@@ -26,5 +28,10 @@ final class RetrieveFeaturedProductsQuery
     public function getLimit(): int
     {
         return $this->limit;
+    }
+
+    public function getCurrency(): ?string
+    {
+        return $this->currency;
     }
 }
